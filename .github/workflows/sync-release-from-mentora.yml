@@ -5,9 +5,13 @@
 #   - workflow_dispatch (manual: provide tag e.g. v1.0.0)
 #
 # Required secret on mentora-marketing:
-#   MENTORA_REPO_TOKEN — PAT with "Contents: Read" on private yhimanshu22/mentora
+#   MENTORA_REPO_TOKEN — classic PAT with "repo" scope, OR fine-grained PAT with
+#   Contents: Read on private repo yhimanshu22/mentora
 
 name: Sync release from mentora
+
+env:
+  MENTORA_SOURCE_REPO: yhimanshu22/mentora
 
 on:
   repository_dispatch:
@@ -35,7 +39,18 @@ jobs:
             exit 1
           fi
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "Syncing release $TAG from yhimanshu22/mentora"
+          echo "Syncing release $TAG from ${{ env.MENTORA_SOURCE_REPO }}"
+
+      - name: Verify access to private mentora repo
+        env:
+          GH_TOKEN: ${{ secrets.MENTORA_REPO_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::MENTORA_REPO_TOKEN is not set on mentora-marketing."
+            echo "Add a PAT with read access to private ${{ env.MENTORA_SOURCE_REPO }}."
+            exit 1
+          fi
+          gh repo view "${{ env.MENTORA_SOURCE_REPO }}" --json name,visibility
 
       - name: Download assets from private mentora repo
         env:
@@ -44,7 +59,7 @@ jobs:
         run: |
           mkdir -p release-assets
           gh release download "$TAG" \
-            --repo yhimanshu22/mentora \
+            --repo "${{ env.MENTORA_SOURCE_REPO }}" \
             --dir release-assets \
             --pattern '*'
           ls -la release-assets
@@ -54,8 +69,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.meta.outputs.tag }}
         run: |
-          gh release delete "$TAG" --yes 2>/dev/null || true
+          REPO="${{ github.repository }}"
+          gh release delete "$TAG" --repo "$REPO" --yes 2>/dev/null || true
           gh release create "$TAG" release-assets/* \
+            --repo "$REPO" \
+            --target "${{ github.event.repository.default_branch || 'master' }}" \
             --title "Mentora $TAG" \
             --notes "Public Windows installers mirrored from private app release $TAG."
 
