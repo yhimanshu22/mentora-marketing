@@ -15,11 +15,15 @@ export function GoogleSignInButton({
   const { signInWithGoogleCredential } = useAuth();
   const navigate = useNavigate();
 
-  const handleSuccess = (response: CredentialResponse) => {
+  const handleSuccess = async (response: CredentialResponse) => {
     if (!response.credential) return;
-    signInWithGoogleCredential(response.credential);
-    onSuccess?.();
-    navigate('/');
+    try {
+      await signInWithGoogleCredential(response.credential);
+      onSuccess?.();
+      navigate('/');
+    } catch {
+      // Sign-in errors are surfaced when the API is unreachable or rejects the token.
+    }
   };
 
   return (

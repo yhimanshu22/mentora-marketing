@@ -19,7 +19,12 @@ export const DEFAULT_OG_IMAGE = '/logo.png';
 
 export const SITE_ROUTES = getPrerenderRoutes();
 
-export type SeoPageId = 'home' | 'blog' | 'login' | (typeof FOOTER_LEGAL_LINKS)[number]['pageId'];
+export type SeoPageId =
+  | 'home'
+  | 'blog'
+  | 'login'
+  | 'billingSuccess'
+  | (typeof FOOTER_LEGAL_LINKS)[number]['pageId'];
 
 export type PageSeo = {
   title: string;
@@ -62,6 +67,12 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
     title: 'Sign in — Mentora AI',
     description: 'Sign in to Mentora with your Google account.',
     path: '/login',
+    noindex: true,
+  },
+  billingSuccess: {
+    title: 'Payment successful — Mentora AI',
+    description: 'Your Mentora subscription payment was successful.',
+    path: '/billing/success',
     noindex: true,
   },
   contact: {

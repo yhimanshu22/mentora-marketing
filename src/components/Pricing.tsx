@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { useAuth } from '../auth/AuthContext';
 import {
   BILLING_PERIODS,
   formatInr,
@@ -9,6 +12,7 @@ import {
   SUBSCRIPTION_PLANS,
   type BillingPeriod,
 } from '../content';
+import { ApiError, apiFetch } from '../lib/api';
 import {
   btnBlock,
   btnPrimary,
@@ -20,6 +24,71 @@ import {
   sectionLead,
   sectionTitle,
 } from '../lib/classes';
+
+function PlanCta({
+  planId,
+  label,
+  featured,
+  billingPeriod,
+}: {
+  planId: string;
+  label: string;
+  featured?: boolean;
+  billingPeriod: BillingPeriod;
+}) {
+  const { isAuthenticated, token } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (planId === 'free') {
+    return (
+      <a href={SUBSCRIPTION_PLANS[0].href} className={`${btnBlock} ${btnSecondary}`}>
+        {label}
+      </a>
+    );
+  }
+
+  if (!isAuthenticated || !token) {
+    return (
+      <Link
+        to="/login"
+        className={`${btnBlock} ${featured ? btnPrimary : btnSecondary}`}
+      >
+        Sign in to subscribe
+      </Link>
+    );
+  }
+
+  const handleCheckout = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await apiFetch<{ url: string }>('/api/billing/checkout', {
+        method: 'POST',
+        token,
+        body: JSON.stringify({ planId, billingMonths: billingPeriod }),
+      });
+      window.location.href = data.url;
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : 'Checkout failed');
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <button
+        type="button"
+        className={`${btnBlock} ${featured ? btnPrimary : btnSecondary} disabled:opacity-60`}
+        onClick={() => void handleCheckout()}
+        disabled={loading}
+      >
+        {loading ? 'Redirecting to Stripe…' : label}
+      </button>
+      {error ? <p className="text-xs text-red-400 mt-2">{error}</p> : null}
+    </div>
+  );
+}
 
 export function Pricing() {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>(1);
@@ -121,14 +190,12 @@ export function Pricing() {
                   </p>
                 ) : null}
 
-                <a
-                  href={plan.href}
-                  className={`${btnBlock} ${plan.featured ? btnPrimary : btnSecondary}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {plan.cta}
-                </a>
+                <PlanCta
+                  planId={plan.id}
+                  label={plan.cta}
+                  featured={plan.featured}
+                  billingPeriod={billingPeriod}
+                />
               </article>
             );
           })}

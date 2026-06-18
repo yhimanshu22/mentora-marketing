@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { FOOTER_LEGAL_LINKS } from './content';
+import { BillingSuccessPage } from './pages/BillingSuccessPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { HomePage } from './pages/HomePage';
@@ -13,6 +14,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/billing/success" element={<BillingSuccessPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         {FOOTER_LEGAL_LINKS.map((link) => (

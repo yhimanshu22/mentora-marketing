@@ -26,6 +26,9 @@ export function AuthMenu() {
       />
       <div className="hidden sm:block min-w-0">
         <p className="text-xs font-medium text-slate-200 truncate max-w-[8rem]">{user.name}</p>
+        <p className="text-[0.65rem] text-slate-500 capitalize">
+          {user.plan} · {user.credits} credits
+        </p>
         <button
           type="button"
           onClick={signOut}

@@ -57,6 +57,10 @@ function getSeoForPath(path: string): {
     return { page: PAGE_SEO.login, jsonLd: [] };
   }
 
+  if (path === '/billing/success') {
+    return { page: PAGE_SEO.billingSuccess, jsonLd: [] };
+  }
+
   const blogMatch = path.match(/^\/blog\/([^/]+)$/);
   if (blogMatch) {
     const post = getBlogPost(blogMatch[1]);
