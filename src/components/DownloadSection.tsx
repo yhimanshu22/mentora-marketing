@@ -1,6 +1,5 @@
 import {
   APP_VERSION,
-  GITHUB_RELEASES_URL,
   PRIMARY_DOWNLOAD_URL,
   WINDOWS_DOWNLOADS,
 } from '../content';
@@ -63,14 +62,6 @@ export function DownloadSection() {
           <div className="flex flex-wrap justify-center gap-3 pt-6 border-t border-white/[0.06]">
             <a href="#pricing" className={`${btnGhost} ${btnLg}`}>
               View plans
-            </a>
-            <a
-              href={GITHUB_RELEASES_URL}
-              className={`${btnGhost} ${btnLg}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              All releases on GitHub
             </a>
           </div>
         </div>
