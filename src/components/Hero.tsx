@@ -1,49 +1,73 @@
-import { GET_STARTED_URL, SOURCE_CODE_URL } from '../content';
+import { PRIMARY_DOWNLOAD_URL, SOURCE_CODE_URL } from '../content';
+import {
+  btnLg,
+  btnPrimary,
+  btnSecondary,
+  container,
+  eyebrow,
+  glassCard,
+} from '../lib/classes';
 
 export function Hero() {
   return (
-    <section className="hero section">
-      <div className="container hero-grid">
-        <div className="hero-copy">
-          <p className="eyebrow">AI Meeting Assistant</p>
-          <h1 className="hero-title">
+    <section className="pt-16 pb-20 max-sm:py-14">
+      <div className={`${container} grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-w-0`}>
+        <div className="min-w-0">
+          <p className={eyebrow}>AI Meeting Assistant</p>
+          <h1 className="font-display text-[clamp(2rem,5vw,3.25rem)] leading-[1.1] mb-4 bg-gradient-to-br from-slate-50 to-indigo-300 bg-clip-text text-transparent">
             Silent coaching for interviews and online meetings
           </h1>
-          <p className="hero-lead">
+          <p className="text-[1.05rem] text-slate-400 max-w-lg mb-7">
             Mentora listens to meeting audio, transcribes questions in real time, and
             delivers profile-aware answers in a floating desktop window — always on top,
             optionally hidden from screen share.
           </p>
-          <div className="hero-actions">
-            <a href={GET_STARTED_URL} className="btn btn-primary btn-lg" target="_blank" rel="noreferrer">
-              Get Started Free
+          <div className="flex flex-wrap gap-3 mb-5">
+            <a
+              href={PRIMARY_DOWNLOAD_URL}
+              className={`${btnPrimary} ${btnLg} max-sm:w-full max-sm:whitespace-normal max-sm:text-center`}
+              download
+            >
+              <i className="fab fa-windows" aria-hidden="true" /> Download for Windows
             </a>
-            <a href={SOURCE_CODE_URL} className="btn btn-secondary btn-lg" target="_blank" rel="noreferrer">
+            <a
+              href={SOURCE_CODE_URL}
+              className={`${btnSecondary} ${btnLg} max-sm:w-full max-sm:whitespace-normal max-sm:text-center`}
+            >
               Full Source Code — $499
             </a>
           </div>
-          <p className="hero-note">
-            <i className="fas fa-desktop" aria-hidden="true" /> Windows 10+ &amp; macOS · Tauri desktop app
+          <p className="text-xs text-slate-500 flex items-center gap-1.5">
+            <i className="fas fa-desktop" aria-hidden="true" /> Windows 10+ · .exe or .msi ·{' '}
+            <a href="#download" className="text-indigo-300 hover:text-indigo-200">
+              All download options
+            </a>
           </p>
         </div>
-        <div className="hero-visual glass-card" aria-hidden="true">
-          <div className="mock-window">
-            <div className="mock-titlebar">
-              <span className="mock-dot" />
-              <span className="mock-dot" />
-              <span className="mock-dot" />
-              <span className="mock-title">Mentora</span>
+        <div className={`${glassCard} p-4 min-w-0`} aria-hidden="true">
+          <div className="rounded-xl overflow-hidden border border-white/[0.08]">
+            <div className="flex items-center gap-1.5 px-3 py-2.5 bg-gray-900 border-b border-white/[0.06]">
+              <span className="w-[0.55rem] h-[0.55rem] rounded-full bg-slate-600" />
+              <span className="w-[0.55rem] h-[0.55rem] rounded-full bg-slate-600" />
+              <span className="w-[0.55rem] h-[0.55rem] rounded-full bg-slate-600" />
+              <span className="ml-auto text-[0.68rem] text-slate-500">Mentora</span>
             </div>
-            <div className="mock-body">
-              <div className="mock-msg mock-msg-user">Tell me about your recent project.</div>
-              <div className="mock-msg mock-msg-ai">
+            <div className="p-3.5 bg-bg flex flex-col gap-2">
+              <div className="self-end text-[0.72rem] px-2.5 py-1.5 rounded-lg max-w-[90%] leading-snug bg-indigo-500/85 text-white">
+                Tell me about your recent project.
+              </div>
+              <div className="relative self-start text-[0.72rem] px-2.5 py-1.5 pb-4 rounded-lg max-w-[90%] leading-snug bg-slate-800/90 text-slate-200 border-l-2 border-emerald-500">
                 I led a React dashboard that cut report time by 40%. We used TypeScript and
                 GraphQL…
-                <span className="mock-time">2.1s</span>
+                <span className="absolute right-2 bottom-1 text-[0.58rem] text-slate-500">
+                  2.1s
+                </span>
               </div>
-              <div className="mock-controls">
-                <span className="mock-mic" />
-                <span className="mock-hint">Listening to meeting audio. Press mic for what to say.</span>
+              <div className="flex items-center gap-2 pt-1.5 border-t border-white/[0.06]">
+                <span className="w-8 h-8 rounded-full shrink-0 bg-gradient-to-br from-indigo-500 to-violet-500" />
+                <span className="text-[0.58rem] text-slate-500">
+                  Listening to meeting audio. Press mic for what to say.
+                </span>
               </div>
             </div>
           </div>

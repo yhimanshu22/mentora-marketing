@@ -9,26 +9,46 @@ import {
   SUBSCRIPTION_PLANS,
   type BillingPeriod,
 } from '../content';
+import {
+  btnBlock,
+  btnPrimary,
+  btnSecondary,
+  container,
+  eyebrow,
+  glassCard,
+  sectionHead,
+  sectionLead,
+  sectionTitle,
+} from '../lib/classes';
 
-export function Pricing() {  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>(1);
+export function Pricing() {
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>(1);
 
   return (
-    <section id="pricing" className="section">
-      <div className="container">
-        <div className="section-head">
-          <p className="eyebrow">Pricing</p>
-          <h2 className="section-title">Choose your Mentora plan</h2>
-          <p className="section-lead">
+    <section id="pricing" className="py-20 max-sm:py-14">
+      <div className={container}>
+        <div className={sectionHead}>
+          <p className={eyebrow}>Pricing</p>
+          <h2 className={sectionTitle}>Choose your Mentora plan</h2>
+          <p className={sectionLead}>
             Start free with credits on desktop and browser, then upgrade as you grow.
           </p>
         </div>
 
-        <div className="pricing-billing-toggle" role="group" aria-label="Billing period">
+        <div
+          className="flex flex-wrap justify-center gap-2 mb-7"
+          role="group"
+          aria-label="Billing period"
+        >
           {BILLING_PERIODS.map((months) => (
             <button
               key={months}
               type="button"
-              className={`pricing-billing-btn${billingPeriod === months ? ' pricing-billing-btn-active' : ''}`}
+              className={`text-sm font-semibold px-4 py-2.5 rounded-full border cursor-pointer transition-[background,border-color,color] duration-150 max-sm:text-xs max-sm:px-3 max-sm:py-2 ${
+                billingPeriod === months
+                  ? 'bg-indigo-500/20 border-indigo-500/45 text-indigo-300'
+                  : 'bg-white/[0.04] border-white/10 text-slate-400 hover:text-slate-200 hover:border-indigo-500/35'
+              }`}
               aria-pressed={billingPeriod === months}
               onClick={() => setBillingPeriod(months)}
             >
@@ -37,7 +57,7 @@ export function Pricing() {  const [billingPeriod, setBillingPeriod] = useState<
           ))}
         </div>
 
-        <div className="pricing-grid pricing-grid-plans">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-5 max-w-full mb-12">
           {SUBSCRIPTION_PLANS.map((plan) => {
             const isFree = plan.monthlyPrice === undefined;
             const total = plan.monthlyPrice
@@ -47,41 +67,53 @@ export function Pricing() {  const [billingPeriod, setBillingPeriod] = useState<
             return (
               <article
                 key={plan.id}
-                className={`glass-card pricing-card${plan.featured ? ' pricing-card-featured' : ''}`}
+                className={`${glassCard} p-7 max-sm:p-5 relative min-w-0 ${
+                  plan.featured
+                    ? 'border-indigo-500/35 shadow-[0_12px_32px_rgba(99,102,241,0.15),0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]'
+                    : ''
+                }`}
               >
-                {plan.badge ? <p className="pricing-badge">{plan.badge}</p> : null}
-                <p className="pricing-label">{plan.name}</p>
+                {plan.badge ? (
+                  <p className="absolute top-4 right-4 text-[0.65rem] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/25 text-indigo-300">
+                    {plan.badge}
+                  </p>
+                ) : null}
+                <p className="text-sm font-semibold text-indigo-300 mb-1.5">{plan.name}</p>
 
                 {isFree ? (
-                  <p className="pricing-price">
-                    Free <span className="pricing-period">forever</span>
+                  <p className="text-[clamp(1.5rem,5vw,2.25rem)] font-bold mb-2 leading-snug break-words">
+                    Free <span className="text-[0.925rem] font-medium text-slate-400">forever</span>
                   </p>
                 ) : (
                   <>
-                    <p className="pricing-price">
+                    <p className="text-[clamp(1.5rem,5vw,2.25rem)] font-bold mb-2 leading-snug break-words">
                       {formatInr(total!)}
-                      <span className="pricing-period">
+                      <span className="text-[0.925rem] font-medium text-slate-400">
                         {billingPeriod === 1 ? '/month' : ` / ${periodLabel(billingPeriod)}`}
                       </span>
                     </p>
                     {billingPeriod > 1 ? (
-                      <p className="pricing-billing-note">
+                      <p className="text-xs text-slate-400 -mt-1 mb-3">
                         {formatInr(plan.monthlyPrice!)}/mo · {formatInr(total!)} total
                       </p>
                     ) : null}
                   </>
                 )}
 
-                <ul className="pricing-list">
+                <ul className="list-none mb-6 flex flex-col gap-2.5">
                   {plan.features.map((item) => (
-                    <li key={item}>
-                      <i className="fas fa-check" aria-hidden="true" /> {item}
+                    <li
+                      key={item}
+                      className="text-sm text-slate-400 flex items-start gap-2 break-words"
+                    >
+                      <i className="fas fa-check text-emerald-500 text-xs mt-0.5" aria-hidden="true" />{' '}
+                      {item}
                     </li>
                   ))}
                 </ul>
 
                 {plan.upgradeAddOnMonthly ? (
-                  <p className="pricing-upgrade-note">
+                  <p className="text-xs text-indigo-300 -mt-2 mb-4 px-2.5 py-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 break-words">
                     Upgrade from Ultimate to Magic: +{formatInr(plan.upgradeAddOnMonthly)}/mo
                     {billingPeriod > 1
                       ? ` (${formatInr(plan.upgradeAddOnMonthly * billingPeriod)} for ${periodLabel(billingPeriod)})`
@@ -91,7 +123,7 @@ export function Pricing() {  const [billingPeriod, setBillingPeriod] = useState<
 
                 <a
                   href={plan.href}
-                  className={`btn btn-block${plan.featured ? ' btn-primary' : ' btn-secondary'}`}
+                  className={`${btnBlock} ${plan.featured ? btnPrimary : btnSecondary}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -102,32 +134,36 @@ export function Pricing() {  const [billingPeriod, setBillingPeriod] = useState<
           })}
         </div>
 
-        <div className="pricing-source-head">
-          <h3 className="pricing-source-title">Full Source Code</h3>
-          <p className="pricing-source-lead">
+        <div className="text-center max-w-xl mx-auto mb-6">
+          <h3 className="font-display text-[1.35rem] mb-2">Full Source Code</h3>
+          <p className="text-[0.925rem] text-slate-400">
             Own the complete codebase — build, customize, and deploy on your own infrastructure.
           </p>
         </div>
 
-        <div className="pricing-grid pricing-grid-source">
-          <article className="glass-card pricing-card">
-            <p className="pricing-label">Full Source Code</p>
-            <p className="pricing-price">
-              $499 <span className="pricing-period">one-time</span>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5 max-w-md mx-auto">
+          <article className={`${glassCard} p-7 max-sm:p-5 relative min-w-0`}>
+            <p className="text-sm font-semibold text-indigo-300 mb-1.5">Full Source Code</p>
+            <p className="text-[clamp(1.5rem,5vw,2.25rem)] font-bold mb-2 leading-snug break-words">
+              $499 <span className="text-[0.925rem] font-medium text-slate-400">one-time</span>
             </p>
-            <p className="pricing-desc">
+            <p className="text-sm text-slate-400 mb-5">
               Complete Mentora source with desktop and browser editions. No subscription required.
             </p>
-            <ul className="pricing-list">
+            <ul className="list-none mb-6 flex flex-col gap-2.5">
               {SOURCE_CODE_FEATURES.map((item) => (
-                <li key={item}>
-                  <i className="fas fa-check" aria-hidden="true" /> {item}
+                <li
+                  key={item}
+                  className="text-sm text-slate-400 flex items-start gap-2 break-words"
+                >
+                  <i className="fas fa-check text-emerald-500 text-xs mt-0.5" aria-hidden="true" />{' '}
+                  {item}
                 </li>
               ))}
             </ul>
             <a
               href={SOURCE_CODE_URL}
-              className="btn btn-primary btn-block"
+              className={`${btnPrimary} ${btnBlock}`}
               target="_blank"
               rel="noreferrer"
             >
