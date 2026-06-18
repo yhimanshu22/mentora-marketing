@@ -1,5 +1,3 @@
-import { GITHUB_URL } from '../content';
-
 const NAV_LINKS = [
   { href: '#features', label: 'Features' },
   { href: '#how-it-works', label: 'How it works' },
@@ -22,8 +20,8 @@ export function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <a href={GITHUB_URL} className="btn btn-ghost" target="_blank" rel="noreferrer">
-            <i className="fab fa-github" aria-hidden="true" /> GitHub
+          <a href="#pricing" className="btn btn-ghost">
+            View plans
           </a>
           <a href="#download" className="btn btn-primary">
             Get Mentora

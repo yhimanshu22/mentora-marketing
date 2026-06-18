@@ -1,5 +1,102 @@
-export const GITHUB_URL = 'https://github.com/yhimanshu22/mentora';
-export const LIFETIME_URL = 'https://lazyjobseeker.com/angel-lifetime';
+export const SOURCE_CODE_URL = 'https://lazyjobseeker.com/mentora-lifetime';
+
+export const BILLING_PERIODS = [1, 3, 6, 12] as const;
+export type BillingPeriod = (typeof BILLING_PERIODS)[number];
+
+export type PricingPlan = {
+  id: string;
+  name: string;
+  monthlyPrice?: number;
+  badge?: string;
+  featured?: boolean;
+  upgradeAddOnMonthly?: number;
+  features: readonly string[];
+  cta: string;
+  href: string;
+};
+
+export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
+  {
+    id: 'free',
+    name: 'Free',
+    features: [
+      '15 Credits',
+      'Mentora Desktop Version',
+      'Mentora Browser Version',
+      'Unlimited Profiles',
+      'No Time Limit',
+    ],
+    cta: 'Get Started',
+    href: 'https://lazyjobseeker.com/mentora',
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    monthlyPrice: 2038,
+    features: [
+      'Everything in Free Plan',
+      '600 Credits',
+      'Privacy & Speed',
+      'Instant Support (WhatsApp + Email)',
+    ],
+    cta: 'Choose Pro',
+    href: 'https://lazyjobseeker.com/mentora-pro',
+  },
+  {
+    id: 'ultimate',
+    name: 'Ultimate',
+    monthlyPrice: 3625,
+    badge: 'Popular',
+    featured: true,
+    features: [
+      'Everything in Pro Plan',
+      '1,500 Credits',
+      'Magic Keys Access Included',
+      'Mentora Fully Automatic Mode',
+      'Instant Support (WhatsApp + Email + Phone Call)',
+    ],
+    cta: 'Choose Ultimate',
+    href: 'https://lazyjobseeker.com/mentora-ultimate',
+  },
+  {
+    id: 'magic',
+    name: 'Magic',
+    monthlyPrice: 7967,
+    upgradeAddOnMonthly: 4120,
+    badge: 'Best value',
+    features: [
+      'Everything in Ultimate Plan',
+      '4,000 Credits',
+      'Mentora Fully Automatic Mode',
+      'Instant Support (WhatsApp + Email + Phone Call)',
+      '1-on-1 Onboarding Call (On Demand)',
+    ],
+    cta: 'Choose Magic',
+    href: 'https://lazyjobseeker.com/mentora-magic',
+  },
+] as const;
+
+export function formatInr(amount: number): string {
+  return `₹${amount.toLocaleString('en-IN')}`;
+}
+
+export function periodTotal(monthlyPrice: number, months: BillingPeriod): number {
+  return monthlyPrice * months;
+}
+
+export function periodLabel(months: BillingPeriod): string {
+  return months === 1 ? '1 month' : `${months} months`;
+}
+
+export const GET_STARTED_URL = SUBSCRIPTION_PLANS[0].href;
+
+export const SOURCE_CODE_FEATURES = [
+  'Complete Mentora source code',
+  'Desktop & browser builds',
+  'One-time purchase — no subscription',
+  'Self-host with your own keys',
+  'Priority updates & support',
+] as const;
 
 export const FEATURES = [
   {

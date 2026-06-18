@@ -1,4 +1,4 @@
-import { GITHUB_URL, LIFETIME_URL } from '../content';
+import { GET_STARTED_URL, SOURCE_CODE_URL } from '../content';
 
 export function Hero() {
   return (
@@ -15,12 +15,11 @@ export function Hero() {
             optionally hidden from screen share.
           </p>
           <div className="hero-actions">
-            <a href={GITHUB_URL} className="btn btn-primary btn-lg" target="_blank" rel="noreferrer">
-              <i className="fab fa-github" aria-hidden="true" />
-              Open Source — Build from GitHub
+            <a href={GET_STARTED_URL} className="btn btn-primary btn-lg" target="_blank" rel="noreferrer">
+              Get Started Free
             </a>
-            <a href={LIFETIME_URL} className="btn btn-secondary btn-lg" target="_blank" rel="noreferrer">
-              Lifetime Edition — $69
+            <a href={SOURCE_CODE_URL} className="btn btn-secondary btn-lg" target="_blank" rel="noreferrer">
+              Full Source Code — $499
             </a>
           </div>
           <p className="hero-note">

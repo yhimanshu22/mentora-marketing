@@ -1,4 +1,4 @@
-import { GITHUB_URL } from '../content';
+import { GET_STARTED_URL } from '../content';
 
 export function Cta() {
   return (
@@ -7,16 +7,15 @@ export function Cta() {
         <div className="glass-card cta-card">
           <h2>Ready to ace your next meeting?</h2>
           <p>
-            Download the open-source build or grab the lifetime edition. Your audio stays local;
+            Start with the free plan or upgrade anytime. Your audio stays local;
             only API calls leave your device.
           </p>
           <div className="cta-actions">
-            <a href={GITHUB_URL} className="btn btn-primary btn-lg" target="_blank" rel="noreferrer">
-              <i className="fab fa-github" aria-hidden="true" />
-              Star on GitHub
+            <a href={GET_STARTED_URL} className="btn btn-primary btn-lg" target="_blank" rel="noreferrer">
+              Get Started Free
             </a>
             <a href="#pricing" className="btn btn-ghost btn-lg">
-              Compare editions
+              View plans
             </a>
           </div>
         </div>

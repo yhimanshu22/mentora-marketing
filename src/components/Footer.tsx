@@ -1,5 +1,3 @@
-import { GITHUB_URL } from '../content';
-
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -14,10 +12,8 @@ export function Footer() {
           Real-time transcription and AI coaching for interviews and meetings.
         </p>
         <div className="footer-links">
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer">
-            GitHub
-          </a>
           <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
           <a href="#pricing">Pricing</a>
         </div>
         <p className="footer-copy">
