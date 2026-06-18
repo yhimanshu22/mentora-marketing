@@ -4,22 +4,27 @@ export const SITEMAP_URL = `${SITE_URL}/sitemap.xml`;
 export const SOURCE_CODE_URL = `${SITE_URL}/#pricing`;
 
 export const APP_VERSION = '1.0.0';
-export const GITHUB_RELEASES_URL = 'https://github.com/yhimanshu22/mentora/releases';
+/** Public release page — installers are mirrored here from the private mentora app repo. */
+export const GITHUB_RELEASES_URL = 'https://github.com/yhimanshu22/mentora-marketing/releases';
 const RELEASE_DOWNLOAD_BASE = `${GITHUB_RELEASES_URL}/download/v${APP_VERSION}`;
+
+function releaseAsset(fileName: string) {
+  return `${RELEASE_DOWNLOAD_BASE}/${fileName}`;
+}
 
 export const WINDOWS_DOWNLOADS = [
   {
     id: 'setup',
     label: 'Download .exe',
     description: 'Windows installer — recommended',
-    href: `${RELEASE_DOWNLOAD_BASE}/Mentora.AI.Meeting.Assistant_1.0.0_x64-setup.exe`,
+    href: releaseAsset('Mentora.AI.Meeting.Assistant_1.0.0_x64-setup.exe'),
     fileName: 'Mentora.AI.Meeting.Assistant_1.0.0_x64-setup.exe',
   },
   {
     id: 'msi',
     label: 'Download .msi',
     description: 'MSI package for IT deployment',
-    href: `${RELEASE_DOWNLOAD_BASE}/Mentora.AI.Meeting.Assistant_1.0.0_x64_en-US.msi`,
+    href: releaseAsset('Mentora.AI.Meeting.Assistant_1.0.0_x64_en-US.msi'),
     fileName: 'Mentora.AI.Meeting.Assistant_1.0.0_x64_en-US.msi',
   },
 ] as const;
