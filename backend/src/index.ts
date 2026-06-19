@@ -44,8 +44,8 @@ export async function createApp() {
 
 async function main() {
   const app = await createApp();
-  app.listen(config.port, () => {
-    console.log(`Mentora API listening on http://localhost:${config.port}`);
+  app.listen(config.port, '0.0.0.0', () => {
+    console.log(`Mentora API listening on port ${config.port}`);
   });
 }
 
