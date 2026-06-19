@@ -41,10 +41,11 @@ function macAssetName(arch: 'aarch64' | 'x64') {
   return `${PRODUCT_NAME}_${APP_VERSION}_${arch}.dmg`;
 }
 
-function linuxAssetName(kind: 'appimage' | 'deb') {
-  const ext = kind === 'appimage' ? 'AppImage' : 'deb';
-  return `${PRODUCT_NAME}_${APP_VERSION}_amd64.${ext}`;
-}
+// Linux builds paused — re-enable when CI packaging is ready.
+// function linuxAssetName(kind: 'appimage' | 'deb') {
+//   const ext = kind === 'appimage' ? 'AppImage' : 'deb';
+//   return `${PRODUCT_NAME}_${APP_VERSION}_amd64.${ext}`;
+// }
 
 export const WINDOWS_DOWNLOADS: readonly DownloadFile[] = [
   {
