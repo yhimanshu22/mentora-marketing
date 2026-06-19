@@ -77,6 +77,31 @@ jobs:
             --title "Mentora $TAG" \
             --notes "Public Windows installers mirrored from private app release $TAG."
 
+      - name: Checkout marketing site
+        uses: actions/checkout@v4
+
+      - name: Update download URLs for release
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          VERSION="${TAG#v}"
+          sed -i "s/export const APP_VERSION = '[^']*'/export const APP_VERSION = '$VERSION'/" src/content.ts
+          grep "export const APP_VERSION" src/content.ts
+
+      - name: Commit and push version bump
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content.ts
+          if git diff --staged --quiet; then
+            echo "APP_VERSION already up to date."
+          else
+            git commit -m "chore: update download URLs for $TAG"
+            git push
+          fi
+
       - name: Summary
         env:
           TAG: ${{ steps.meta.outputs.tag }}

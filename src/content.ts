@@ -6,7 +6,13 @@ export const SOURCE_CODE_URL = `${SITE_URL}/#pricing`;
 export const APP_VERSION = '1.0.0';
 /** Public release page — installers are mirrored here from the private mentora app repo. */
 export const GITHUB_RELEASES_URL = 'https://github.com/yhimanshu22/mentora-marketing/releases';
+export const GITHUB_RELEASE_TAG_URL = `${GITHUB_RELEASES_URL}/tag/v${APP_VERSION}`;
 const RELEASE_DOWNLOAD_BASE = `${GITHUB_RELEASES_URL}/download/v${APP_VERSION}`;
+
+function windowsAssetName(kind: 'setup' | 'msi') {
+  const base = `Mentora.AI.Meeting.Assistant_${APP_VERSION}_x64`;
+  return kind === 'setup' ? `${base}-setup.exe` : `${base}_en-US.msi`;
+}
 
 function releaseAsset(fileName: string) {
   return `${RELEASE_DOWNLOAD_BASE}/${fileName}`;
@@ -17,15 +23,15 @@ export const WINDOWS_DOWNLOADS = [
     id: 'setup',
     label: 'Download .exe',
     description: 'Windows installer — recommended',
-    href: releaseAsset('Mentora.AI.Meeting.Assistant_1.0.0_x64-setup.exe'),
-    fileName: 'Mentora.AI.Meeting.Assistant_1.0.0_x64-setup.exe',
+    href: releaseAsset(windowsAssetName('setup')),
+    fileName: windowsAssetName('setup'),
   },
   {
     id: 'msi',
     label: 'Download .msi',
     description: 'MSI package for IT deployment',
-    href: releaseAsset('Mentora.AI.Meeting.Assistant_1.0.0_x64_en-US.msi'),
-    fileName: 'Mentora.AI.Meeting.Assistant_1.0.0_x64_en-US.msi',
+    href: releaseAsset(windowsAssetName('msi')),
+    fileName: windowsAssetName('msi'),
   },
 ] as const;
 
