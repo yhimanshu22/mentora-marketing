@@ -3,7 +3,13 @@ import { Router } from 'express';
 import type { AuthenticatedRequest } from '../middleware/auth.js';
 import { requireAuth } from '../middleware/auth.js';
 import { User } from '../models/User.js';
-import { createCheckoutSession, stripe } from '../services/stripe.js';
+import {
+  createBillingPortalSession,
+  createCheckoutSession,
+  dispatchStripeWebhookEvent,
+  constructWebhookEvent,
+  stripe,
+} from '../services/stripe.js';
 import { isPaidPlan } from '../services/plans.js';
 
 export const billingRouter = Router();
@@ -29,7 +35,26 @@ billingRouter.post('/checkout', requireAuth, async (req, res) => {
     res.json({ url });
   } catch (error) {
     console.error('Checkout session failed:', error);
-    res.status(500).json({ error: 'Could not start checkout' });
+    const message = error instanceof Error ? error.message : 'Could not start checkout';
+    res.status(500).json({ error: message });
+  }
+});
+
+billingRouter.post('/portal', requireAuth, async (req, res) => {
+  const { userId } = req as AuthenticatedRequest;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(404).json({ error: 'User not found' });
+      return;
+    }
+
+    const url = await createBillingPortalSession(user);
+    res.json({ url });
+  } catch (error) {
+    console.error('Billing portal failed:', error);
+    res.status(400).json({ error: 'No active subscription to manage' });
   }
 });
 
@@ -42,16 +67,26 @@ billingRouter.get('/session/:sessionId', requireAuth, async (req, res) => {
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['subscription'],
+    });
     if (session.client_reference_id !== userId) {
       res.status(403).json({ error: 'Session does not belong to this user' });
       return;
     }
 
+    const subscription =
+      session.subscription && typeof session.subscription !== 'string'
+        ? session.subscription
+        : null;
+
     res.json({
-      status: session.payment_status,
-      planId: session.metadata?.planId ?? null,
-      billingMonths: session.metadata?.billingMonths ?? null,
+      status: session.status === 'complete' ? 'paid' : session.payment_status,
+      mode: session.mode,
+      planId: session.metadata?.planId ?? subscription?.metadata?.planId ?? null,
+      billingMonths:
+        session.metadata?.billingMonths ?? subscription?.metadata?.billingMonths ?? null,
+      subscriptionStatus: subscription?.status ?? null,
     });
   } catch (error) {
     console.error('Session lookup failed:', error);
@@ -59,7 +94,10 @@ billingRouter.get('/session/:sessionId', requireAuth, async (req, res) => {
   }
 });
 
-export async function handleStripeWebhook(req: import('express').Request, res: import('express').Response) {
+export async function handleStripeWebhook(
+  req: import('express').Request,
+  res: import('express').Response,
+) {
   const signature = req.headers['stripe-signature'];
   if (!signature || Array.isArray(signature)) {
     res.status(400).send('Missing Stripe signature');
@@ -67,16 +105,8 @@ export async function handleStripeWebhook(req: import('express').Request, res: i
   }
 
   try {
-    const { constructWebhookEvent, applyCheckoutSession } = await import('../services/stripe.js');
     const event = constructWebhookEvent(req.body as Buffer, signature);
-
-    if (event.type === 'checkout.session.completed') {
-      const session = event.data.object;
-      if (session.payment_status === 'paid') {
-        await applyCheckoutSession(session);
-      }
-    }
-
+    await dispatchStripeWebhookEvent(event);
     res.json({ received: true });
   } catch (error) {
     console.error('Stripe webhook failed:', error);

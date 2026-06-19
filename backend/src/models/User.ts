@@ -1,4 +1,4 @@
-import mongoose, { Schema, type InferSchemaType } from 'mongoose';
+import mongoose, { Schema, type HydratedDocument, type InferSchemaType } from 'mongoose';
 
 import type { PlanId } from '../types.js';
 
@@ -16,13 +16,12 @@ const userSchema = new Schema(
     credits: { type: Number, default: 15 },
     planExpiresAt: { type: Date, default: null },
     stripeCustomerId: { type: String, default: null },
+    stripeSubscriptionId: { type: String, default: null },
   },
   { timestamps: true },
 );
 
-export type UserDocument = InferSchemaType<typeof userSchema> & {
-  _id: mongoose.Types.ObjectId;
-};
+export type UserDocument = HydratedDocument<InferSchemaType<typeof userSchema>>;
 
 export const User = mongoose.model('User', userSchema);
 

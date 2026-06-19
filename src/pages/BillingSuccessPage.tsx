@@ -50,18 +50,18 @@ export function BillingSuccessPage() {
         <div className={`${container} max-w-md`}>
           <div className={`${glassCard} p-8 text-center`}>
             {status === 'loading' ? (
-              <p className="text-slate-400">Confirming your payment…</p>
+              <p className="text-slate-400">Confirming your subscription…</p>
             ) : null}
             {status === 'paid' ? (
               <>
                 <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-3">
-                  Payment successful
+                  Subscription active
                 </p>
                 <h1 className="font-display text-2xl font-bold mb-2">You are all set</h1>
                 <p className="text-sm text-slate-400 mb-6">
                   {user
-                    ? `Your ${user.plan} plan is active with ${user.credits} credits.`
-                    : 'Your plan is now active.'}
+                    ? `Your ${user.plan} subscription is active with ${user.credits} credits for this billing period.`
+                    : 'Your subscription is now active.'}
                 </p>
                 <Link to="/" className="text-indigo-300 hover:text-indigo-200">
                   Back to home

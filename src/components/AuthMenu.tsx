@@ -1,18 +1,37 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../auth/AuthContext';
+import { ApiError, apiFetch } from '../lib/api';
 import { btnGhost } from '../lib/classes';
 
 export function AuthMenu() {
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { user, token, isAuthenticated, signOut } = useAuth();
+  const [portalLoading, setPortalLoading] = useState(false);
 
-  if (!isAuthenticated || !user) {
+  if (!isAuthenticated || !user || !token) {
     return (
       <Link to="/login" className={`${btnGhost} max-sm:px-3 max-sm:text-xs`}>
         Sign in
       </Link>
     );
   }
+
+  const openBillingPortal = async () => {
+    setPortalLoading(true);
+    try {
+      const data = await apiFetch<{ url: string }>('/api/billing/portal', {
+        method: 'POST',
+        token,
+      });
+      window.location.href = data.url;
+    } catch (err) {
+      if (err instanceof ApiError && err.status === 400) {
+        window.location.href = '/#pricing';
+      }
+      setPortalLoading(false);
+    }
+  };
 
   return (
     <div className="flex items-center gap-2">
@@ -29,13 +48,25 @@ export function AuthMenu() {
         <p className="text-[0.65rem] text-slate-500 capitalize">
           {user.plan} · {user.credits} credits
         </p>
-        <button
-          type="button"
-          onClick={signOut}
-          className="text-[0.7rem] text-slate-500 hover:text-indigo-300"
-        >
-          Sign out
-        </button>
+        <div className="flex items-center gap-2">
+          {user.plan !== 'free' ? (
+            <button
+              type="button"
+              onClick={() => void openBillingPortal()}
+              disabled={portalLoading}
+              className="text-[0.7rem] text-indigo-400 hover:text-indigo-300 disabled:opacity-60"
+            >
+              {portalLoading ? 'Opening…' : 'Manage billing'}
+            </button>
+          ) : null}
+          <button
+            type="button"
+            onClick={signOut}
+            className="text-[0.7rem] text-slate-500 hover:text-indigo-300"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
       <button
         type="button"
