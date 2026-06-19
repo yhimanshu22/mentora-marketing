@@ -22,6 +22,9 @@ export const config = {
   stripeSecretKey: required('STRIPE_SECRET_KEY'),
   stripeWebhookSecret: required('STRIPE_WEBHOOK_SECRET'),
   siteUrl: optional('SITE_URL', 'http://localhost:5173').replace(/\/$/, ''),
+  geminiApiKey: optional('GEMINI_API_KEY'),
+  groqApiKey: optional('GROQ_API_KEY'),
+  openaiApiKey: optional('OPENAI_API_KEY'),
   corsOrigins: optional('CORS_ORIGINS', 'http://localhost:5173')
     .split(',')
     .map((origin) => origin.trim())

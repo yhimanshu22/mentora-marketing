@@ -6,6 +6,7 @@ import { connectDatabase } from './db.js';
 import { authRouter } from './routes/auth.js';
 import { billingRouter, handleStripeWebhook } from './routes/billing.js';
 import { entitlementsRouter } from './routes/entitlements.js';
+import { aiRouter } from './routes/ai.js';
 
 export async function createApp() {
   await connectDatabase();
@@ -28,11 +29,12 @@ export async function createApp() {
       credentials: true,
     }),
   );
-  app.use(express.json());
+  app.use(express.json({ limit: '25mb' }));
 
   app.use('/api/auth', authRouter);
   app.use('/api/billing', billingRouter);
   app.use('/api/entitlements', entitlementsRouter);
+  app.use('/api/ai', aiRouter);
 
   app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
     console.error('Unhandled error:', error);
