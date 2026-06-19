@@ -1,7 +1,6 @@
 import {
   APP_VERSION,
   DOWNLOAD_PLATFORMS,
-  GITHUB_RELEASE_TAG_URL,
 } from '../content';
 import {
   btnGhost,
@@ -76,14 +75,6 @@ export function DownloadSection() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 mt-10 pt-6 border-t border-white/6 max-w-5xl mx-auto">
-          <a
-            href={GITHUB_RELEASE_TAG_URL}
-            className={`${btnGhost} ${btnLg}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Release notes
-          </a>
           <a href="#pricing" className={`${btnGhost} ${btnLg}`}>
             View plans
           </a>
