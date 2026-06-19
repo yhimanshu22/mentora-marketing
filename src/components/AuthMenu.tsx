@@ -1,15 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../auth/AuthContext';
-import { ApiError, apiFetch } from '../lib/api';
 import { btnGhost } from '../lib/classes';
+import { formatPlanLabel, planPillClass } from '../lib/plan';
 
 export function AuthMenu() {
-  const { user, token, isAuthenticated, signOut } = useAuth();
-  const [portalLoading, setPortalLoading] = useState(false);
+  const { user, isAuthenticated } = useAuth();
 
-  if (!isAuthenticated || !user || !token) {
+  if (!isAuthenticated || !user) {
     return (
       <Link to="/login" className={`${btnGhost} max-sm:px-3 max-sm:text-xs`}>
         Sign in
@@ -17,65 +15,21 @@ export function AuthMenu() {
     );
   }
 
-  const openBillingPortal = async () => {
-    setPortalLoading(true);
-    try {
-      const data = await apiFetch<{ url: string }>('/api/billing/portal', {
-        method: 'POST',
-        token,
-      });
-      window.location.href = data.url;
-    } catch (err) {
-      if (err instanceof ApiError && err.status === 400) {
-        window.location.href = '/#pricing';
-      }
-      setPortalLoading(false);
-    }
-  };
-
   return (
-    <div className="flex items-center gap-2">
+    <Link
+      to="/billing"
+      className="flex items-center gap-2 rounded-lg border border-white/[0.06] bg-white/[0.03] px-2 py-1.5 hover:bg-white/[0.06] transition-colors"
+      title="Manage billing"
+    >
       <img
         src={user.picture}
         alt=""
-        className="w-8 h-8 rounded-full border border-white/10"
+        className="w-8 h-8 rounded-full border border-white/10 shrink-0"
         width={32}
         height={32}
         referrerPolicy="no-referrer"
       />
-      <div className="hidden sm:block min-w-0">
-        <p className="text-xs font-medium text-slate-200 truncate max-w-[8rem]">{user.name}</p>
-        <p className="text-[0.65rem] text-slate-500 capitalize">
-          {user.plan} · {user.credits} credits
-        </p>
-        <div className="flex items-center gap-2">
-          {user.plan !== 'free' ? (
-            <button
-              type="button"
-              onClick={() => void openBillingPortal()}
-              disabled={portalLoading}
-              className="text-[0.7rem] text-indigo-400 hover:text-indigo-300 disabled:opacity-60"
-            >
-              {portalLoading ? 'Opening…' : 'Manage billing'}
-            </button>
-          ) : null}
-          <button
-            type="button"
-            onClick={signOut}
-            className="text-[0.7rem] text-slate-500 hover:text-indigo-300"
-          >
-            Sign out
-          </button>
-        </div>
-      </div>
-      <button
-        type="button"
-        onClick={signOut}
-        className="sm:hidden text-xs text-slate-400 hover:text-indigo-300"
-        aria-label="Sign out"
-      >
-        <i className="fas fa-right-from-bracket" aria-hidden="true" />
-      </button>
-    </div>
+      <span className={planPillClass(user.plan)}>{formatPlanLabel(user.plan)}</span>
+    </Link>
   );
 }

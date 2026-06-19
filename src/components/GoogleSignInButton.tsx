@@ -27,7 +27,7 @@ export function GoogleSignInButton({
   };
 
   return (
-    <div className="flex justify-center [&>div]:w-full [&_iframe]:mx-auto">
+    <div className="mx-auto flex w-full justify-center">
       <GoogleLogin
         onSuccess={handleSuccess}
         onError={() => undefined}

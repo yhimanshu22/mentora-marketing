@@ -23,6 +23,7 @@ export type SeoPageId =
   | 'home'
   | 'blog'
   | 'login'
+  | 'billing'
   | 'billingSuccess'
   | (typeof FOOTER_LEGAL_LINKS)[number]['pageId'];
 
@@ -73,6 +74,13 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
     title: 'Payment successful — Mentora AI',
     description: 'Your Mentora subscription payment was successful.',
     path: '/billing/success',
+    noindex: true,
+  },
+  billing: {
+    title: 'Billing & Credits — Mentora AI',
+    description:
+      'View your Mentora plan, remaining credits, renewal date, and manage your subscription billing.',
+    path: '/billing',
     noindex: true,
   },
   contact: {

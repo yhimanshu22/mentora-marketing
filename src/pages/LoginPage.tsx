@@ -34,7 +34,9 @@ export function LoginPage() {
             </p>
 
             {googleConfigured ? (
-              <GoogleSignInButton text="signin_with" />
+              <div className="flex justify-center">
+                <GoogleSignInButton text="signin_with" />
+              </div>
             ) : (
               <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-left text-sm text-amber-100">
                 <p className="font-medium mb-1">Google sign-in is not configured correctly.</p>

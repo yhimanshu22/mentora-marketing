@@ -5,6 +5,7 @@ export function getPrerenderRoutes(): string[] {
   return [
     '/',
     '/login',
+    '/billing',
     '/billing/success',
     '/blog',
     ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
