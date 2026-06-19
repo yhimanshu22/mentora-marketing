@@ -18,6 +18,7 @@ export const config = {
   mongodbUri: required('MONGODB_URI'),
   jwtSecret: required('JWT_SECRET'),
   googleClientId: required('GOOGLE_CLIENT_ID'),
+  googleClientSecret: optional('GOOGLE_CLIENT_SECRET'),
   stripeSecretKey: required('STRIPE_SECRET_KEY'),
   stripeWebhookSecret: required('STRIPE_WEBHOOK_SECRET'),
   siteUrl: optional('SITE_URL', 'http://localhost:5173').replace(/\/$/, ''),
