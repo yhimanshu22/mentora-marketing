@@ -1,4 +1,4 @@
-import { PRIMARY_DOWNLOAD_URL, SOURCE_CODE_URL } from '../content';
+import { SOURCE_CODE_URL } from '../content';
 import {
   btnLg,
   btnPrimary,
@@ -24,11 +24,10 @@ export function Hero() {
           </p>
           <div className="flex flex-wrap gap-3 mb-5">
             <a
-              href={PRIMARY_DOWNLOAD_URL}
+              href="#download"
               className={`${btnPrimary} ${btnLg} max-sm:w-full max-sm:whitespace-normal max-sm:text-center`}
-              download
             >
-              <i className="fab fa-windows" aria-hidden="true" /> Download for Windows
+              <i className="fas fa-download" aria-hidden="true" /> Download app
             </a>
             <a
               href={SOURCE_CODE_URL}
@@ -37,8 +36,8 @@ export function Hero() {
               Full Source Code — $499
             </a>
           </div>
-          <p className="text-xs text-slate-500 flex items-center gap-1.5">
-            <i className="fas fa-desktop" aria-hidden="true" /> Windows 10+ · .exe or .msi ·{' '}
+          <p className="text-xs text-slate-500 flex items-center gap-1.5 flex-wrap">
+            <i className="fas fa-desktop" aria-hidden="true" /> Windows · macOS · Linux ·{' '}
             <a href="#download" className="text-indigo-300 hover:text-indigo-200">
               All download options
             </a>

@@ -9,16 +9,44 @@ export const GITHUB_RELEASES_URL = 'https://github.com/yhimanshu22/mentora-marke
 export const GITHUB_RELEASE_TAG_URL = `${GITHUB_RELEASES_URL}/tag/v${APP_VERSION}`;
 const RELEASE_DOWNLOAD_BASE = `${GITHUB_RELEASES_URL}/download/v${APP_VERSION}`;
 
+/** Tauri bundle name on macOS and Linux (spaces preserved). */
+const PRODUCT_NAME = 'Mentora AI Meeting Assistant';
+
+export type DownloadFile = {
+  id: string;
+  label: string;
+  description: string;
+  href: string;
+  fileName: string;
+};
+
+export type DownloadPlatform = {
+  id: 'windows' | 'macos' | 'linux';
+  name: string;
+  icon: string;
+  requirements: string;
+  files: readonly DownloadFile[];
+};
+
+function releaseAsset(fileName: string) {
+  return `${RELEASE_DOWNLOAD_BASE}/${encodeURIComponent(fileName)}`;
+}
+
 function windowsAssetName(kind: 'setup' | 'msi') {
   const base = `Mentora.AI.Meeting.Assistant_${APP_VERSION}_x64`;
   return kind === 'setup' ? `${base}-setup.exe` : `${base}_en-US.msi`;
 }
 
-function releaseAsset(fileName: string) {
-  return `${RELEASE_DOWNLOAD_BASE}/${fileName}`;
+function macAssetName(arch: 'aarch64' | 'x64') {
+  return `${PRODUCT_NAME}_${APP_VERSION}_${arch}.dmg`;
 }
 
-export const WINDOWS_DOWNLOADS = [
+function linuxAssetName(kind: 'appimage' | 'deb') {
+  const ext = kind === 'appimage' ? 'AppImage' : 'deb';
+  return `${PRODUCT_NAME}_${APP_VERSION}_amd64.${ext}`;
+}
+
+export const WINDOWS_DOWNLOADS: readonly DownloadFile[] = [
   {
     id: 'setup',
     label: 'Download .exe',
@@ -33,7 +61,65 @@ export const WINDOWS_DOWNLOADS = [
     href: releaseAsset(windowsAssetName('msi')),
     fileName: windowsAssetName('msi'),
   },
-] as const;
+];
+
+export const MACOS_DOWNLOADS: readonly DownloadFile[] = [
+  {
+    id: 'dmg-arm',
+    label: 'Download .dmg',
+    description: 'Apple Silicon (M1/M2/M3/M4)',
+    href: releaseAsset(macAssetName('aarch64')),
+    fileName: macAssetName('aarch64'),
+  },
+  {
+    id: 'dmg-intel',
+    label: 'Download .dmg',
+    description: 'Intel Mac',
+    href: releaseAsset(macAssetName('x64')),
+    fileName: macAssetName('x64'),
+  },
+];
+
+export const LINUX_DOWNLOADS: readonly DownloadFile[] = [
+  {
+    id: 'appimage',
+    label: 'Download .AppImage',
+    description: 'Portable — works on most distros',
+    href: releaseAsset(linuxAssetName('appimage')),
+    fileName: linuxAssetName('appimage'),
+  },
+  {
+    id: 'deb',
+    label: 'Download .deb',
+    description: 'Debian / Ubuntu package',
+    href: releaseAsset(linuxAssetName('deb')),
+    fileName: linuxAssetName('deb'),
+  },
+];
+
+export const DOWNLOAD_PLATFORMS: readonly DownloadPlatform[] = [
+  {
+    id: 'windows',
+    name: 'Windows',
+    icon: 'fab fa-windows',
+    requirements: 'Windows 10+ (64-bit)',
+    files: WINDOWS_DOWNLOADS,
+  },
+  {
+    id: 'macos',
+    name: 'macOS',
+    icon: 'fab fa-apple',
+    requirements: 'macOS 11+ · Apple Silicon or Intel',
+    files: MACOS_DOWNLOADS,
+  },
+  {
+    id: 'linux',
+    name: 'Linux',
+    icon: 'fab fa-linux',
+    requirements: 'Ubuntu 22.04+ / Debian (64-bit)',
+    files: LINUX_DOWNLOADS,
+  },
+];
 
 export const PRIMARY_DOWNLOAD_URL = WINDOWS_DOWNLOADS[0].href;
 

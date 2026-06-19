@@ -1,4 +1,4 @@
-# Syncs Windows installers from the private mentora app repo to public releases here.
+# Syncs desktop installers from the private mentora app repo to public releases here.
 #
 # Triggers:
 #   - repository_dispatch from mentora (automatic on release publish)
@@ -75,7 +75,7 @@ jobs:
             --repo "$REPO" \
             --target "${{ github.event.repository.default_branch || 'master' }}" \
             --title "Mentora $TAG" \
-            --notes "Public Windows installers mirrored from private app release $TAG."
+            --notes "Public Windows, macOS, and Linux installers mirrored from private app release $TAG."
 
       - name: Checkout marketing site
         uses: actions/checkout@v4
