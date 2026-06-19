@@ -1,10 +1,11 @@
 import type { NextFunction, Request, Response } from 'express';
 
-import { User } from '../models/User.js';
+import { User, type UserDocument } from '../models/User.js';
 import { verifyAuthToken } from '../services/jwt.js';
 
 export type AuthenticatedRequest = Request & {
   userId: string;
+  user: UserDocument;
 };
 
 export async function requireAuth(
@@ -27,7 +28,9 @@ export async function requireAuth(
       return;
     }
 
-    (req as AuthenticatedRequest).userId = user._id.toString();
+    const authReq = req as AuthenticatedRequest;
+    authReq.userId = user._id.toString();
+    authReq.user = user;
     next();
   } catch {
     res.status(401).json({ error: 'Invalid or expired token' });

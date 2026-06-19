@@ -1,3 +1,5 @@
+import type { Response } from 'express';
+
 import { config } from '../config.js';
 
 const GEMINI_CHAT_MODELS = ['gemini-3.1-flash-lite'];
@@ -45,6 +47,60 @@ export async function geminiGenerate(body: Record<string, unknown>, operation: s
   }
 
   throw new Error(lastError);
+}
+
+export async function geminiStreamPassthrough(
+  res: Response,
+  body: Record<string, unknown>,
+  operation: string,
+): Promise<string> {
+  const apiKey = ensureGeminiKey();
+  const model = GEMINI_CHAT_MODELS[0];
+  const response = await fetch(
+    `${geminiEndpoint(model, true)}?key=${encodeURIComponent(apiKey)}&alt=sse`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    },
+  );
+
+  if (!response.ok || !response.body) {
+    const errorBody = await response.text();
+    throw new Error(`${operation} failed on ${model} (${response.status}): ${errorBody}`);
+  }
+
+  const reader = response.body.getReader();
+  let full = '';
+  let buffer = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) {
+      break;
+    }
+
+    res.write(value);
+
+    buffer += new TextDecoder().decode(value, { stream: true });
+    let newlineIndex = buffer.indexOf('\n');
+    while (newlineIndex >= 0) {
+      const line = buffer.slice(0, newlineIndex).trim();
+      buffer = buffer.slice(newlineIndex + 1);
+      const delta = parseGeminiSseLine(line);
+      if (delta) {
+        full += delta;
+      }
+      newlineIndex = buffer.indexOf('\n');
+    }
+  }
+
+  const tail = parseGeminiSseLine(buffer.trim());
+  if (tail) {
+    full += tail;
+  }
+
+  return full;
 }
 
 export async function geminiStream(

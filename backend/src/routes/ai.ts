@@ -3,7 +3,7 @@ import { Router } from 'express';
 import type { AuthenticatedRequest } from '../middleware/auth.js';
 import { requireAuth } from '../middleware/auth.js';
 import { getEntitlements } from '../models/User.js';
-import { CreditError, consumeUserCredit, loadUserOrThrow } from '../services/credits.js';
+import { CreditError, consumeUserCredit } from '../services/credits.js';
 import { hostedTranscribe, streamHostedChat, streamHostedVision } from '../services/hosted-ai.js';
 import { whisperLanguageCode } from '../services/prompts.js';
 import { config } from '../config.js';
@@ -36,7 +36,7 @@ aiRouter.post('/chat', requireAuth, async (req, res) => {
     return;
   }
 
-  const { userId } = req as AuthenticatedRequest;
+  const { user } = req as AuthenticatedRequest;
   const resume = String(req.body?.resume ?? '').trim();
   const userMessage = String(req.body?.userMessage ?? '').trim();
   const history = Array.isArray(req.body?.history) ? req.body.history : [];
@@ -53,7 +53,6 @@ aiRouter.post('/chat', requireAuth, async (req, res) => {
   }
 
   try {
-    const user = await loadUserOrThrow(userId);
     const entitlements = await consumeUserCredit(user, 1);
 
     const full = await streamHostedChat(res, entitlements, {
@@ -81,7 +80,7 @@ aiRouter.post('/vision', requireAuth, async (req, res) => {
     return;
   }
 
-  const { userId } = req as AuthenticatedRequest;
+  const { user } = req as AuthenticatedRequest;
   const resume = String(req.body?.resume ?? '').trim();
   const imageBase64 = String(req.body?.imageBase64 ?? '').trim();
   const history = Array.isArray(req.body?.history) ? req.body.history : [];
@@ -98,7 +97,6 @@ aiRouter.post('/vision', requireAuth, async (req, res) => {
   }
 
   try {
-    const user = await loadUserOrThrow(userId);
     const entitlements = await consumeUserCredit(user, 1);
 
     const full = await streamHostedVision(res, entitlements, {
@@ -126,7 +124,7 @@ aiRouter.post('/transcribe', requireAuth, async (req, res) => {
     return;
   }
 
-  const { userId } = req as AuthenticatedRequest;
+  const { user } = req as AuthenticatedRequest;
   const audioBase64 = String(req.body?.audioBase64 ?? '').trim();
   const language = whisperLanguageCode(req.body?.language);
 
@@ -136,7 +134,6 @@ aiRouter.post('/transcribe', requireAuth, async (req, res) => {
   }
 
   try {
-    const user = await loadUserOrThrow(userId);
     const text = await hostedTranscribe(audioBase64, language);
     res.json({
       text,

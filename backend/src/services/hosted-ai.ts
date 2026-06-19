@@ -8,11 +8,16 @@ import {
   type AiPreferences,
   type ChatHistoryItem,
 } from './prompts.js';
-import { geminiStream, geminiTranscribe } from './gemini.js';
+import { geminiStreamPassthrough, geminiTranscribe } from './gemini.js';
 import { groqTranscribe, hasGroqKey } from './groq.js';
 import { config } from '../config.js';
 
-function writeEntitlements(res: Response, entitlements: Entitlements) {
+function beginSseResponse(res: Response, entitlements: Entitlements) {
+  res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-cache, no-transform');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+  res.flushHeaders();
   res.write(`event: mentora-entitlements\ndata: ${JSON.stringify(entitlements)}\n\n`);
 }
 
@@ -48,14 +53,9 @@ export async function streamHostedChat(
     },
   };
 
-  res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
-  res.setHeader('Cache-Control', 'no-cache, no-transform');
-  res.setHeader('Connection', 'keep-alive');
-  writeEntitlements(res, entitlements);
+  beginSseResponse(res, entitlements);
 
-  return geminiStream(body, 'Hosted chat', (chunk) => {
-    res.write(`data: ${JSON.stringify({ candidates: [{ content: { parts: [{ text: chunk }] } }] })}\n\n`);
-  });
+  return geminiStreamPassthrough(res, body, 'Hosted chat');
 }
 
 export async function streamHostedVision(
@@ -99,14 +99,9 @@ export async function streamHostedVision(
     },
   };
 
-  res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
-  res.setHeader('Cache-Control', 'no-cache, no-transform');
-  res.setHeader('Connection', 'keep-alive');
-  writeEntitlements(res, entitlements);
+  beginSseResponse(res, entitlements);
 
-  return geminiStream(body, 'Hosted vision', (chunk) => {
-    res.write(`data: ${JSON.stringify({ candidates: [{ content: { parts: [{ text: chunk }] } }] })}\n\n`);
-  });
+  return geminiStreamPassthrough(res, body, 'Hosted vision');
 }
 
 export async function hostedTranscribe(
