@@ -17,14 +17,14 @@
     "google-auth-library": "^9.15.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.3",
-    "stripe": "^17.5.0"
-  },
-  "devDependencies": {
+    "stripe": "^17.5.0",
+    "typescript": "^5.7.3",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^22.10.5",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "@types/node": "^22.10.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2"
   }
 }
