@@ -37,7 +37,7 @@ export function Hero() {
             </a>
           </div>
           <p className="text-xs text-slate-500 flex items-center gap-1.5 flex-wrap">
-            <i className="fas fa-desktop" aria-hidden="true" /> Windows · macOS · Linux ·{' '}
+            <i className="fas fa-desktop" aria-hidden="true" /> Windows · macOS ·{' '}
             <a href="#download" className="text-indigo-300 hover:text-indigo-200">
               All download options
             </a>

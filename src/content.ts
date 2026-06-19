@@ -81,20 +81,21 @@ export const MACOS_DOWNLOADS: readonly DownloadFile[] = [
 ];
 
 export const LINUX_DOWNLOADS: readonly DownloadFile[] = [
-  {
-    id: 'appimage',
-    label: 'Download .AppImage',
-    description: 'Portable — works on most distros',
-    href: releaseAsset(linuxAssetName('appimage')),
-    fileName: linuxAssetName('appimage'),
-  },
-  {
-    id: 'deb',
-    label: 'Download .deb',
-    description: 'Debian / Ubuntu package',
-    href: releaseAsset(linuxAssetName('deb')),
-    fileName: linuxAssetName('deb'),
-  },
+  // Linux builds paused — re-enable when CI packaging is ready.
+  // {
+  //   id: 'appimage',
+  //   label: 'Download .AppImage',
+  //   description: 'Portable — works on most distros',
+  //   href: releaseAsset(linuxAssetName('appimage')),
+  //   fileName: linuxAssetName('appimage'),
+  // },
+  // {
+  //   id: 'deb',
+  //   label: 'Download .deb',
+  //   description: 'Debian / Ubuntu package',
+  //   href: releaseAsset(linuxAssetName('deb')),
+  //   fileName: linuxAssetName('deb'),
+  // },
 ];
 
 export const DOWNLOAD_PLATFORMS: readonly DownloadPlatform[] = [
@@ -112,13 +113,13 @@ export const DOWNLOAD_PLATFORMS: readonly DownloadPlatform[] = [
     requirements: 'macOS 11+ · Apple Silicon or Intel',
     files: MACOS_DOWNLOADS,
   },
-  {
-    id: 'linux',
-    name: 'Linux',
-    icon: 'fab fa-linux',
-    requirements: 'Ubuntu 22.04+ / Debian (64-bit)',
-    files: LINUX_DOWNLOADS,
-  },
+  // {
+  //   id: 'linux',
+  //   name: 'Linux',
+  //   icon: 'fab fa-linux',
+  //   requirements: 'Ubuntu 22.04+ / Debian (64-bit)',
+  //   files: LINUX_DOWNLOADS,
+  // },
 ];
 
 export const PRIMARY_DOWNLOAD_URL = WINDOWS_DOWNLOADS[0].href;

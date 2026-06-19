@@ -24,7 +24,7 @@ export function DownloadSection() {
             Get Mentora for your desktop
           </h2>
           <p className="text-slate-400 mb-2">
-            Version {APP_VERSION} · Windows, macOS, and Linux. Free to install — start with 15
+            Version {APP_VERSION} · Windows and macOS. Free to install — start with 15
             credits.
           </p>
           <p className="text-sm text-slate-500">
@@ -32,7 +32,7 @@ export function DownloadSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
           {DOWNLOAD_PLATFORMS.map((platform) => (
             <div key={platform.id} className={`${glassCard} p-6 flex flex-col`}>
               <div className="text-center mb-5">

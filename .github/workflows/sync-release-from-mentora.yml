@@ -75,7 +75,7 @@ jobs:
             --repo "$REPO" \
             --target "${{ github.event.repository.default_branch || 'master' }}" \
             --title "Mentora $TAG" \
-            --notes "Public Windows, macOS, and Linux installers mirrored from private app release $TAG."
+            --notes "Public Windows and macOS installers mirrored from private app release $TAG."
 
       - name: Checkout marketing site
         uses: actions/checkout@v4
