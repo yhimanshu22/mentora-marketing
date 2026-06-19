@@ -1,7 +1,7 @@
 import { config } from '../config.js';
 
-const GEMINI_CHAT_MODELS = ['gemini-2.0-flash', 'gemini-2.0-flash-lite'];
-const GEMINI_AUDIO_MODELS = ['gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+const GEMINI_CHAT_MODELS = ['gemini-3.1-flash-lite'];
+const GEMINI_AUDIO_MODELS = ['gemini-3.1-flash-lite'];
 
 function geminiEndpoint(model: string, stream: boolean): string {
   const action = stream ? 'streamGenerateContent' : 'generateContent';
