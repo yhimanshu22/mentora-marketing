@@ -53,7 +53,7 @@ aiRouter.post('/chat', requireAuth, async (req, res) => {
   }
 
   try {
-    const entitlements = await consumeUserCredit(user, 1);
+    const entitlements = await consumeUserCredit(user, 3);
 
     const full = await streamHostedChat(res, entitlements, {
       resume,
@@ -97,7 +97,7 @@ aiRouter.post('/vision', requireAuth, async (req, res) => {
   }
 
   try {
-    const entitlements = await consumeUserCredit(user, 1);
+    const entitlements = await consumeUserCredit(user, 3);
 
     const full = await streamHostedVision(res, entitlements, {
       resume,
