@@ -100,7 +100,7 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   'privacy-policy': {
     title: 'Privacy Policy — Mentora AI',
     description:
-      'Read how Mentora AI collects, uses, and protects your data. Local audio processing, your API keys, and privacy-first meeting assistance.',
+      'Read how Mentora AI collects, uses, and protects your data. Secure audio processing, credit-based AI execution, and privacy-first meeting assistance.',
     path: '/privacy-policy',
     keywords: 'Mentora privacy policy, data protection, meeting assistant privacy',
   },

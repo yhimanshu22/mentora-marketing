@@ -293,7 +293,7 @@ export const INFO_PAGES = {
       {
         heading: 'What we build',
         paragraphs: [
-          'Mentora is available as a desktop app and browser edition. You bring your own API keys; meeting audio is processed locally on your device whenever possible.',
+          'Mentora is available as a desktop app and browser edition. AI features are powered by Mentora credits, keeping setups simple without requiring complex API key configurations.',
         ],
       },
       {

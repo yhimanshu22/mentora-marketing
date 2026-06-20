@@ -22,12 +22,12 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
   {
     question: 'Is my meeting audio sent to Mentora servers?',
     answer:
-      'Mentora is built for local-first processing. Meeting audio and profile data stay on your device whenever possible. API calls to providers you configure, such as OpenAI or Google Gemini, use your own keys.',
+      'Mentora is built with privacy in mind. Meeting audio is processed locally for transcription, and profile data is stored securely. AI requests are forwarded via safe API tunnels to power your live coaching answers.',
   },
   {
     question: 'Do I need my own OpenAI or Gemini API key?',
     answer:
-      'Yes. You bring your own API keys for AI answers and optionally Groq for fast transcription. This keeps costs under your control and lets you choose the models you trust.',
+      'No. Mentora provides fully-managed, high-speed access to OpenAI, Google Gemini, and Groq transcription directly through your plan credits. No complex key setup is required.',
   },
   {
     question: 'What is the difference between Free, Pro, Ultimate, and Magic plans?',
