@@ -14,7 +14,7 @@ export function Hero() {
       <div className={`${container} grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-w-0`}>
         <div className="min-w-0">
           <p className={eyebrow}>AI Meeting Assistant</p>
-          <h1 className="font-display text-[clamp(2rem,5vw,3.25rem)] leading-[1.1] mb-4 bg-gradient-to-br from-slate-50 to-indigo-300 bg-clip-text text-transparent">
+          <h1 className="font-display font-bold text-[clamp(2rem,5vw,3.25rem)] leading-[1.1] mb-4 bg-gradient-to-br from-slate-50 to-indigo-300 bg-clip-text text-transparent">
             Silent coaching for interviews and online meetings
           </h1>
           <p className="text-[1.05rem] text-slate-400 max-w-lg mb-7">
