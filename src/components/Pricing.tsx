@@ -136,14 +136,17 @@ export function Pricing() {
             return (
               <article
                 key={plan.id}
-                className={`${glassCard} p-7 max-sm:p-5 relative min-w-0 ${
+                className={`${glassCard} p-7 max-sm:p-5 relative min-w-0 transition-all duration-300 hover:-translate-y-1 ${
                   plan.featured
-                    ? 'border-indigo-500/35 shadow-[0_12px_32px_rgba(99,102,241,0.15),0_8px_24px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]'
-                    : ''
+                    ? 'border-indigo-500/60 shadow-[0_20px_50px_rgba(99,102,241,0.22),0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)]'
+                    : 'hover:border-indigo-500/20'
                 }`}
               >
+                {plan.featured ? (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-t-xl" />
+                ) : null}
                 {plan.badge ? (
-                  <p className="absolute top-4 right-4 text-[0.65rem] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/25 text-indigo-300">
+                  <p className="absolute top-4 right-4 text-[0.65rem] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">
                     {plan.badge}
                   </p>
                 ) : null}

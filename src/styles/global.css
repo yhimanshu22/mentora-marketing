@@ -13,7 +13,7 @@
   }
 
   body {
-    @apply font-sans bg-bg text-slate-200 leading-relaxed antialiased overflow-x-clip max-w-full;
+    @apply font-sans bg-bg text-slate-200 leading-relaxed antialiased overflow-x-clip max-w-full bg-grid-pattern;
   }
 
   a {
@@ -23,4 +23,32 @@
   img {
     @apply block max-w-full;
   }
+}
+
+@utility bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+@utility glow-indigo {
+  filter: blur(80px);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+}
+
+@utility glow-violet {
+  filter: blur(80px);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+}
+
+@utility animate-audio-bar-1 { animation: audioWave 1.2s ease-in-out infinite alternate; }
+@utility animate-audio-bar-2 { animation: audioWave 0.8s ease-in-out infinite alternate 0.2s; }
+@utility animate-audio-bar-3 { animation: audioWave 1.4s ease-in-out infinite alternate 0.4s; }
+@utility animate-audio-bar-4 { animation: audioWave 1.0s ease-in-out infinite alternate 0.1s; }
+@utility animate-audio-bar-5 { animation: audioWave 1.3s ease-in-out infinite alternate 0.3s; }
+
+@keyframes audioWave {
+  0% { height: 4px; }
+  100% { height: 20px; }
 }
