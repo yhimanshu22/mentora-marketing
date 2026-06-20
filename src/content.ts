@@ -469,16 +469,11 @@ export const STEPS = [
   },
   {
     step: '02',
-    title: 'Connect your API keys',
-    description: 'Bring your own OpenAI or Gemini key. Optional Groq key for fast transcription.',
-  },
-  {
-    step: '03',
     title: 'Join your meeting',
     description: 'Mentora listens to system audio, transcribes questions, and coaches you silently.',
   },
   {
-    step: '04',
+    step: '03',
     title: 'Press mic for answers',
     description: 'Get profile-aware responses instantly. Toggle Hide before you share your screen.',
   },
