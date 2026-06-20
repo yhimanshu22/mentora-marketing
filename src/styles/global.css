@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Outfit', sans-serif;
   --color-bg: #0b1120;
   --color-bg-alt: #0f172a;
 }
