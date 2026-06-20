@@ -4,7 +4,7 @@ import express from 'express';
 import { config } from './config.js';
 import { connectDatabase } from './db.js';
 import { authRouter } from './routes/auth.js';
-import { billingRouter, handleStripeWebhook } from './routes/billing.js';
+import { billingRouter /*, handleStripeWebhook */ } from './routes/billing.js';
 import { entitlementsRouter } from './routes/entitlements.js';
 import { aiRouter } from './routes/ai.js';
 
@@ -17,11 +17,13 @@ export async function createApp() {
     res.json({ ok: true });
   });
 
+  /*
   app.post(
     '/api/billing/webhook',
     express.raw({ type: 'application/json' }),
     handleStripeWebhook,
   );
+  */
 
   app.use(
     cors({
@@ -30,6 +32,7 @@ export async function createApp() {
     }),
   );
   app.use(express.json({ limit: '25mb' }));
+  app.use(express.urlencoded({ extended: true }));
 
   app.use('/api/auth', authRouter);
   app.use('/api/billing', billingRouter);
