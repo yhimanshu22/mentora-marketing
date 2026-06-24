@@ -37,6 +37,22 @@ export function Footer() {
             <p className="text-sm text-slate-500 mb-4 max-w-sm">
               Real-time transcription and AI coaching for interviews and meetings.
             </p>
+            <div className="mb-5">
+              <a
+                href="https://www.producthunt.com/products/mentora-ai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-mentora-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1175821&theme=light&t=1782303221233"
+                  alt="Mentora AI - AI meeting assistant for interviews and meetings | Product Hunt"
+                  width="180"
+                  height="39"
+                  className="w-[180px] h-[39px]"
+                />
+              </a>
+            </div>
             <div className="flex flex-col gap-1.5 text-sm text-slate-400">
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-indigo-300 break-all">
                 {CONTACT_EMAIL}

@@ -2,6 +2,9 @@
 
 Marketing landing page for [Mentora AI Meeting Assistant](https://github.com/yhimanshu22/mentora).
 
+[![Mentora AI - AI meeting assistant for interviews and meetings | Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1175821&theme=light&t=1782303221233)](https://www.producthunt.com/products/mentora-ai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-mentora-ai)
+
+
 Separate from the desktop app repo — deploy this as a static site (Vercel, Netlify, GitHub Pages, etc.).
 
 ## Stack

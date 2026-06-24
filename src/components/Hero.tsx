@@ -36,12 +36,28 @@ export function Hero() {
               Full Source Code — $499
             </a>
           </div>
-          <p className="text-xs text-slate-500 flex items-center gap-1.5 flex-wrap">
+          <p className="text-xs text-slate-500 flex items-center gap-1.5 flex-wrap mb-6">
             <i className="fas fa-desktop" aria-hidden="true" /> Windows · macOS ·{' '}
             <a href="#download" className="text-indigo-300 hover:text-indigo-200">
               All download options
             </a>
           </p>
+          <div className="mb-6">
+            <a
+              href="https://www.producthunt.com/products/mentora-ai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-mentora-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block hover:opacity-90 transition-opacity"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1175821&theme=light&t=1782303221233"
+                alt="Mentora AI - AI meeting assistant for interviews and meetings | Product Hunt"
+                width="250"
+                height="54"
+                className="w-[250px] h-[54px]"
+              />
+            </a>
+          </div>
         </div>
         <div className="relative min-w-0" aria-hidden="true">
           <div className="absolute -inset-10 glow-indigo rounded-full opacity-60 pointer-events-none" />
