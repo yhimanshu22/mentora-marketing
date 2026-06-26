@@ -1,3 +1,4 @@
+import { recordDownload } from '../lib/stats';
 import {
   APP_VERSION,
   DOWNLOAD_PLATFORMS,
@@ -12,6 +13,10 @@ import {
 } from '../lib/classes';
 
 export function DownloadSection() {
+  const handleDownload = () => {
+    recordDownload().catch(console.error);
+  };
+
   return (
     <section id="download" className="pb-24 max-sm:pb-20">
       <div className={container}>
@@ -48,6 +53,7 @@ export function DownloadSection() {
                   <a
                     key={file.id}
                     href={file.href}
+                    onClick={handleDownload}
                     className={index === 0 ? `${btnPrimary} ${btnLg}` : `${btnSecondary} ${btnLg}`}
                     download
                   >

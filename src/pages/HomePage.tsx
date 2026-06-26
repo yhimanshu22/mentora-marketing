@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { recordVisit } from '../lib/stats';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { Features } from '../components/Features';
@@ -10,6 +12,13 @@ import { Seo } from '../components/Seo';
 import { PAGE_SEO, faqJsonLd, homeJsonLd } from '../seo';
 
 export function HomePage() {
+  useEffect(() => {
+    if (!sessionStorage.getItem('mentora_visited')) {
+      recordVisit().catch(console.error);
+      sessionStorage.setItem('mentora_visited', 'true');
+    }
+  }, []);
+
   return (
     <>
       <Seo page={PAGE_SEO.home} jsonLd={[homeJsonLd(), faqJsonLd()]} />

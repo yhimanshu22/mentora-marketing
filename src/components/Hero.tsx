@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { getStats, recordDownload, Stats } from '../lib/stats';
 import { SOURCE_CODE_URL } from '../content';
 import {
   btnLg,
@@ -9,6 +11,16 @@ import {
 } from '../lib/classes';
 
 export function Hero() {
+  const [stats, setStats] = useState<Stats | null>(null);
+
+  useEffect(() => {
+    getStats().then(setStats).catch(console.error);
+  }, []);
+
+  const handleDownload = () => {
+    recordDownload().catch(console.error);
+  };
+
   return (
     <section className="pt-16 pb-20 max-sm:py-14">
       <div className={`${container} grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-w-0`}>
@@ -25,6 +37,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-3 mb-5">
             <a
               href="#download"
+              onClick={handleDownload}
               className={`${btnPrimary} ${btnLg} max-sm:w-full max-sm:whitespace-normal max-sm:text-center`}
             >
               <i className="fas fa-download" aria-hidden="true" /> Download app
@@ -36,6 +49,19 @@ export function Hero() {
               Full Source Code — $499
             </a>
           </div>
+          {stats && (
+            <div className="flex items-center gap-4 mb-4 text-sm font-medium text-slate-300 bg-slate-800/50 w-fit px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm shadow-sm">
+              <div className="flex items-center gap-2">
+                <i className="fas fa-eye text-indigo-400" aria-hidden="true" />
+                <span>{stats.visits.toLocaleString()} visitors</span>
+              </div>
+              <div className="w-1 h-1 rounded-full bg-slate-600" />
+              <div className="flex items-center gap-2">
+                <i className="fas fa-arrow-down text-emerald-400" aria-hidden="true" />
+                <span>{stats.downloads.toLocaleString()} downloads</span>
+              </div>
+            </div>
+          )}
           <p className="text-xs text-slate-500 flex items-center gap-1.5 flex-wrap mb-6">
             <i className="fas fa-desktop" aria-hidden="true" /> Windows · macOS ·{' '}
             <a href="#download" className="text-indigo-300 hover:text-indigo-200">
