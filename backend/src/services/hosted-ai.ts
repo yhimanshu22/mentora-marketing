@@ -118,7 +118,14 @@ export async function hostedTranscribe(
   const mimeType = isWav ? 'audio/wav' : 'audio/webm';
 
   if (hasGroqKey()) {
-    return groqTranscribe(audioBytes, fileName, mimeType, language);
+    try {
+      return await groqTranscribe(audioBytes, fileName, mimeType, language);
+    } catch (e: any) {
+      console.warn(`Groq transcription failed, falling back to Gemini: ${e.message}`);
+      if (!config.geminiApiKey) {
+        throw e;
+      }
+    }
   }
 
   if (!config.geminiApiKey) {
