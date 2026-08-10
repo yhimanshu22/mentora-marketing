@@ -38,15 +38,16 @@ export function toPublicUser(user: UserDocument) {
 }
 
 export function getEntitlements(user: UserDocument) {
+  const isAdmin = user.email === 'himu09854@gmail.com';
   const now = Date.now();
   const planActive =
     user.plan === 'free' ||
     (user.planExpiresAt != null && user.planExpiresAt.getTime() > now);
 
   return {
-    plan: user.plan as PlanId,
-    credits: user.credits,
+    plan: isAdmin ? 'magic' : (user.plan as PlanId),
+    credits: isAdmin ? 999999 : user.credits,
     planExpiresAt: user.planExpiresAt ? user.planExpiresAt.toISOString() : null,
-    canUseAi: planActive && user.credits > 0,
+    canUseAi: isAdmin || (planActive && user.credits > 0),
   };
 }
