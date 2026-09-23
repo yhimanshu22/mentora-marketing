@@ -9,8 +9,8 @@ export const GITHUB_RELEASES_URL = 'https://github.com/yhimanshu22/mentora-marke
 export const GITHUB_RELEASE_TAG_URL = `${GITHUB_RELEASES_URL}/tag/v${APP_VERSION}`;
 const RELEASE_DOWNLOAD_BASE = `${GITHUB_RELEASES_URL}/download/v${APP_VERSION}`;
 
-/** Tauri bundle name on macOS and Linux (spaces preserved). */
-const PRODUCT_NAME = 'Mentora AI Meeting Assistant';
+/** Tauri bundle asset name prefix on macOS, Windows, and Linux. */
+const PRODUCT_NAME = 'Mentora.AI.Meeting.Assistant';
 
 export type DownloadFile = {
   id: string;
@@ -33,7 +33,7 @@ function releaseAsset(fileName: string) {
 }
 
 function windowsAssetName(kind: 'setup' | 'msi') {
-  const base = `Mentora.AI.Meeting.Assistant_${APP_VERSION}_x64`;
+  const base = `${PRODUCT_NAME}_${APP_VERSION}_x64`;
   return kind === 'setup' ? `${base}-setup.exe` : `${base}_en-US.msi`;
 }
 
