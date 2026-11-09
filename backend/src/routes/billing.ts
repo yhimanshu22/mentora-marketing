@@ -1,11 +1,12 @@
 import { Router } from 'express';
+import type { Request, Response } from 'express';
 
 import type { AuthenticatedRequest } from '../middleware/auth.js';
 import { requireAuth } from '../middleware/auth.js';
 import { User } from '../models/User.js';
-import { PayUTransaction } from '../models/PayUTransaction.js';
-import { generatePayUHash, verifyPayUHash, getPayUActionUrl } from '../services/payu.js';
-import { isPaidPlan, PLANS, addMonths, periodTotalInr } from '../services/plans.js';
+import { Order } from '../models/Order.js';
+import { dodo, PLAN_DODO_PRODUCTS } from '../services/dodo.js';
+import { isPaidPlan, PLANS, addMonths } from '../services/plans.js';
 import type { PlanId } from '../types.js';
 import { config } from '../config.js';
 
@@ -21,6 +22,12 @@ billingRouter.post('/checkout', requireAuth, async (req, res) => {
     return;
   }
 
+  const productId = PLAN_DODO_PRODUCTS[planId];
+  if (!productId) {
+    res.status(500).json({ error: `Product ID not configured for plan ${planId}` });
+    return;
+  }
+
   try {
     const user = await User.findById(userId);
     if (!user) {
@@ -28,22 +35,39 @@ billingRouter.post('/checkout', requireAuth, async (req, res) => {
       return;
     }
 
-    const plan = PLANS[planId];
-    const amount = periodTotalInr(plan.monthlyPriceInr!, billingMonths);
-    const txnid = `txnid_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+    const session = await dodo.checkoutSessions.create({
+      product_cart: [
+        {
+          product_id: productId,
+          quantity: billingMonths,
+        },
+      ],
+      customer: {
+        email: user.email,
+        name: user.name,
+      },
+      metadata: {
+        userId: user._id.toString(),
+        planId,
+        billingMonths: String(billingMonths),
+      },
+      return_url: `${config.siteUrl}/billing/success?session_id={CHECKOUT_SESSION_ID}`,
+    });
 
-    await PayUTransaction.create({
-      txnid,
+    if (!session?.checkout_url || !session?.session_id) {
+      res.status(500).json({ error: 'Failed to create Dodo checkout session' });
+      return;
+    }
+
+    await Order.create({
+      sessionId: session.session_id,
       userId: user._id,
       planId,
       billingMonths,
-      amount,
       status: 'pending',
     });
 
-    const backendUrl = `${req.protocol}://${req.get('host')}`;
-    const url = `${backendUrl}/api/billing/payu-redirect?txnid=${txnid}`;
-    res.json({ url });
+    res.json({ url: session.checkout_url });
   } catch (error) {
     console.error('Checkout session failed:', error);
     const message = error instanceof Error ? error.message : 'Could not start checkout';
@@ -51,132 +75,74 @@ billingRouter.post('/checkout', requireAuth, async (req, res) => {
   }
 });
 
-billingRouter.get('/payu-redirect', async (req, res) => {
-  const txnid = req.query.txnid as string;
-  if (!txnid) {
-    res.status(400).send('Missing transaction ID');
+export async function handleDodoWebhook(req: Request, res: Response) {
+  const webhookKey = config.dodoWebhookKey;
+  const webhookId = req.headers['webhook-id'] as string;
+  const webhookSignature = req.headers['webhook-signature'] as string;
+  const webhookTimestamp = req.headers['webhook-timestamp'] as string;
+
+  let event: any;
+
+  try {
+    const rawBody = typeof req.body === 'string' ? req.body : (req as any).rawBody?.toString?.() || JSON.stringify(req.body);
+
+    if (webhookKey && webhookSignature) {
+      event = dodo.webhooks.unwrap(rawBody, {
+        headers: {
+          'webhook-id': webhookId,
+          'webhook-signature': webhookSignature,
+          'webhook-timestamp': webhookTimestamp,
+        },
+      });
+    } else {
+      event = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    }
+  } catch (err) {
+    console.error('Dodo webhook signature verification failed:', err);
+    res.status(401).json({ error: 'Invalid webhook signature' });
     return;
   }
 
-  try {
-    const transaction = await PayUTransaction.findOne({ txnid }).populate('userId');
-    if (!transaction) {
-      res.status(404).send('Transaction not found');
-      return;
-    }
-
-    const user = transaction.userId as any;
-    const firstname = user.name.split(' ')[0] || 'Customer';
-    const email = user.email;
-    const phone = '9999999999';
-    const productinfo = `Mentora ${transaction.planId}`;
-    const amount = String(transaction.amount);
-
-    const hash = generatePayUHash({
-      txnid: transaction.txnid,
-      amount,
-      productinfo,
-      firstname,
-      email,
-    });
-
-    const callbackUrl = `${req.protocol}://${req.get('host')}/api/billing/payu-callback`;
-    const actionUrl = getPayUActionUrl();
-
-    res.send(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Redirecting to PayU...</title>
-      </head>
-      <body>
-        <p>Redirecting to PayU secure payment gateway...</p>
-        <form id="payuForm" method="POST" action="${actionUrl}">
-          <input type="hidden" name="key" value="${config.payuMerchantKey}" />
-          <input type="hidden" name="txnid" value="${transaction.txnid}" />
-          <input type="hidden" name="amount" value="${amount}" />
-          <input type="hidden" name="productinfo" value="${productinfo}" />
-          <input type="hidden" name="firstname" value="${firstname}" />
-          <input type="hidden" name="email" value="${email}" />
-          <input type="hidden" name="phone" value="${phone}" />
-          <input type="hidden" name="surl" value="${callbackUrl}" />
-          <input type="hidden" name="furl" value="${callbackUrl}" />
-          <input type="hidden" name="hash" value="${hash}" />
-        </form>
-        <script>
-          document.getElementById('payuForm').submit();
-        </script>
-      </body>
-      </html>
-    `);
-  } catch (error) {
-    console.error('Redirect generation failed:', error);
-    res.status(500).send('Internal server error');
-  }
-});
-
-billingRouter.post('/payu-callback', async (req, res) => {
-  const { key, txnid, amount, productinfo, firstname, email, status, hash } = req.body;
+  const type = event?.type;
+  const data = event?.data;
 
   try {
-    const transaction = await PayUTransaction.findOne({ txnid });
-    if (!transaction) {
-      res.status(404).send('Transaction not found');
-      return;
-    }
+    if (type === 'payment.succeeded' || type === 'checkout_session.completed') {
+      const sessionId = data?.session_id || data?.checkout_session_id;
+      const metadata = data?.metadata || {};
+      const userId = metadata.userId;
+      const planId = metadata.planId as PlanId;
+      const billingMonths = Number(metadata.billingMonths || 1);
 
-    const isValid = verifyPayUHash({
-      key,
-      txnid,
-      amount,
-      productinfo,
-      firstname,
-      email,
-      status,
-      hash,
-      udf1: req.body.udf1,
-      udf2: req.body.udf2,
-      udf3: req.body.udf3,
-      udf4: req.body.udf4,
-      udf5: req.body.udf5,
-    });
-
-    if (!isValid) {
-      console.error('Invalid PayU signature hash');
-      transaction.status = 'failed';
-      await transaction.save();
-      res.redirect(`${config.siteUrl}/#pricing`);
-      return;
-    }
-
-    if (status === 'success') {
-      transaction.status = 'success';
-      await transaction.save();
-
-      const user = await User.findById(transaction.userId);
-      if (user) {
-        const plan = PLANS[transaction.planId as PlanId];
-        user.plan = transaction.planId as PlanId;
-        user.credits = plan.credits;
-        user.planExpiresAt = addMonths(new Date(), transaction.billingMonths);
-        await user.save();
+      if (sessionId) {
+        const order = await Order.findOne({ sessionId });
+        if (order) {
+          order.status = 'succeeded';
+          if (data?.payment_id) {
+            order.paymentId = data.payment_id;
+          }
+          await order.save();
+        }
       }
 
-      res.redirect(`${config.siteUrl}/billing/success?session_id=${txnid}`);
-    } else {
-      transaction.status = 'failed';
-      await transaction.save();
-      res.redirect(`${config.siteUrl}/#pricing`);
+      if (userId && isPaidPlan(planId)) {
+        const user = await User.findById(userId);
+        if (user) {
+          const plan = PLANS[planId];
+          user.plan = planId;
+          user.credits = plan.credits;
+          user.planExpiresAt = addMonths(new Date(), billingMonths);
+          await user.save();
+        }
+      }
     }
-  } catch (error) {
-    console.error('PayU callback handling failed:', error);
-    res.redirect(`${config.siteUrl}/#pricing`);
-  }
-});
 
-billingRouter.post('/portal', requireAuth, async (req, res) => {
-  res.status(400).json({ error: 'Billing portal is not supported with PayU payments.' });
-});
+    res.json({ received: true });
+  } catch (error) {
+    console.error('Error handling Dodo webhook:', error);
+    res.status(500).json({ error: 'Webhook processing error' });
+  }
+}
 
 billingRouter.get('/session/:sessionId', requireAuth, async (req, res) => {
   const { userId } = req as AuthenticatedRequest;
@@ -187,23 +153,23 @@ billingRouter.get('/session/:sessionId', requireAuth, async (req, res) => {
   }
 
   try {
-    const transaction = await PayUTransaction.findOne({ txnid: sessionId });
-    if (!transaction) {
+    const order = await Order.findOne({ sessionId });
+    if (!order) {
       res.status(404).json({ error: 'Checkout session not found' });
       return;
     }
 
-    if (transaction.userId.toString() !== userId) {
+    if (order.userId.toString() !== userId) {
       res.status(403).json({ error: 'Session does not belong to this user' });
       return;
     }
 
     res.json({
-      status: transaction.status === 'success' ? 'paid' : transaction.status,
+      status: order.status === 'succeeded' ? 'paid' : order.status,
       mode: 'payment',
-      planId: transaction.planId,
-      billingMonths: transaction.billingMonths,
-      subscriptionStatus: transaction.status === 'success' ? 'active' : null,
+      planId: order.planId,
+      billingMonths: order.billingMonths,
+      subscriptionStatus: order.status === 'succeeded' ? 'active' : null,
     });
   } catch (error) {
     console.error('Session lookup failed:', error);

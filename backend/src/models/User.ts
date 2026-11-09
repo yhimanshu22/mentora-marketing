@@ -15,8 +15,6 @@ const userSchema = new Schema(
     },
     credits: { type: Number, default: 15 },
     planExpiresAt: { type: Date, default: null },
-    stripeCustomerId: { type: String, default: null },
-    stripeSubscriptionId: { type: String, default: null },
   },
   { timestamps: true },
 );

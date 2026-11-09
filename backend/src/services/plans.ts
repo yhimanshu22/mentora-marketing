@@ -12,19 +12,19 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   pro: {
     id: 'pro',
     name: 'Pro',
-    monthlyPriceInr: 2038,
+    monthlyPriceInr: 20,
     credits: 600,
   },
   ultimate: {
     id: 'ultimate',
     name: 'Ultimate',
-    monthlyPriceInr: 3625,
+    monthlyPriceInr: 50,
     credits: 1500,
   },
   magic: {
     id: 'magic',
     name: 'Magic',
-    monthlyPriceInr: 7967,
+    monthlyPriceInr: 95,
     credits: 4000,
   },
 };

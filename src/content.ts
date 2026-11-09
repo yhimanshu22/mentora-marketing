@@ -157,7 +157,7 @@ export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
   {
     id: 'pro',
     name: 'Pro',
-    monthlyPrice: 2038,
+    monthlyPrice: 20,
     features: [
       'Everything in Free Plan',
       '600 Credits',
@@ -170,7 +170,7 @@ export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
   {
     id: 'ultimate',
     name: 'Ultimate',
-    monthlyPrice: 3625,
+    monthlyPrice: 50,
     badge: 'Popular',
     featured: true,
     features: [
@@ -186,8 +186,8 @@ export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
   {
     id: 'magic',
     name: 'Magic',
-    monthlyPrice: 7967,
-    upgradeAddOnMonthly: 4120,
+    monthlyPrice: 95,
+    upgradeAddOnMonthly: 45,
     badge: 'Best value',
     features: [
       'Everything in Ultimate Plan',
@@ -202,7 +202,11 @@ export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
 ] as const;
 
 export function formatInr(amount: number): string {
-  return `₹${amount.toLocaleString('en-IN')}`;
+  return `$${amount.toLocaleString('en-US')}`;
+}
+
+export function formatUsd(amount: number): string {
+  return `$${amount.toLocaleString('en-US')}`;
 }
 
 export function periodTotal(monthlyPrice: number, months: BillingPeriod): number {

@@ -4,7 +4,7 @@ import express from 'express';
 import { config } from './config.js';
 import { connectDatabase } from './db.js';
 import { authRouter } from './routes/auth.js';
-import { billingRouter /*, handleStripeWebhook */ } from './routes/billing.js';
+import { billingRouter, handleDodoWebhook } from './routes/billing.js';
 import { entitlementsRouter } from './routes/entitlements.js';
 import { aiRouter } from './routes/ai.js';
 import { statsRouter } from './routes/stats.js';
@@ -18,13 +18,11 @@ export async function createApp() {
     res.json({ ok: true });
   });
 
-  /*
   app.post(
     '/api/billing/webhook',
-    express.raw({ type: 'application/json' }),
-    handleStripeWebhook,
+    express.raw({ type: '*/*' }),
+    handleDodoWebhook,
   );
-  */
 
   app.use(
     cors({
