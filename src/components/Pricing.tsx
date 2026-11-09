@@ -83,7 +83,7 @@ function PlanCta({
         onClick={() => void handleCheckout()}
         disabled={loading}
       >
-        {loading ? 'Opening Stripe checkout…' : label}
+        {loading ? 'Opening checkout…' : label}
       </button>
       {error ? <p className="text-xs text-red-400 mt-2">{error}</p> : null}
     </div>
