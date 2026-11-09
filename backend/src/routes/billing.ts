@@ -107,7 +107,12 @@ export async function handleDodoWebhook(req: Request, res: Response) {
   const data = event?.data;
 
   try {
-    if (type === 'payment.succeeded' || type === 'checkout_session.completed') {
+    if (
+      type === 'payment.succeeded' ||
+      type === 'checkout_session.completed' ||
+      type === 'subscription.active' ||
+      type === 'subscription.renewed'
+    ) {
       const sessionId = data?.session_id || data?.checkout_session_id;
       const metadata = data?.metadata || {};
       const userId = metadata.userId;
