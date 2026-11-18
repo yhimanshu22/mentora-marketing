@@ -24,9 +24,26 @@ export async function createApp() {
     handleDodoWebhook,
   );
 
+  const allowedOrigins = [
+    'https://mentora.cv',
+    'https://www.mentora.cv',
+    'https://mentora-marketing-eta.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'tauri://localhost',
+    'https://tauri.localhost',
+    ...config.corsOrigins,
+  ];
+
   app.use(
     cors({
-      origin: config.corsOrigins,
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+          callback(null, true);
+        } else {
+          callback(null, false);
+        }
+      },
       credentials: true,
     }),
   );
