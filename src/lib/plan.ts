@@ -17,7 +17,7 @@ export function planCreditsLimit(plan: PlanId | string): number {
 }
 
 export function creditsUsagePercent(credits: number, plan: PlanId | string): number {
-  const limit = planCreditsLimit(plan);
+  const limit = Math.max(planCreditsLimit(plan), credits);
   if (limit <= 0) return 0;
   return Math.min(100, Math.max(0, (credits / limit) * 100));
 }

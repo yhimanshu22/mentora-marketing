@@ -54,7 +54,8 @@ export function BillingPage() {
   const credits = entitlements?.credits ?? user.credits;
   const expiresAt = entitlements?.planExpiresAt ?? user.planExpiresAt;
   const canUseAi = entitlements?.canUseAi ?? credits > 0;
-  const creditLimit = planCreditsLimit(plan);
+  const baseCreditLimit = planCreditsLimit(plan);
+  const creditLimit = Math.max(baseCreditLimit, credits);
   const creditPercent = creditsUsagePercent(credits, plan);
   const expiryLabel = formatPlanExpiry(expiresAt);
   const isLowCredits = credits > 0 && creditPercent <= 20;
@@ -114,7 +115,7 @@ export function BillingPage() {
                 </p>
                 {planDetails?.monthlyPrice ? (
                   <p className="text-sm text-slate-400 mt-0.5">
-                    ₹{planDetails.monthlyPrice.toLocaleString('en-IN')} / month
+                    ${planDetails.monthlyPrice.toLocaleString('en-US')} / month
                   </p>
                 ) : (
                   <p className="text-sm text-slate-400 mt-0.5">Free tier</p>
