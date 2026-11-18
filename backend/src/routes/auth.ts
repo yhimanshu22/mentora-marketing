@@ -20,7 +20,7 @@ async function createSessionFromProfile(profile: Awaited<ReturnType<typeof verif
       name: profile.name,
       picture: profile.picture,
       plan: PLANS.free.id,
-      credits: PLANS.free.credits,
+      credits: 0,
     });
   } else {
     user.email = profile.email;

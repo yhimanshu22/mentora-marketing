@@ -13,7 +13,7 @@ const userSchema = new Schema(
       enum: ['free', 'pro', 'ultimate', 'magic'],
       default: 'free',
     },
-    credits: { type: Number, default: 15 },
+    credits: { type: Number, default: 0 },
     planExpiresAt: { type: Date, default: null },
   },
   { timestamps: true },
