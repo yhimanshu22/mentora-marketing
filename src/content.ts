@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://mentora-marketing-eta.vercel.app';
+export const SITE_URL = 'https://mentora.cv';
 export const SITEMAP_URL = `${SITE_URL}/sitemap.xml`;
 
 export const SOURCE_CODE_URL = `${SITE_URL}/#pricing`;
@@ -479,7 +479,12 @@ export const STEPS = [
   },
   {
     step: '03',
-    title: 'Press mic for answers',
-    description: 'Get profile-aware responses instantly. Toggle Hide before you share your screen.',
+    title: 'Get real-time answers',
+    description: 'Profile-aware responses stream automatically with talking points and code solutions.',
+  },
+  {
+    step: '04',
+    title: 'Stay discreet with Hide',
+    description: 'Toggle hide mode before screen sharing to keep the assistant HUD invisible to attendees.',
   },
 ] as const;
