@@ -7,8 +7,6 @@ import {
   formatInr,
   periodLabel,
   periodTotal,
-  SOURCE_CODE_FEATURES,
-  SOURCE_CODE_URL,
   SUBSCRIPTION_PLANS,
   type BillingPeriod,
 } from '../content';
@@ -18,8 +16,6 @@ import {
   btnPrimary,
   btnSecondary,
   container,
-  eyebrow,
-  glassCard,
   sectionHead,
   sectionLead,
   sectionTitle,
@@ -39,14 +35,6 @@ function PlanCta({
   const { isAuthenticated, token } = useAuth();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  if (planId === 'free') {
-    return (
-      <a href={SUBSCRIPTION_PLANS[0].href} className={`${btnBlock} ${btnSecondary}`}>
-        {label}
-      </a>
-    );
-  }
 
   if (!isAuthenticated || !token) {
     return (
@@ -94,41 +82,42 @@ export function Pricing() {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>(1);
 
   return (
-    <section id="pricing" className="py-20 max-sm:py-14">
+    <section id="pricing" className="py-24 max-sm:py-16 border-t border-white/[0.06]">
       <div className={container}>
         <div className={sectionHead}>
-          <p className={eyebrow}>Pricing</p>
-          <h2 className={sectionTitle}>Choose your Mentora plan</h2>
+          <h2 className={sectionTitle}>Simple, predictable plans</h2>
           <p className={sectionLead}>
-            Start free with credits on desktop and browser, then upgrade as you grow.
+            Get started with 15 credits for just $1, then scale up as your interview schedule accelerates.
           </p>
         </div>
 
         <div
-          className="flex flex-wrap justify-center gap-2 mb-7"
+          className="flex justify-center mb-10"
           role="group"
           aria-label="Billing period"
         >
-          {BILLING_PERIODS.map((months) => (
-            <button
-              key={months}
-              type="button"
-              className={`text-sm font-semibold px-4 py-2.5 rounded-full border cursor-pointer transition-[background,border-color,color] duration-150 max-sm:text-xs max-sm:px-3 max-sm:py-2 ${
-                billingPeriod === months
-                  ? 'bg-indigo-500/20 border-indigo-500/45 text-indigo-300'
-                  : 'bg-white/[0.04] border-white/10 text-slate-400 hover:text-slate-200 hover:border-indigo-500/35'
-              }`}
-              aria-pressed={billingPeriod === months}
-              onClick={() => setBillingPeriod(months)}
-            >
-              {periodLabel(months)}
-            </button>
-          ))}
+          <div className="inline-flex p-1 bg-white/[0.03] border border-white/[0.08] rounded-lg">
+            {BILLING_PERIODS.map((months) => (
+              <button
+                key={months}
+                type="button"
+                className={`text-xs font-medium px-4 py-2 rounded-md transition-all duration-150 cursor-pointer ${
+                  billingPeriod === months
+                    ? 'bg-indigo-600 text-white shadow-sm font-semibold'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+                aria-pressed={billingPeriod === months}
+                onClick={() => setBillingPeriod(months)}
+              >
+                {periodLabel(months)}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] gap-5 max-w-full mb-12">
           {SUBSCRIPTION_PLANS.map((plan) => {
-            const isFree = plan.monthlyPrice === undefined;
+            const isFree = false;
             const total = plan.monthlyPrice
               ? periodTotal(plan.monthlyPrice, billingPeriod)
               : null;
@@ -136,75 +125,76 @@ export function Pricing() {
             return (
               <article
                 key={plan.id}
-                className={`${glassCard} p-7 max-sm:p-5 relative min-w-0 transition-all duration-300 hover:-translate-y-1 ${
+                className={`p-6 rounded-xl relative min-w-0 flex flex-col justify-between transition-all duration-200 ${
                   plan.featured
-                    ? 'border-indigo-500/60 shadow-[0_20px_50px_rgba(99,102,241,0.22),0_8px_24px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)]'
-                    : 'hover:border-indigo-500/20'
+                    ? 'bg-slate-900/90 border-2 border-indigo-500/80 shadow-[0_12px_40px_rgba(99,102,241,0.15)] ring-1 ring-indigo-500/20'
+                    : 'bg-slate-900/40 border border-white/[0.08] hover:border-white/20'
                 }`}
               >
-                {plan.featured ? (
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-t-xl" />
-                ) : null}
                 {plan.badge ? (
-                  <p className="absolute top-4 right-4 text-[0.65rem] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">
+                  <p className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500 text-white shadow-sm">
                     {plan.badge}
                   </p>
                 ) : null}
-                <p className="text-sm font-semibold text-indigo-300 mb-1.5">{plan.name}</p>
+                <div>
+                  <p className="text-sm font-semibold text-white mb-2">{plan.name}</p>
 
-                {isFree ? (
-                  <p className="text-[clamp(1.5rem,5vw,2.25rem)] font-bold mb-2 leading-snug break-words">
-                    Free <span className="text-[0.925rem] font-medium text-slate-400">forever</span>
-                  </p>
-                ) : (
-                  <>
-                    <p className="text-[clamp(1.5rem,5vw,2.25rem)] font-bold mb-2 leading-snug break-words">
-                      {formatInr(total!)}
-                      <span className="text-[0.925rem] font-medium text-slate-400">
-                        {billingPeriod === 1 ? '/month' : ` / ${periodLabel(billingPeriod)}`}
-                      </span>
+                  {isFree ? (
+                    <div className="mb-4">
+                      <span className="text-3xl font-bold tracking-tight text-white">Free</span>
+                      <span className="text-xs text-slate-400 ml-1.5 font-medium">forever</span>
+                    </div>
+                  ) : (
+                    <div className="mb-4">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-bold tracking-tight text-white">{formatInr(total!)}</span>
+                        <span className="text-xs text-slate-400 font-medium">
+                          {billingPeriod === 1 ? '/mo' : ` / ${periodLabel(billingPeriod)}`}
+                        </span>
+                      </div>
+                      {billingPeriod > 1 ? (
+                        <p className="text-[11px] text-slate-500 mt-0.5">
+                          {formatInr(plan.monthlyPrice!)}/mo billed upfront
+                        </p>
+                      ) : null}
+                    </div>
+                  )}
+
+                  <div className="h-px w-full bg-white/[0.06] mb-5" />
+
+                  <ul className="list-none mb-6 flex flex-col gap-2.5">
+                    {plan.features.map((item) => (
+                      <li
+                        key={item}
+                        className="text-xs text-slate-300 flex items-start gap-2 break-words leading-relaxed"
+                      >
+                        <i className="fas fa-check text-emerald-400 text-xs mt-0.5 shrink-0" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {plan.upgradeAddOnMonthly ? (
+                    <p className="text-[11px] text-indigo-300 -mt-2 mb-4 px-2.5 py-2 rounded bg-indigo-500/10 border border-indigo-500/20 break-words leading-snug">
+                      Upgrade add-on: +{formatInr(plan.upgradeAddOnMonthly)}/mo
                     </p>
-                    {billingPeriod > 1 ? (
-                      <p className="text-xs text-slate-400 -mt-1 mb-3">
-                        {formatInr(plan.monthlyPrice!)}/mo · {formatInr(total!)} total
-                      </p>
-                    ) : null}
-                  </>
-                )}
+                  ) : null}
+                </div>
 
-                <ul className="list-none mb-6 flex flex-col gap-2.5">
-                  {plan.features.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm text-slate-400 flex items-start gap-2 break-words"
-                    >
-                      <i className="fas fa-check text-emerald-500 text-xs mt-0.5" aria-hidden="true" />{' '}
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                {plan.upgradeAddOnMonthly ? (
-                  <p className="text-xs text-indigo-300 -mt-2 mb-4 px-2.5 py-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 break-words">
-                    Upgrade from Ultimate to Magic: +{formatInr(plan.upgradeAddOnMonthly)}/mo
-                    {billingPeriod > 1
-                      ? ` (${formatInr(plan.upgradeAddOnMonthly * billingPeriod)} for ${periodLabel(billingPeriod)})`
-                      : null}
-                  </p>
-                ) : null}
-
-                <PlanCta
-                  planId={plan.id}
-                  label={plan.cta}
-                  featured={plan.featured}
-                  billingPeriod={billingPeriod}
-                />
+                <div className="mt-4 pt-2">
+                  <PlanCta
+                    planId={plan.id}
+                    label={plan.cta}
+                    featured={plan.featured}
+                    billingPeriod={billingPeriod}
+                  />
+                </div>
               </article>
             );
           })}
         </div>
 
-        <div className="text-center max-w-xl mx-auto mb-6">
+        {/* <div className="text-center max-w-xl mx-auto mb-6">
           <h3 className="font-display text-[1.35rem] mb-2">Full Source Code</h3>
           <p className="text-[0.925rem] text-slate-400">
             Own the complete codebase — build, customize, and deploy on your own infrastructure.
@@ -240,7 +230,7 @@ export function Pricing() {
               Get Full Source Code
             </a>
           </article>
-        </div>
+        </div> */}
       </div>
     </section>
   );

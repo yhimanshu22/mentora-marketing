@@ -39,7 +39,7 @@ billingRouter.post('/checkout', requireAuth, async (req, res) => {
       product_cart: [
         {
           product_id: productId,
-          quantity: billingMonths,
+          quantity: planId === 'free' ? 1 : billingMonths,
         },
       ],
       customer: {
@@ -135,8 +135,10 @@ export async function handleDodoWebhook(req: Request, res: Response) {
         if (user) {
           const plan = PLANS[planId];
           user.plan = planId;
-          user.credits = plan.credits;
-          user.planExpiresAt = addMonths(new Date(), billingMonths);
+          user.credits = (user.credits || 0) + plan.credits;
+          if (planId !== 'free') {
+            user.planExpiresAt = addMonths(new Date(), billingMonths);
+          }
           await user.save();
         }
       }

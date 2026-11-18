@@ -1,8 +1,6 @@
 import { FEATURES } from '../content';
 import {
   container,
-  eyebrow,
-  glassCard,
   sectionHead,
   sectionLead,
   sectionTitle,
@@ -10,28 +8,29 @@ import {
 
 export function Features() {
   return (
-    <section id="features" className="py-20 max-sm:py-14">
+    <section id="features" className="py-24 max-sm:py-16 border-t border-white/[0.06]">
       <div className={container}>
         <div className={sectionHead}>
-          <p className={eyebrow}>Features</p>
           <h2 className={sectionTitle}>Built for high-stakes conversations</h2>
           <p className={sectionLead}>
-            Everything you need to stay sharp in interviews, client calls, and technical screens —
-            without leaving your flow.
+            Engineered to give you calm, precise leverage during interviews, client presentations, and technical screenings.
           </p>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {FEATURES.map((feature) => (
-            <article key={feature.title} className={`${glassCard} p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-indigo-500/30 hover:shadow-[0_12px_36px_rgba(99,102,241,0.08),0_8px_24px_rgba(0,0,0,0.4)] group`}>
-              <span
-                className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-500/12 border border-white/[0.05] text-indigo-300 mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] transition-colors duration-300 group-hover:bg-indigo-500/20 group-hover:text-indigo-200"
+            <div
+              key={feature.title}
+              className="group p-6 rounded-xl bg-slate-900/40 border border-white/[0.08] hover:border-indigo-500/30 hover:bg-slate-900/70 transition-all duration-200"
+            >
+              <div
+                className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-300 flex items-center justify-center mb-5 group-hover:text-indigo-400 group-hover:border-indigo-500/30 transition-colors"
                 aria-hidden="true"
               >
-                <i className={`fas ${feature.icon} text-[1.05rem]`} />
-              </span>
-              <h3 className="text-base font-semibold mb-2 group-hover:text-indigo-200 transition-colors duration-300">{feature.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{feature.description}</p>
-            </article>
+                <i className={`fas ${feature.icon} text-sm`} />
+              </div>
+              <h3 className="text-base font-semibold text-white mb-2 tracking-tight">{feature.title}</h3>
+              <p className="text-sm text-slate-400 leading-relaxed font-normal">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>

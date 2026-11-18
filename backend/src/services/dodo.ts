@@ -8,6 +8,7 @@ export const dodo = new DodoPayments({
 });
 
 export const PLAN_DODO_PRODUCTS: Record<string, string> = {
+  free: config.dodoProductIdFree,
   pro: config.dodoProductIdPro,
   ultimate: config.dodoProductIdUltimate,
   magic: config.dodoProductIdMagic,

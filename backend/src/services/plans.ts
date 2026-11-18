@@ -5,8 +5,8 @@ export const BILLING_PERIODS = [1, 3, 6, 12] as const;
 export const PLANS: Record<PlanId, PlanDefinition> = {
   free: {
     id: 'free',
-    name: 'Free',
-    monthlyPriceInr: null,
+    name: 'Starter',
+    monthlyPriceInr: 1,
     credits: 15,
   },
   pro: {
@@ -29,8 +29,8 @@ export const PLANS: Record<PlanId, PlanDefinition> = {
   },
 };
 
-export function isPaidPlan(planId: string): planId is Exclude<PlanId, 'free'> {
-  return planId === 'pro' || planId === 'ultimate' || planId === 'magic';
+export function isPaidPlan(planId: string): planId is PlanId {
+  return planId === 'free' || planId === 'pro' || planId === 'ultimate' || planId === 'magic';
 }
 
 export function isBillingPeriod(months: number): months is 1 | 3 | 6 | 12 {

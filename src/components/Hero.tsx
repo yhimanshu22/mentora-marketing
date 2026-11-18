@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getStats, recordDownload, Stats } from '../lib/stats';
-import { SOURCE_CODE_URL } from '../content';
 import {
   btnLg,
   btnPrimary,
-  btnSecondary,
   container,
-  eyebrow,
-  glassCard,
 } from '../lib/classes';
 
 export function Hero() {
@@ -22,111 +18,132 @@ export function Hero() {
   };
 
   return (
-    <section className="pt-16 pb-20 max-sm:py-14">
-      <div className={`${container} grid grid-cols-1 md:grid-cols-2 gap-12 items-center min-w-0`}>
-        <div className="min-w-0">
-          <p className={eyebrow}>AI Meeting Assistant</p>
-          <h1 className="font-display font-bold text-[clamp(2rem,5vw,3.25rem)] leading-[1.1] mb-4 bg-gradient-to-br from-slate-50 to-indigo-300 bg-clip-text text-transparent">
-            Silent coaching for interviews and online meetings
+    <section className="pt-20 pb-24 max-sm:pt-12 max-sm:pb-16 relative">
+      <div className={`${container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-w-0`}>
+        <div className="min-w-0 lg:col-span-7">
+          <h1 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.6rem)] tracking-tight leading-[1.12] mb-5 text-white">
+            Silent coaching for interviews & live calls
           </h1>
-          <p className="text-[1.05rem] text-slate-400 max-w-lg mb-7">
-            Mentora listens to meeting audio, transcribes questions in real time, and
-            delivers profile-aware answers in a floating desktop window — always on top,
-            optionally hidden from screen share.
+          <p className="text-[1.1rem] text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
+            Mentora transcribes conversation audio in real time and streams contextual, profile-aware answers in a discreet desktop HUD that can stay invisible to screen shares.
           </p>
-          <div className="flex flex-wrap gap-3 mb-5">
+          <div className="flex flex-wrap items-center gap-3.5 mb-6">
             <a
               href="#download"
               onClick={handleDownload}
-              className={`${btnPrimary} ${btnLg} max-sm:w-full max-sm:whitespace-normal max-sm:text-center`}
+              className={`${btnPrimary} ${btnLg} max-sm:w-full max-sm:text-center`}
             >
-              <i className="fas fa-download" aria-hidden="true" /> Download app
+              <i className="fas fa-download text-xs" aria-hidden="true" /> Download for Desktop
             </a>
-            <a
+            {/* <a
               href={SOURCE_CODE_URL}
-              className={`${btnSecondary} ${btnLg} max-sm:w-full max-sm:whitespace-normal max-sm:text-center`}
+              className={`${btnSecondary} ${btnLg} max-sm:w-full max-sm:text-center`}
             >
               Full Source Code — $499
-            </a>
+            </a> */}
           </div>
           {stats && (
-            <div className="flex items-center gap-4 mb-4 text-sm font-medium text-slate-300 bg-slate-800/50 w-fit px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm shadow-sm">
-              <div className="flex items-center gap-2">
-                <i className="fas fa-eye text-indigo-400" aria-hidden="true" />
+            <div className="flex items-center gap-4 mb-6 text-xs text-slate-400 bg-white/[0.03] border border-white/[0.08] w-fit px-3.5 py-1.5 rounded-md">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
                 <span>{stats.visits.toLocaleString()} visitors</span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-slate-600" />
-              <div className="flex items-center gap-2">
-                <i className="fas fa-arrow-down text-emerald-400" aria-hidden="true" />
-                <span>{stats.downloads.toLocaleString()} downloads</span>
+              <div className="w-1 h-1 rounded-full bg-slate-700" />
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span>{stats.downloads.toLocaleString()} active downloads</span>
               </div>
             </div>
           )}
-          <p className="text-xs text-slate-500 flex items-center gap-1.5 flex-wrap mb-6">
-            <i className="fas fa-desktop" aria-hidden="true" /> Windows · macOS ·{' '}
-            <a href="#download" className="text-indigo-300 hover:text-indigo-200">
-              All download options
-            </a>
-          </p>
-          <div className="mb-6">
-            <a
-              href="https://www.producthunt.com/products/mentora-ai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-mentora-ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block hover:opacity-90 transition-opacity"
-            >
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1175821&theme=light&t=1782303221233"
-                alt="Mentora AI - AI meeting assistant for interviews and meetings | Product Hunt"
-                width="250"
-                height="54"
-                className="w-[250px] h-[54px]"
-              />
+          <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap">
+            <span className="flex items-center gap-1.5">
+              <i className="fab fa-windows text-slate-400" aria-hidden="true" /> Windows 10/11
+            </span>
+            <span>•</span>
+            <span className="flex items-center gap-1.5">
+              <i className="fab fa-apple text-slate-400" aria-hidden="true" /> macOS (Apple Silicon & Intel)
+            </span>
+            <span>•</span>
+            <a href="#download" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-4 decoration-indigo-400/30">
+              Install guide
             </a>
           </div>
         </div>
-        <div className="relative min-w-0" aria-hidden="true">
-          <div className="absolute -inset-10 glow-indigo rounded-full opacity-60 pointer-events-none" />
-          <div className="absolute -inset-20 glow-violet rounded-full opacity-40 pointer-events-none" />
-          <div className={`${glassCard} p-4 relative border-white/[0.08] hover:border-indigo-500/20 transition-all duration-300`}>
-            <div className="rounded-xl overflow-hidden border border-white/[0.08] bg-bg/40 backdrop-blur-md">
-              <div className="flex items-center gap-1.5 px-3 py-2.5 bg-slate-950/80 border-b border-white/[0.06]">
-                <span className="w-[0.55rem] h-[0.55rem] rounded-full bg-slate-600" />
-                <span className="w-[0.55rem] h-[0.55rem] rounded-full bg-slate-600" />
-                <span className="w-[0.55rem] h-[0.55rem] rounded-full bg-slate-600" />
-                <div className="flex items-center gap-1.5 ml-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-[0.62rem] text-slate-400 font-medium">Live Assist Active</span>
+        <div className="relative min-w-0 lg:col-span-5" aria-hidden="true">
+          <div className="relative rounded-xl border border-white/[0.12] bg-[#0c1220]/90 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-md overflow-hidden">
+            {/* Window title bar */}
+            <div className="flex items-center justify-between px-3.5 py-2.5 bg-slate-950/70 border-b border-white/[0.08]">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="ml-auto text-[0.68rem] text-slate-500 font-semibold tracking-wider uppercase">Mentora</span>
+                <span className="ml-2 text-[11px] font-mono text-slate-400">Mentora Overlay HUD</span>
               </div>
-              <div className="p-4 bg-bg/60 flex flex-col gap-3.5">
-                <div className="self-end text-[0.72rem] px-3 py-2 rounded-lg max-w-[90%] leading-snug bg-indigo-600/90 text-white font-medium shadow-md">
-                  Tell me about your recent project.
-                </div>
-                <div className="relative self-start text-[0.72rem] px-3 py-2 pb-5 rounded-lg max-w-[90%] leading-snug bg-slate-800/85 text-slate-200 border-l-2 border-emerald-400 shadow-md">
-                  I led a React dashboard that cut report time by 40%. We used TypeScript and
-                  GraphQL…
-                  <span className="absolute right-2.5 bottom-1 text-[0.58rem] text-slate-400">
-                    2.1s · AI response
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Screen Hide: Active
+              </div>
+            </div>
+
+            {/* Simulated Live UI Content */}
+            <div className="p-4 space-y-3.5 font-sans">
+              {/* Question bubble */}
+              <div className="p-3 rounded-lg bg-white/[0.04] border border-white/[0.06] text-xs">
+                <div className="flex items-center justify-between text-[10px] font-medium text-slate-400 mb-1.5">
+                  <span className="flex items-center gap-1">
+                    <i className="fas fa-user text-slate-500 text-[9px]" /> Interviewer
                   </span>
+                  <span className="font-mono text-[9px] text-slate-500">Just now</span>
                 </div>
-                <div className="flex items-center justify-between gap-3 pt-2.5 border-t border-white/[0.06]">
-                  <div className="flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-full shrink-0 bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white shadow-inner">
-                      <i className="fas fa-microphone text-[0.58rem]" />
-                    </span>
-                    <span className="text-[0.65rem] text-slate-400">
-                      Capturing desktop system audio...
-                    </span>
+                <p className="text-slate-200 leading-snug font-medium">
+                  "How did you handle state synchronization across distributed microservices in your previous project?"
+                </p>
+              </div>
+
+              {/* AI Suggestion Box */}
+              <div className="p-3.5 rounded-lg bg-indigo-950/30 border border-indigo-500/30 text-xs shadow-inner">
+                <div className="flex items-center justify-between text-[10px] text-indigo-300 font-semibold mb-2">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                    Suggested Talking Points (Profile-Matched)
+                  </span>
+                  <span className="font-mono text-[9px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-200">1.8s</span>
+                </div>
+                <ul className="space-y-1.5 text-slate-300 text-[11px] leading-relaxed">
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-indigo-400 font-bold">•</span>
+                    <span><strong>Event-driven architecture:</strong> Implemented transactional outbox pattern with Kafka.</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-indigo-400 font-bold">•</span>
+                    <span><strong>Consistency trade-offs:</strong> Chose eventual consistency for order updates, reducing lock contention by 65%.</span>
+                  </li>
+                  <li className="flex items-start gap-1.5">
+                    <span className="text-indigo-400 font-bold">•</span>
+                    <span><strong>Idempotency:</strong> Handled deduplication via unique trace IDs in Redis.</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Audio Monitor strip */}
+              <div className="flex items-center justify-between pt-2 border-t border-white/[0.06] text-[11px] text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
+                    <i className="fas fa-waveform-lines text-[9px]" />
+                  </span>
+                  <span className="text-[10px] text-slate-400">Listening to system audio</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="flex items-end gap-[2px] h-3 shrink-0">
+                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-1" />
+                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-2" />
+                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-3" />
+                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-4" />
+                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-5" />
                   </div>
-                  <div className="flex items-end gap-[3px] h-4 shrink-0 pb-0.5">
-                    <span className="w-[3px] bg-emerald-500 rounded-full animate-audio-bar-1" />
-                    <span className="w-[3px] bg-emerald-400 rounded-full animate-audio-bar-2" />
-                    <span className="w-[3px] bg-emerald-500 rounded-full animate-audio-bar-3" />
-                    <span className="w-[3px] bg-emerald-400 rounded-full animate-audio-bar-4" />
-                    <span className="w-[3px] bg-emerald-500 rounded-full animate-audio-bar-5" />
-                  </div>
+                  <span className="text-[10px] font-mono text-slate-500 ml-1">44.1 kHz</span>
                 </div>
               </div>
             </div>

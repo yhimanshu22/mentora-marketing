@@ -22,6 +22,7 @@ export const config = {
   dodoApiKey: optional('DODO_PAYMENTS_API_KEY'),
   dodoWebhookKey: optional('DODO_PAYMENTS_WEBHOOK_KEY'),
   dodoEnv: optional('DODO_ENVIRONMENT', 'test_mode'),
+  dodoProductIdFree: optional('DODO_PRODUCT_ID_FREE', 'pdt_0NsDbZOzCcDTBj7sEKVuY'),
   dodoProductIdPro: optional('DODO_PRODUCT_ID_PRO'),
   dodoProductIdUltimate: optional('DODO_PRODUCT_ID_ULTIMATE'),
   dodoProductIdMagic: optional('DODO_PRODUCT_ID_MAGIC'),

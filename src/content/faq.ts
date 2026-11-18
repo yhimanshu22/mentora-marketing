@@ -30,9 +30,9 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
       'No. Mentora provides fully-managed, high-speed access to OpenAI, Google Gemini, and Groq transcription directly through your plan credits. No complex key setup is required.',
   },
   {
-    question: 'What is the difference between Free, Pro, Ultimate, and Magic plans?',
+    question: 'What is the difference between Starter, Pro, Ultimate, and Magic plans?',
     answer:
-      'Free includes 15 credits with desktop and browser access. Pro adds 600 credits and faster support. Ultimate includes 1,500 credits, Magic Keys, and fully automatic mode. Magic adds 4,000 credits and optional 1-on-1 onboarding.',
+      'Starter ($1) includes 15 credits with desktop and browser access. Pro adds 600 credits and faster support. Ultimate includes 1,500 credits, Magic Keys, and fully automatic mode. Magic adds 4,000 credits and optional 1-on-1 onboarding.',
   },
   {
     question: 'Can I buy the full Mentora source code?',

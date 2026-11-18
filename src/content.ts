@@ -143,7 +143,8 @@ export type PricingPlan = {
 export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
   {
     id: 'free',
-    name: 'Free',
+    name: 'Starter',
+    monthlyPrice: 1,
     features: [
       '15 Credits',
       'Mentora Desktop Version',
@@ -151,15 +152,15 @@ export const SUBSCRIPTION_PLANS: readonly PricingPlan[] = [
       'Unlimited Profiles',
       'No Time Limit',
     ],
-    cta: 'Download Free',
-    href: PRIMARY_DOWNLOAD_URL,
+    cta: 'Get Starter ($1)',
+    href: `${SITE_URL}/#pricing`,
   },
   {
     id: 'pro',
     name: 'Pro',
     monthlyPrice: 20,
     features: [
-      'Everything in Free Plan',
+      'Everything in Starter Plan',
       '600 Credits',
       'Privacy & Speed',
       'Instant Support (WhatsApp + Email)',
