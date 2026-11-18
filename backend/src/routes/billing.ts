@@ -160,7 +160,7 @@ billingRouter.get('/session/:sessionId', requireAuth, async (req, res) => {
   }
 
   try {
-    const order = await Order.findOne({ sessionId });
+    let order = await Order.findOne({ sessionId });
     if (!order) {
       res.status(404).json({ error: 'Checkout session not found' });
       return;
@@ -169,6 +169,36 @@ billingRouter.get('/session/:sessionId', requireAuth, async (req, res) => {
     if (order.userId.toString() !== userId) {
       res.status(403).json({ error: 'Session does not belong to this user' });
       return;
+    }
+
+    // Fallback: If webhook was delayed or missed, query Dodo Payments directly
+    if (order.status !== 'succeeded') {
+      try {
+        const dodoSession = await dodo.checkoutSessions.retrieve(sessionId);
+        if (dodoSession?.payment_status === 'succeeded' || (dodoSession as any)?.status === 'succeeded') {
+          order.status = 'succeeded';
+          if (dodoSession.payment_id) {
+            order.paymentId = dodoSession.payment_id;
+          }
+          await order.save();
+
+          const planId = order.planId as PlanId;
+          if (isPaidPlan(planId)) {
+            const user = await User.findById(userId);
+            if (user) {
+              const plan = PLANS[planId];
+              user.plan = planId;
+              user.credits = (user.credits || 0) + plan.credits;
+              if (planId !== 'free') {
+                user.planExpiresAt = addMonths(new Date(), order.billingMonths);
+              }
+              await user.save();
+            }
+          }
+        }
+      } catch (dodoErr) {
+        console.warn('Direct Dodo session check fallback failed:', dodoErr);
+      }
     }
 
     res.json({
