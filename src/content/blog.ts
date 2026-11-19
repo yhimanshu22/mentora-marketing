@@ -11,7 +11,7 @@ export type BlogPost = {
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: 'ai-interview-assistant-guide',
-    title: 'AI Interview Assistant Guide: How to Prepare for Live Technical Screens',
+    title: 'AI Interview Assistant: Live Technical Screens Guide',
     excerpt:
       'Learn how an AI interview assistant helps with real-time transcription, resume-aware answers, and discreet coaching during Zoom and Teams calls.',
     publishedAt: '2026-06-10',
@@ -47,7 +47,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'hide-mode-screen-share-interviews',
-    title: 'Hide Mode for Screen Sharing: Stay Invisible During Online Interviews',
+    title: 'Hide Mode: Invisible Screen Sharing for Interviews',
     excerpt:
       'Screen share hide mode lets you use an AI meeting assistant without exposing coaching windows to interviewers on Zoom, Meet, or Teams.',
     publishedAt: '2026-06-12',
@@ -78,7 +78,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'real-time-meeting-transcription-tools',
-    title: 'Real-Time Meeting Transcription for Interviews: What to Look For',
+    title: 'Real-Time Meeting Transcription for Interviews',
     excerpt:
       'Compare what makes real-time meeting transcription useful for interviews: latency, accuracy, local processing, and integration with AI answer tools.',
     publishedAt: '2026-06-14',
@@ -113,7 +113,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'coding-interview-screenshot-assist',
-    title: 'Screenshot Assist for Coding Interviews: Solve Problems Faster',
+    title: 'Coding Interview Screenshot Assist & Solver Guide',
     excerpt:
       'How screenshot assist captures LeetCode-style prompts, whiteboard photos, and IDE questions to generate step-by-step solutions during technical screens.',
     publishedAt: '2026-06-16',

@@ -54,14 +54,14 @@ const HOME_KEYWORDS = [
 
 export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
-    title: 'Mentora — Undetectable AI Meeting & Interview Assistant',
+    title: 'Mentora — AI Meeting & Interview Assistant',
     description:
       'Mentora is an undetectable AI meeting assistant for job interviews and online calls. It listens in real time to system audio, transcribing questions and serving profile-aware coaching answers in a floating overlay that stays hidden from screen shares.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },
   blog: {
-    title: 'Mentora Blog — AI Interview & Meeting Guides',
+    title: 'Blog — AI Interview & Meeting Guides | Mentora',
     description:
       'Guides on AI interview assistants, hide mode for screen sharing, real-time meeting transcription, and coding interview screenshot assist with Mentora.',
     path: '/blog',
@@ -239,7 +239,7 @@ export function faqJsonLd(): Record<string, unknown> {
 
 export function getBlogPostSeo(post: BlogPost): PageSeo {
   return {
-    title: post.title,
+    title: `${post.title} | ${SITE_NAME}`,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,
