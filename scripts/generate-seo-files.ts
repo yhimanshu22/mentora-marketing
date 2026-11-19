@@ -46,15 +46,27 @@ ${routes
 
 const robots = `User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /billing
+Disallow: /billing/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /login
+Disallow: /billing
+Disallow: /billing/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /login
+Disallow: /billing
+Disallow: /billing/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /login
+Disallow: /billing
+Disallow: /billing/
 
 Sitemap: ${siteUrl}/sitemap.xml
 `;
