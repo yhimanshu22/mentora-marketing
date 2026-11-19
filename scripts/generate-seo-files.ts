@@ -47,6 +47,15 @@ ${routes
 const robots = `User-agent: *
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 Sitemap: ${siteUrl}/sitemap.xml
 `;
 
