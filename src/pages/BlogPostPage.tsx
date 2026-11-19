@@ -44,14 +44,17 @@ export function BlogPostPage() {
             <i className="fas fa-arrow-left" aria-hidden="true" /> Back to blog
           </Link>
           <header className="mb-8">
-            <time className="text-xs text-slate-500" dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString('en-IN', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}{' '}
+            <p className="text-xs text-slate-500 mb-1">
+              Published on{' '}
+              <time dateTime={`${post.publishedAt}T00:00:00+05:30`}>
+                {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>{' '}
               · {post.readMinutes} min read
-            </time>
+            </p>
             <h1 className="font-display text-[clamp(1.75rem,4vw,2.25rem)] mt-2 mb-3 break-words">
               {post.title}
             </h1>

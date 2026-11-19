@@ -259,7 +259,9 @@ export function blogPostJsonLd(post: BlogPost): Record<string, unknown> {
         '@id': `${pageUrl}#article`,
         headline: post.title,
         description: post.excerpt,
-        datePublished: post.publishedAt,
+        datePublished: `${post.publishedAt}T00:00:00+05:30`,
+        dateModified: `${post.publishedAt}T00:00:00+05:30`,
+        image: absoluteUrl(DEFAULT_OG_IMAGE),
         author: {
           '@type': 'Organization',
           name: SITE_NAME_FULL,
