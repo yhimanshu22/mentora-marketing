@@ -177,6 +177,7 @@ export function homeJsonLd(): Record<string, unknown> {
         email: CONTACT_EMAIL,
         telephone: `+91-${CONTACT_PHONE}`,
         logo: absoluteUrl(DEFAULT_OG_IMAGE),
+        image: absoluteUrl(DEFAULT_OG_IMAGE),
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Varanasi',

@@ -76,7 +76,9 @@ export function Seo({ page, jsonLd }: SeoProps) {
     upsertLink('canonical', canonicalUrl);
 
     const schemas = jsonLd ? (Array.isArray(jsonLd) ? [...jsonLd] : [jsonLd]) : [];
-    const scripts = schemas.map((schema, index) => {
+    // Only inject in client-side navigation if not already present from static prerender
+    const existing = document.head.querySelectorAll('script[type="application/ld+json"]');
+    const scripts = existing.length > 0 ? [] : schemas.map((schema, index) => {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.dataset.seoJsonLd = String(index);
