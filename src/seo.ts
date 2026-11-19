@@ -206,7 +206,7 @@ export function homeJsonLd(): Record<string, unknown> {
           name: plan.name,
           url: plan.href,
           price: plan.monthlyPrice ?? 0,
-          priceCurrency: plan.monthlyPrice ? 'INR' : 'INR',
+          priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
         })),
         featureList: [
