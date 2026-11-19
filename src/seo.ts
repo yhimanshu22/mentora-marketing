@@ -129,11 +129,11 @@ export function getSiteUrl(): string {
     (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) ||
     (typeof process !== 'undefined' ? process.env.VITE_SITE_URL : undefined);
 
-  if (configured?.trim()) {
+  if (configured?.trim() && !configured.includes('mentora-marketing-eta.vercel.app')) {
     return configured.trim().replace(/\/$/, '');
   }
 
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && window.location.origin && !window.location.origin.includes('localhost')) {
     return window.location.origin;
   }
 

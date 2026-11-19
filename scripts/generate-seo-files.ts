@@ -9,7 +9,8 @@ const distDir = join(__dirname, '..', 'dist');
 
 import { SITE_URL } from '../src/content';
 
-const siteUrl = (process.env.VITE_SITE_URL || SITE_URL).replace(/\/$/, '');
+const rawSiteUrl = process.env.VITE_SITE_URL || SITE_URL;
+const siteUrl = (rawSiteUrl.includes('mentora-marketing-eta.vercel.app') ? SITE_URL : rawSiteUrl).replace(/\/$/, '');
 
 function routeMeta(path: string): { changefreq: string; priority: string } {
   if (path === '/') {
