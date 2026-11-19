@@ -28,7 +28,9 @@ function routeMeta(path: string): { changefreq: string; priority: string } {
   return { changefreq: 'yearly', priority: '0.4' };
 }
 
-const routes = getPrerenderRoutes();
+const routes = getPrerenderRoutes().filter(
+  (path) => path !== '/login' && !path.startsWith('/billing'),
+);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
