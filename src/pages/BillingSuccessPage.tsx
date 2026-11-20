@@ -6,6 +6,7 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Seo } from '../components/Seo';
 import { apiFetch } from '../lib/api';
+import { trackPurchase } from '../lib/analytics';
 import { container, glassCard } from '../lib/classes';
 import { PAGE_SEO } from '../seo';
 
@@ -29,7 +30,13 @@ export function BillingSuccessPage() {
           token,
         });
         if (cancelled) return;
-        setStatus(data.status === 'paid' ? 'paid' : 'pending');
+        const isPaid = data.status === 'paid';
+        setStatus(isPaid ? 'paid' : 'pending');
+        if (isPaid && sessionId) {
+          trackPurchase({
+            transactionId: sessionId,
+          });
+        }
         await refreshSession();
       } catch {
         if (!cancelled) setStatus('error');

@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { apiFetch } from '../lib/api';
+import { trackLogin, trackSignUp } from '../lib/analytics';
 import {
   AUTH_STORAGE_KEY,
   AUTH_TOKEN_KEY,
@@ -105,6 +106,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         body: JSON.stringify({ credential }),
       });
       persistSession(data.token, data.user, data.entitlements);
+      trackSignUp('google');
+      trackLogin('google');
     },
     [persistSession],
   );

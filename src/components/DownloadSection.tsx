@@ -1,4 +1,5 @@
 import { recordDownload } from '../lib/stats';
+import { trackDownload } from '../lib/analytics';
 import {
   APP_VERSION,
   DOWNLOAD_PLATFORMS,
@@ -10,7 +11,8 @@ import {
 } from '../lib/classes';
 
 export function DownloadSection() {
-  const handleDownload = () => {
+  const handleDownload = (platformName?: string, fileName?: string) => {
+    trackDownload(platformName, fileName);
     recordDownload().catch(console.error);
   };
 
@@ -50,7 +52,7 @@ export function DownloadSection() {
                     <a
                       key={file.id}
                       href={file.href}
-                      onClick={handleDownload}
+                      onClick={() => handleDownload(platform.name, file.label)}
                       className={index === 0 ? `${btnPrimary} text-xs py-2.5` : `${btnSecondary} text-xs py-2.5`}
                       download
                     >
