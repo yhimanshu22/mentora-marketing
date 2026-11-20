@@ -2,5 +2,18 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "mentora-marketing-eta.vercel.app"
+        }
+      ],
+      "destination": "https://mentora.cv/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/((?!assets/).*)", "destination": "/index.html" }]
 }
