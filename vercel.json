@@ -4,6 +4,17 @@
   "framework": "vite",
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "mentora-marketing-eta.vercel.app"
+        }
+      ],
+      "destination": "https://mentora.cv/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
