@@ -38,14 +38,13 @@ export type PageSeo = {
 const HOME_KEYWORDS = [
   'AI meeting assistant',
   'AI interview assistant',
-  'undetectable AI assistant',
-  'invisible meeting assistant',
+  'private AI meeting coach',
   'no-bot meeting AI',
   'real-time AI conversation guidance',
   'interview coaching software',
   'real-time meeting transcription',
   'interview answer assistant',
-  'screen share hide mode',
+  'screen share privacy mode',
   'desktop AI for interviews',
   'Zoom interview help',
   'Teams meeting AI',
@@ -56,7 +55,7 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
     title: 'Mentora — AI Meeting & Interview Assistant',
     description:
-      'Mentora is an undetectable AI meeting assistant for job interviews and online calls. It listens in real time to system audio, transcribing questions and serving profile-aware coaching answers in a floating overlay that stays hidden from screen shares.',
+      'Mentora is a private AI meeting assistant for job interviews and online calls. It transcribes system audio in real time, delivering profile-aware coaching notes in a floating overlay with window content protection.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },

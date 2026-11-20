@@ -25,7 +25,7 @@ export function Hero() {
             Silent coaching for interviews & live calls
           </h1>
           <p className="text-[1.1rem] text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
-            Mentora transcribes conversation audio in real time and streams contextual, profile-aware answers in a discreet desktop HUD that can stay invisible to screen shares.
+            Mentora transcribes conversation audio in real time and streams contextual, profile-aware answers in a discreet desktop HUD with screen share content protection.
           </p>
           <div className="flex flex-wrap items-center gap-3.5 mb-6">
             <a

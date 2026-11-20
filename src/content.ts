@@ -485,6 +485,6 @@ export const STEPS = [
   {
     step: '04',
     title: 'Stay discreet with Hide',
-    description: 'Toggle hide mode before screen sharing to keep the assistant HUD invisible to attendees.',
+    description: 'Toggle hide mode before screen sharing to keep the assistant HUD private to your screen.',
   },
 ] as const;
