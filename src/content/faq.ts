@@ -15,9 +15,9 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
       'Yes. Mentora runs as a desktop app on Windows and macOS and listens to system audio from Zoom, Google Meet, Microsoft Teams, and most other meeting platforms.',
   },
   {
-    question: 'Can Mentora stay hidden during screen sharing?',
+    question: 'How does window protection work during presentations?',
     answer:
-      'Mentora includes Hide mode and content protection designed to keep the coaching window off most screen shares. You can read answers in a floating overlay while presenting or sharing your IDE.',
+      'Mentora includes native window content protection designed to keep the coaching window on your local screen. You can review your preparation notes in a floating overlay while sharing a specific application window or presentation.',
   },
   {
     question: 'Is my meeting audio sent to Mentora servers?',

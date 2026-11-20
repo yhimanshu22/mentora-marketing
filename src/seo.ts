@@ -62,7 +62,7 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   blog: {
     title: 'Blog — AI Interview & Meeting Guides | Mentora',
     description:
-      'Guides on AI interview assistants, hide mode for screen sharing, real-time meeting transcription, and coding interview screenshot assist with Mentora.',
+      'Guides on AI interview coaching, window content protection, real-time meeting transcription, and technical interview preparation with Mentora.',
     path: '/blog',
     keywords:
       'AI interview blog, meeting assistant guides, interview preparation articles, Mentora blog',

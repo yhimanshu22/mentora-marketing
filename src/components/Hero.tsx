@@ -22,10 +22,10 @@ export function Hero() {
       <div className={`${container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-w-0`}>
         <div className="min-w-0 lg:col-span-7">
           <h1 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.6rem)] tracking-tight leading-[1.12] mb-5 text-white">
-            Silent coaching for interviews & live calls
+            Real-time coaching for interviews & live calls
           </h1>
           <p className="text-[1.1rem] text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
-            Mentora transcribes conversation audio in real time and streams contextual, profile-aware answers in a discreet desktop HUD with screen share content protection.
+            Mentora transcribes conversation audio in real time and streams contextual, profile-aware talking points in a clean desktop overlay for professional meetings and interview preparation.
           </p>
           <div className="flex flex-wrap items-center gap-3.5 mb-6">
             <a
@@ -79,7 +79,7 @@ export function Hero() {
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="ml-2 text-[11px] font-mono text-slate-400">Mentora Overlay HUD</span>
+                <span className="ml-2 text-[11px] font-mono text-slate-400">Mentora Assistant</span>
               </div>
               <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

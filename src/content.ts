@@ -442,9 +442,9 @@ export const FEATURES = [
   },
   {
     icon: 'fa-eye-slash',
-    title: 'Hide mode',
+    title: 'Private display overlay',
     description:
-      'Content protection keeps Mentora off most screen shares. Transparent overlay lets you read answers over your IDE.',
+      'Window content protection keeps your coaching notes separated on your private screen while presenting.',
   },
   {
     icon: 'fa-camera',
@@ -475,16 +475,16 @@ export const STEPS = [
   {
     step: '02',
     title: 'Join your meeting',
-    description: 'Mentora listens to system audio, transcribes questions, and coaches you silently.',
+    description: 'Mentora transcribes conversation audio in real time and highlights key discussion points.',
   },
   {
     step: '03',
     title: 'Get real-time answers',
-    description: 'Profile-aware responses stream automatically with talking points and code solutions.',
+    description: 'Profile-aware talking points stream automatically to support your preparation.',
   },
   {
     step: '04',
-    title: 'Stay discreet with Hide',
-    description: 'Toggle hide mode before screen sharing to keep the assistant HUD private to your screen.',
+    title: 'Private display overlay',
+    description: 'Use native OS content protection so your notes remain on your personal display during presentations.',
   },
 ] as const;

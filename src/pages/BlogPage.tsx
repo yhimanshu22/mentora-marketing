@@ -18,7 +18,7 @@ export function BlogPage() {
             <p className={eyebrow}>Blog</p>
             <h1 className={sectionTitle}>Interview &amp; meeting AI guides</h1>
             <p className="text-slate-400 text-[1.05rem]">
-              Practical guides on AI interview assistants, hide mode, transcription, and technical
+              Practical guides on AI interview coaching, meeting transcription, and technical
               screen preparation.
             </p>
           </div>
