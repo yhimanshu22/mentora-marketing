@@ -28,7 +28,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="text-[1.15rem] text-[#a1a1aa] max-w-2xl mb-10 leading-relaxed font-normal">
-          Real-time transcription, instant executive summaries, and smart action item tracking. All in a private desktop HUD across Zoom, Teams, and Google Meet without annoying bot invites.
+          Real-time transcription, instant executive summaries, and smart action item tracking. All in a private desktop HUD across Zoom, Teams, and Google Meet.
         </p>
 
         {/* Primary and Secondary CTA group */}
@@ -49,7 +49,7 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-[#71717a] mb-14">
-          Ready in 30 seconds · No calendar bot invite required · Windows &amp; macOS
+          Ready in 30 seconds · Windows &amp; macOS
         </p>
 
         {/* Live UI Mockup Preview Frame */}
