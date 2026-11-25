@@ -22,7 +22,7 @@ export function Hero() {
       <div className={`${container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-w-0`}>
         <div className="min-w-0 lg:col-span-7">
           <h1 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.6rem)] tracking-tight leading-[1.12] mb-5 text-white">
-            AI Meeting Assistant &amp; Real-Time Summarisation Tool
+            #1 AI Meeting Assistant &amp; Real-Time Summarisation Tool
           </h1>
           <p className="text-[1.1rem] text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
             Mentora transcribes live meetings, generates instant structured summaries and action items, and surfaces real-time talking points in a private desktop overlay.
