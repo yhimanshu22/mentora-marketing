@@ -22,10 +22,10 @@ export function Hero() {
       <div className={`${container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-w-0`}>
         <div className="min-w-0 lg:col-span-7">
           <h1 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.6rem)] tracking-tight leading-[1.12] mb-5 text-white">
-            Real-time coaching for interviews & live calls
+            AI Meeting Assistant &amp; Real-Time Summarisation Tool
           </h1>
           <p className="text-[1.1rem] text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
-            Mentora transcribes conversation audio in real time and streams contextual, profile-aware talking points in a clean desktop overlay for professional meetings and interview preparation.
+            Mentora transcribes live meetings, generates instant structured summaries and action items, and surfaces real-time talking points in a private desktop overlay.
           </p>
           <div className="flex flex-wrap items-center gap-3.5 mb-6">
             <a
@@ -45,7 +45,7 @@ export function Hero() {
           {stats && (
             <div className="flex items-center gap-4 mb-6 text-xs text-slate-400 bg-white/[0.03] border border-white/[0.08] w-fit px-3.5 py-1.5 rounded-md">
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
                 <span>{stats.visits.toLocaleString()} visitors</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-slate-700" />
@@ -64,7 +64,7 @@ export function Hero() {
               <i className="fab fa-apple text-slate-400" aria-hidden="true" /> macOS (Apple Silicon & Intel)
             </span>
             <span>•</span>
-            <a href="#download" className="text-indigo-400 hover:text-indigo-300 underline underline-offset-4 decoration-indigo-400/30">
+            <a href="#download" className="text-slate-300 hover:text-white underline underline-offset-4 decoration-white/30">
               Install guide
             </a>
           </div>
@@ -79,11 +79,11 @@ export function Hero() {
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="ml-2 text-[11px] font-mono text-slate-400">Mentora Assistant</span>
+                <span className="ml-2 text-[11px] font-mono text-slate-400">Mentora Meeting Assistant</span>
               </div>
               <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Screen Hide: Active
+                Live Recap: Active
               </div>
             </div>
 
@@ -93,36 +93,36 @@ export function Hero() {
               <div className="p-3 rounded-lg bg-white/[0.04] border border-white/[0.06] text-xs">
                 <div className="flex items-center justify-between text-[10px] font-medium text-slate-400 mb-1.5">
                   <span className="flex items-center gap-1">
-                    <i className="fas fa-user text-slate-500 text-[9px]" /> Interviewer
+                    <i className="fas fa-users text-slate-500 text-[9px]" /> Team Sync · Product &amp; Eng
                   </span>
-                  <span className="font-mono text-[9px] text-slate-500">Just now</span>
+                  <span className="font-mono text-[9px] text-slate-500">Live Transcription</span>
                 </div>
                 <p className="text-slate-200 leading-snug font-medium">
-                  "How did you handle state synchronization across distributed microservices in your previous project?"
+                  "Let's finalize Q3 migration milestones. Can we confirm the rollout plan and assign owners for database cutover?"
                 </p>
               </div>
 
               {/* AI Suggestion Box */}
-              <div className="p-3.5 rounded-lg bg-indigo-950/30 border border-indigo-500/30 text-xs shadow-inner">
-                <div className="flex items-center justify-between text-[10px] text-indigo-300 font-semibold mb-2">
+              <div className="p-3.5 rounded-lg bg-white/[0.04] border border-white/20 text-xs shadow-inner">
+                <div className="flex items-center justify-between text-[10px] text-white font-semibold mb-2">
                   <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-                    Suggested Talking Points (Profile-Matched)
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                    Instant Meeting Summary &amp; Action Items
                   </span>
-                  <span className="font-mono text-[9px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-200">1.8s</span>
+                  <span className="font-mono text-[9px] px-1.5 py-0.5 rounded bg-white/10 text-slate-200">Live Recap</span>
                 </div>
                 <ul className="space-y-1.5 text-slate-300 text-[11px] leading-relaxed">
                   <li className="flex items-start gap-1.5">
-                    <span className="text-indigo-400 font-bold">•</span>
-                    <span><strong>Event-driven architecture:</strong> Implemented transactional outbox pattern with Kafka.</span>
+                    <span className="text-white font-bold">•</span>
+                    <span><strong>Key Decision:</strong> Migrate staging workloads first on Oct 12, followed by zero-downtime production cutover on Oct 19.</span>
                   </li>
                   <li className="flex items-start gap-1.5">
-                    <span className="text-indigo-400 font-bold">•</span>
-                    <span><strong>Consistency trade-offs:</strong> Chose eventual consistency for order updates, reducing lock contention by 65%.</span>
+                    <span className="text-white font-bold">•</span>
+                    <span><strong>Action Item (Alex):</strong> Set up read-replica failover scripts and verify dry-run benchmarks by Friday.</span>
                   </li>
                   <li className="flex items-start gap-1.5">
-                    <span className="text-indigo-400 font-bold">•</span>
-                    <span><strong>Idempotency:</strong> Handled deduplication via unique trace IDs in Redis.</span>
+                    <span className="text-white font-bold">•</span>
+                    <span><strong>Action Item (Sara):</strong> Share updated customer communication draft with leadership before end of day.</span>
                   </li>
                 </ul>
               </div>

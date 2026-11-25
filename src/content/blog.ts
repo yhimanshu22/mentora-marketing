@@ -10,240 +10,224 @@ export type BlogPost = {
 
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
-    slug: 'ai-interview-assistant-guide',
-    title: 'AI Interview Assistant: Live Technical Screens Guide',
+    slug: 'ai-meeting-assistant-summarisation-guide',
+    title: 'The Modern Guide to AI Meeting Assistants & Real-Time Summarisation',
     excerpt:
-      'Learn how an AI interview assistant helps with real-time transcription, resume-aware answers, and private coaching during Zoom and Teams calls.',
+      'Discover how an AI meeting assistant captures live conversation audio, transcribes discussions with sub-second latency, and delivers structured meeting summaries and action items.',
     publishedAt: '2026-06-10',
     readMinutes: 6,
     keywords:
-      'AI interview assistant, technical interview preparation, live interview coaching, Zoom interview help',
+      'AI meeting assistant, meeting summarisation tool, real-time meeting transcription, meeting summaries, AI action items',
     sections: [
       {
         paragraphs: [
-          'Technical interviews move fast. You are expected to explain past projects, solve problems on the spot, and stay calm while interviewers stack follow-up questions. An AI interview assistant like Mentora listens to meeting audio, transcribes questions in real time, and suggests answers based on your resume.',
+          'High-performing teams spend dozens of hours every week in syncs, reviews, and client calls. When conversations move quickly, manual note-taking distracts participants from actively listening and engaging. An AI meeting assistant like Mentora captures system audio in real time, generates accurate live transcripts, and automates structured meeting summarisation.',
         ],
       },
       {
-        heading: 'Why real-time transcription matters',
+        heading: 'Why real-time transcription transforms meeting productivity',
         paragraphs: [
-          'When nerves kick in, it is easy to miss part of a question. Live transcription gives you a second chance to read exactly what was asked before you answer. Mentora uses fast speech-to-text so you are not guessing what the interviewer meant.',
-          'This is especially useful in panel interviews, accent-heavy calls, or noisy environments where audio quality is inconsistent.',
+          'Live transcription ensures you never miss critical nuances, sprint updates, or technical specifications. Mentora uses fast speech-to-text models like Groq Whisper so you can follow verbatim discussions with sub-second latency directly on your desktop.',
+          'This is especially valuable for remote cross-functional teams, multi-speaker panel reviews, and noisy environments where audio clarity fluctuates.',
         ],
       },
       {
-        heading: 'Profile-aware answers beat generic AI',
+        heading: 'From raw conversation to structured summaries',
         paragraphs: [
-          'Generic chatbots do not know your background. Mentora loads your resume, skills, and project notes so every suggestion sounds like you—not a template. That makes follow-up questions easier because your story stays consistent.',
+          'A giant wall of text transcript is difficult to digest. What teams actually need is structured intelligence: key takeaways, decisions made, open questions, and designated action item owners. Mentora automatically synthesizes discussion points into clear executive summaries ready for Slack, Jira, or email.',
         ],
       },
       {
-        heading: 'Private overlay with content protection',
+        heading: 'No awkward meeting bots required',
         paragraphs: [
-          'Screen sharing is common in technical rounds. Mentora window content protection helps keep coaching notes on your private screen while you read answers in a floating desktop window above your IDE or browser.',
+          'Traditional meeting tools require an invasive third-party bot to join the call room, which can raise confidentiality concerns and interrupt client meetings. Mentora runs locally on your desktop (Windows & macOS), processing system audio directly without any bot invites.',
         ],
       },
     ],
   },
   {
-    slug: 'hide-mode-screen-share-interviews',
-    title: 'Private Display Mode: Screen Sharing Protection for Interviews',
+    slug: 'hide-mode-screen-share-meetings',
+    title: 'Private Display Mode: Screen Sharing Protection for AI Meeting Assistants',
     excerpt:
-      'Private display mode lets you use an AI meeting assistant with window protection so coaching notes remain private on your personal screen.',
+      'Learn how private display mode and window content protection let you view live meeting notes, agendas, and summaries without sharing them during screen presentations.',
     publishedAt: '2026-06-12',
     readMinutes: 5,
     keywords:
-      'screen share privacy, interview assistant, Zoom screen share privacy, meeting overlay',
+      'screen share privacy, AI meeting assistant overlay, Zoom screen share privacy, meeting summarisation notes',
     sections: [
       {
         paragraphs: [
-          'Many professionals use AI coaching during meetings and interviews to organize their thoughts, but worry about desktop clutter during screen shares. Keeping your notes separated and private ensures your presentations stay focused on your work.',
+          'When presenting slides, demonstrating software, or sharing a spreadsheet during calls, keeping your assistant notes and summaries private is critical. Desktop clutter and accidental window shares can distract viewers and compromise internal discussion points.',
         ],
       },
       {
-        heading: 'How private display mode works',
+        heading: 'How native window content protection works',
         paragraphs: [
-          'Mentora uses native OS window affinity and content protection designed to keep the coaching overlay on your local display. You can position the window above your code editor or notes to review talking points without cluttering the presentation.',
-          'Always test your display settings with your exact meeting setup before important calls, as different platforms handle multi-monitor capture differently.',
+          'Mentora uses native OS window affinity and content protection designed to keep the assistant overlay visible only on your personal display. While sharing an application or full screen on Zoom, Microsoft Teams, or Google Meet, your private talking points and live summaries remain protected.',
+          'This enables you to maintain a persistent HUD over your IDE, browser, or slide deck without fear of broadcasting your notes to other attendees.',
         ],
       },
       {
-        heading: 'Best practices for confident delivery',
+        heading: 'Best practices for confident remote presentations',
         paragraphs: [
-          'Set up your display preferences before sharing your screen. Use compact bullet points instead of long paragraphs. Keep notes concise so your communication remains authentic and conversational.',
-          'Mentora is a coaching assistant—not a script. Use it to quickly recall metrics, project details, and framework concepts, then speak in your own voice.',
+          'Position your floating assistant near your web camera to maintain natural eye contact while referencing talking points. Use bulleted takeaways rather than long blocks of text for rapid scanning.',
+          'Mentora acts as an executive copilot: glance at live discussion summaries, reference relevant project documents, and lead the conversation with authority.',
         ],
       },
     ],
   },
   {
     slug: 'real-time-meeting-transcription-tools',
-    title: 'Real-Time Meeting Transcription for Interviews',
+    title: 'Real-Time Meeting Transcription & Summarisation Tools: What Matters',
     excerpt:
-      'Compare what makes real-time meeting transcription useful for interviews: latency, accuracy, local processing, and integration with AI answer tools.',
+      'A deep dive into speech-to-text latency, local audio processing, security, and instant summarisation for modern business and engineering meetings.',
     publishedAt: '2026-06-14',
     readMinutes: 5,
     keywords:
-      'real-time meeting transcription, interview transcription software, live STT for meetings, Groq Whisper',
+      'real-time meeting transcription, meeting summarisation tool, live STT for meetings, Groq Whisper summaries',
     sections: [
       {
         paragraphs: [
-          'Not all transcription tools are built for live interviews. Post-meeting summaries help with notes, but interviews need low latency, high accuracy, and tight integration with answer generation.',
+          'Not all meeting transcription software is built the same. Post-processed cloud recordings take minutes or hours to process, rendering them useless during live calls. Modern productivity demands real-time transcription tightly coupled with instantaneous summarisation.',
         ],
       },
       {
-        heading: 'Latency is everything',
+        heading: 'Latency is everything in live discussions',
         paragraphs: [
-          'If transcription arrives five seconds after a question, you have already started answering. Mentora targets sub-second transcription using fast STT providers like Groq Whisper so prompts appear while the question is still fresh.',
+          'If speech transcription lags by five seconds, the conversation has already moved on. Mentora targets sub-second transcription using high-speed STT providers like Groq Whisper, allowing the AI to generate summaries and answer live questions as they arise.',
         ],
       },
       {
-        heading: 'Local processing and privacy',
+        heading: 'Privacy and local audio architecture',
         paragraphs: [
-          'Interview conversations can include salary expectations, employer names, and proprietary project details. Choose tools that process audio locally when possible and let you control which API keys send data to third parties.',
+          'Enterprise discussions involve product roadmaps, financials, and proprietary customer data. Choosing tools that capture system audio directly from the OS—rather than granting third-party web crawlers access to your calendar—protects corporate privacy.',
         ],
       },
       {
-        heading: 'From transcript to coaching',
+        heading: 'Automated action item extraction',
         paragraphs: [
-          'Transcription alone is not enough. The best meeting assistants pipe transcripts directly into profile-aware AI models so you get suggested talking points—not just a wall of text to read mid-call.',
+          'The real value of transcription is automated follow-up. Mentora detects commitments made by participants (e.g., "I will send the revised proposal by 3 PM") and compiles them into a structured checklist before you even end the call.',
         ],
       },
     ],
   },
   {
-    slug: 'coding-interview-screenshot-assist',
-    title: 'Coding Interview Screenshot Assist & Technical Preparation Guide',
+    slug: 'screenshot-assist-meeting-summarisation',
+    title: 'Visual Meeting Intelligence: Screenshot Assist & Diagram Summarisation',
     excerpt:
-      'How screenshot assist captures problem statements, architecture diagrams, and IDE questions to generate step-by-step coaching during technical interviews.',
+      'How visual screenshot assist captures shared slides, architecture diagrams, charts, and spreadsheets to provide immediate technical context and summaries.',
     publishedAt: '2026-06-16',
     readMinutes: 4,
     keywords:
-      'coding interview assist, technical interview AI, coding interview preparation, problem solver',
+      'visual meeting intelligence, screenshot assist, slide summarisation tool, diagram OCR AI',
     sections: [
       {
         paragraphs: [
-          'Technical interviews often jump between verbal questions and on-screen problem statements. Screenshot assist lets you capture the prompt—whether it is a shared diagram, slide, or IDE view—and get structured guidance without retyping the question.',
+          'Meetings rarely rely solely on spoken audio. Stakeholders frequently present architectural diagrams, complex metrics dashboards, financial tables, and code snippets on screen. Visual OCR capture bridges the gap between what is said and what is shown.',
         ],
       },
       {
-        heading: 'When screenshot assist helps most',
+        heading: 'Instant context from visual slides',
         paragraphs: [
-          'Complex problem statements with multiple edge cases and examples take time to parse under pressure. A quick capture saves time and helps you organize your approach methodically.',
-          'Mentora grounds explanations in your profile, referencing your preferred programming languages, libraries, and architectural patterns.',
+          'With a simple hotkey, Mentora captures selected screen regions—such as a complex flowchart or quarterly KPI table—and uses multimodal vision models to extract data, explain architecture, or highlight inconsistencies.',
+          'This context is merged with the meeting transcript, creating a unified summary that combines spoken discussion with the visual slides presented.',
         ],
       },
       {
-        heading: 'Use it as a coach, not a crutch',
+        heading: 'Accelerating technical and client discussions',
         paragraphs: [
-          'Great developers explain their design decisions out loud. Use screenshot assist to double-check edge cases, verify time complexity, or recall syntax—enhancing your natural technical problem-solving ability.',
+          'Whether you are reviewing code, debugging production logs live with colleagues, or analyzing product mocks with clients, visual intelligence ensures you can ask insightful questions and contribute decisively without delay.',
         ],
       },
     ],
   },
   {
-    slug: 'best-cluely-alternatives-ai-interview-assistant',
-    title: 'Best Cluely Alternatives for Live AI Interview Coaching',
+    slug: 'best-ai-meeting-assistants-summarisation-tools',
+    title: 'Best AI Meeting Assistants & Summarisation Tools in 2026',
     excerpt:
-      'Looking for a Cluely alternative? Compare top privacy-first AI meeting assistants with window protection, profile-aware coaching, and real-time audio transcription.',
+      'Compare top AI meeting assistants and summarisation tools. Discover why bot-free, privacy-first desktop assistants like Mentora offer distinct advantages over cloud bots.',
     publishedAt: '2026-06-20',
     readMinutes: 6,
     keywords:
-      'Cluely alternative, best Cluely alternatives, private AI interview assistant, AI meeting copilot, live interview assistant',
+      'best AI meeting assistant, meeting summarisation tool, top meeting notes AI, bot-free meeting recorder, Mentora vs Otter',
     sections: [
       {
         paragraphs: [
-          'Cluely gained attention as one of the early AI conversation assistants for video calls. However, as Cluely shifted focus toward general sales enablement and CRM meeting summaries, many candidates and engineers began searching for dedicated, privacy-focused AI interview assistants that offer real-time audio guidance and streamlined desktop overlays.',
-          'Whether you are preparing for technical screens, behavioral rounds, or remote panel discussions, here is an in-depth look at what to expect from modern alternatives and why Mentora has emerged as a top choice.',
+          'The demand for AI meeting assistants and summarisation tools has exploded as teams fight meeting fatigue and fragmented communication. Today’s software landscape spans from intrusive calendar-joining bots to discreet native desktop copilots.',
+          'Here is a breakdown of what professionals should look for in meeting summarisation software and why Mentora stands out as a leading privacy-first choice.',
         ],
       },
       {
-        heading: 'Why candidates look for Cluely alternatives',
+        heading: 'Key limitations of traditional meeting bots',
         paragraphs: [
-          'While Cluely established on-screen conversational prompts, professionals often face key limitations during live interviews:',
-          '1. Shift in Product Focus: Cluely pivoted primarily toward enterprise sales teams and CRM summaries rather than individual interview preparation and technical problem-solving.',
-          '2. High Subscription Costs: Many alternatives require expensive $20–$50 monthly commitments without a low-friction trial plan to test latency beforehand.',
-          '3. Browser-Only Limitations: Browser extensions can struggle with multi-monitor desktop apps compared to dedicated native desktop software.',
-          '4. Generic AI Responses: Standard chatbot wrappers output generic advice that does not match your specific work history, resume metrics, or engineering background.',
+          'While tools like Otter.ai, Fireflies, and Fathom popularized automated transcripts, users regularly encounter friction:',
+          '1. Intrusive Meeting Bots: External bot accounts joining meetings create awkward social friction and are often blocked by corporate security policies.',
+          '2. Post-Meeting Delays: Many cloud tools require waiting several minutes after a call ends before summaries become available.',
+          '3. High Monthly Lock-ins: Mandatory recurring enterprise pricing structures often force teams into rigid long-term contracts.',
+          '4. Lack of Live Guidance: Most bots are passive listeners that summarize later, offering zero real-time talking points or private on-screen assistance during the meeting itself.',
         ],
       },
       {
-        heading: '1. Mentora AI: Dedicated Native Desktop Copilot',
+        heading: 'Why Mentora AI is the modern alternative',
         paragraphs: [
-          'Mentora was purpose-built as a lightweight AI meeting and interview assistant for Windows and macOS. Unlike meeting bots that must be invited into the call room, Mentora captures system audio locally and displays talking points in a clean, private floating HUD.',
-          'Key Mentora Advantages:',
-          '• Content-Protected Overlay: Built-in OS content protection keeps your assistant HUD on your personal screen during presentations.',
-          '• Profile-Aware Coaching: Upload your resume, projects, and target role notes. Mentora grounds recommendations in your authentic professional experience.',
-          '• Sub-Second Real-Time Transcription: Powered by ultra-low-latency speech-to-text with Groq Whisper and streaming models from OpenAI and Gemini.',
-          '• Built-in Screenshot Assist: Capture coding prompts, IDE errors, or slide questions with a hotkey to receive structured guidance.',
-          '• Accessible Pricing: Start with the Starter plan for just $1 (15 credits) to test live on your own machine before upgrading.',
+          'Mentora was purpose-engineered as a high-performance native desktop meeting assistant for Windows and macOS.',
+          'Core Mentora Advantages:',
+          '• 100% Bot-Free Audio Capture: Directly captures system sound and microphone input without sending external bots into your meeting room.',
+          '• Real-Time Meeting Summarisation: Delivers running bullet points, decisions, and action items as the meeting progresses.',
+          '• Private Desktop Overlay: OS-level content protection keeps your notes completely invisible to viewers during screen sharing.',
+          '• Document-Aware Intelligence: Upload company wikis, project documentation, or resumes to ground live responses in authentic context.',
+          '• Transparent Credit Pricing: Start for just $1 (15 credits) to experience instant summarisation before scaling.',
         ],
       },
       {
-        heading: '2. Final Round AI & Interview Sidekick',
+        heading: 'Feature Comparison',
         paragraphs: [
-          'Final Round AI and Interview Sidekick are cloud-based interview tools that transcribe audio and generate bulleted talking points. They offer comprehensive mock interview modes and role-specific question banks.',
-          'However, both platforms rely heavily on expensive recurring subscriptions (often exceeding $100+/month) and lack self-hosted or one-time license options.',
+          '• Compatibility: Works universally across Zoom, Google Meet, Teams, Webex, Slack, and Discord.',
+          '• Live HUD: Displays talking points and summaries in a non-intrusive floating window above all apps.',
+          '• Visual Assist: Hotkey screenshot capture allows simultaneous analysis of shared slides and charts.',
+          '• Full Source Code Option: Teams with strict internal compliance can purchase full source code to self-host.',
         ],
       },
       {
-        heading: '3. Interview Coder (Technical Coding Focus)',
+        heading: 'Conclusion',
         paragraphs: [
-          'For software engineers who strictly need help with algorithms and syntax, Interview Coder offers OCR-based screen capture. While focused on code snippets, it lacks conversational speech transcription and behavioral coaching.',
-        ],
-      },
-      {
-        heading: 'Feature Comparison: Mentora vs. Cluely',
-        paragraphs: [
-          '• Platform Compatibility: Mentora supports Zoom, Google Meet, Microsoft Teams, Webex, and browser calls on Windows and macOS.',
-          '• Screen Share Protection: Mentora includes OS-level content protection so coaching notes stay private on your local screen.',
-          '• Resume Integration: Full PDF and profile parsing ensures talking points reflect your real accomplishments and metrics.',
-          '• Flexible Pricing: Mentora provides a $1 Starter trial, transparent credit scaling, and full source code buyout options.',
-        ],
-      },
-      {
-        heading: 'Final Verdict: Choosing the Right Tool',
-        paragraphs: [
-          'If you need a sales note-taker or post-meeting summary tool, general meeting tools work well. But if your goal is calm, profile-aligned confidence in job interviews and technical discussions without bot invites or awkward setup, Mentora delivers a refined, privacy-first experience.',
+          'If you want immediate meeting clarity, instant structured summaries, and private real-time support without intrusive bots, Mentora provides the most seamless and versatile desktop solution.',
         ],
       },
     ],
   },
   {
-    slug: 'top-final-round-ai-alternatives-interview-copilot',
-    title: 'Top Final Round AI Alternatives for Live Interviews',
+    slug: 'automated-meeting-notes-action-items-guide',
+    title: 'How to Automate Meeting Notes and Action Items with AI',
     excerpt:
-      'Compare the best Final Round AI alternatives for real-time interview coaching, private desktop HUDs, and low-latency audio transcription.',
+      'Learn how automated meeting summarisation eliminates manual note-taking, improves team alignment, and guarantees follow-through on every project commitment.',
     publishedAt: '2026-06-22',
     readMinutes: 5,
     keywords:
-      'Final Round AI alternative, best Final Round AI alternatives, AI interview copilot, live interview assistant, interview sidekick alternative',
+      'automated meeting notes, meeting action items AI, meeting summarisation workflow, productive meetings',
     sections: [
       {
         paragraphs: [
-          'Final Round AI popularized real-time interview assistants, but high recurring pricing and rigid subscription lock-ins lead many candidates to explore alternative tools. When preparing for technical, behavioral, or executive interviews, having reliable, low-latency, and private AI assistance makes all the difference.',
+          'Unclear takeaways and forgotten action items are among the biggest drivers of wasted organizational time. When team members multitask between listening and typing notes, essential context is lost. Automating meeting notes with an AI meeting assistant transforms everyday discussions into clear operational momentum.',
         ],
       },
       {
-        heading: 'Key Criteria for a Modern Interview Copilot',
+        heading: 'The anatomy of an effective meeting summary',
         paragraphs: [
-          'When evaluating interview copilot alternatives, prioritize four critical capabilities: transcription latency, display privacy, resume context awareness, and transparent pricing without forced auto-renewals.',
+          'An actionable meeting summary must contain four critical elements: a high-level executive recap, categorized discussion topics, decisions agreed upon, and an explicit list of action items assigned to specific owners with deadlines.',
         ],
       },
       {
-        heading: 'Why Mentora is the Leading Final Round AI Alternative',
+        heading: 'Zero-effort workflow with Mentora',
         paragraphs: [
-          'Mentora delivers the power of live AI coaching in a lightweight desktop application with key advantages over Final Round AI:',
-          '• Private Desktop Overlay: Runs via local system audio capture with dedicated content protection so coaching notes remain private on your display.',
-          '• Profile-Grounded Answers: Rather than giving generic textbook answers, Mentora customizes every suggested talking point using your uploaded resume and skill set.',
-          '• Transparent Credit Model: Test the full application with Starter for just $1, without predatory long-term lock-in.',
-          '• Self-Hosting Availability: Enterprise users and privacy advocates can purchase the complete source code to host on their own infrastructure.',
+          'With Mentora running on your desktop, you simply start your call. The assistant listens in the background, transcribes dialogue in real time, and continuously updates key takeaways in your private HUD.',
+          'Once the call concludes, copy the structured summary or export action items straight into Slack, Notion, or your project tracker in seconds.',
         ],
       },
       {
         heading: 'Summary',
         paragraphs: [
-          'By choosing an interview assistant designed around privacy, speed, and tailored resume matching, you maintain complete composure during tough questions while speaking authentically in your own voice.',
+          'By leveraging an AI meeting assistant and summarisation tool, teams reclaim hours of manual work every week, eliminate ambiguity, and maintain total alignment across all projects.',
         ],
       },
     ],

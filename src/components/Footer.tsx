@@ -35,7 +35,7 @@ export function Footer() {
               <span>Mentora AI</span>
             </div>
             <p className="text-sm text-slate-500 mb-4 max-w-sm">
-              Real-time transcription and AI coaching for interviews and meetings.
+              Real-time meeting assistant, live transcription, and automatic summarisation tool.
             </p>
             <div className="mb-5">
               <a
@@ -46,7 +46,7 @@ export function Footer() {
               >
                 <img
                   src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1175821&theme=light&t=1782303221233"
-                  alt="Mentora AI - AI meeting assistant for interviews and meetings | Product Hunt"
+                  alt="Mentora AI - AI meeting assistant and summarisation tool | Product Hunt"
                   width="180"
                   height="39"
                   className="w-[180px] h-[39px]"
@@ -54,10 +54,10 @@ export function Footer() {
               </a>
             </div>
             <div className="flex flex-col gap-1.5 text-sm text-slate-400">
-              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-indigo-300 break-all">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white break-all">
                 {CONTACT_EMAIL}
               </a>
-              <a href={`tel:+91${CONTACT_PHONE}`} className="hover:text-indigo-300 w-fit">
+              <a href={`tel:+91${CONTACT_PHONE}`} className="hover:text-white w-fit">
                 {CONTACT_PHONE_DISPLAY}
               </a>
               <p className="text-slate-500 max-w-sm">
@@ -69,7 +69,7 @@ export function Footer() {
 
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 md:gap-16 text-left shrink-0">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300 mb-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">
                 Product
               </p>
               <ul className="flex flex-col gap-2.5">
@@ -77,7 +77,7 @@ export function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-slate-400 hover:text-indigo-300"
+                      className="text-sm text-slate-400 hover:text-white"
                     >
                       {link.label}
                     </a>
@@ -86,7 +86,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300 mb-3">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">
                 Company
               </p>
               <ul className="flex flex-col gap-2.5">
@@ -94,7 +94,7 @@ export function Footer() {
                   <li key={link.to}>
                     <Link
                       to={link.to}
-                      className="text-sm text-slate-400 hover:text-indigo-300"
+                      className="text-sm text-slate-400 hover:text-white"
                     >
                       {link.label}
                     </Link>

@@ -11,7 +11,7 @@ export function HowItWorks() {
       <div className={container}>
         <div className={sectionHead}>
           <h2 className={sectionTitle}>Up and running in minutes</h2>
-          <p className="text-slate-400 text-[1.05rem]">Zero complex setup. Connects with your local audio drivers instantly.</p>
+          <p className="text-slate-400 text-[1.05rem]">Zero bot invites. Works automatically with your meeting apps and local audio.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {STEPS.map((item) => (
@@ -19,7 +19,7 @@ export function HowItWorks() {
               key={item.step}
               className="p-6 rounded-xl bg-slate-900/40 border border-white/[0.08] relative group hover:border-white/20 transition-colors"
             >
-              <div className="text-xs font-mono text-indigo-400 font-semibold mb-4 bg-indigo-500/10 w-fit px-2 py-0.5 rounded border border-indigo-500/20">
+              <div className="text-xs font-mono text-slate-200 font-semibold mb-4 bg-white/[0.06] w-fit px-2 py-0.5 rounded border border-white/20">
                 STEP {item.step}
               </div>
               <h3 className="text-base font-semibold text-white mb-2 tracking-tight">{item.title}</h3>

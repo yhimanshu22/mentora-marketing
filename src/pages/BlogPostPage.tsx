@@ -19,7 +19,7 @@ export function BlogPostPage() {
           <div className={`${container} max-w-2xl`}>
             <h1 className="font-display text-2xl mb-3">Article not found</h1>
             <p className="text-slate-400 mb-6">This blog post does not exist.</p>
-            <Link to="/blog" className="text-indigo-300 hover:text-indigo-200 text-sm">
+            <Link to="/blog" className="text-white hover:text-slate-200 text-sm">
               ← Back to blog
             </Link>
           </div>
@@ -39,7 +39,7 @@ export function BlogPostPage() {
         <article className={`${container} max-w-2xl`}>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-1.5 text-sm text-slate-400 mb-5 hover:text-indigo-300"
+            className="inline-flex items-center gap-1.5 text-sm text-slate-400 mb-5 hover:text-white"
           >
             <i className="fas fa-arrow-left" aria-hidden="true" /> Back to blog
           </Link>

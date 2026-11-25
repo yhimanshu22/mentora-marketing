@@ -40,9 +40,9 @@ export function planPillClass(plan: PlanId | string): string {
     case 'pro':
       return `${base} bg-blue-500/20 text-blue-300 border-blue-500/30`;
     case 'ultimate':
-      return `${base} bg-indigo-500/25 text-indigo-300 border-indigo-500/35`;
+      return `${base} bg-white/10 text-white border-white/20`;
     case 'magic':
-      return `${base} bg-violet-500/20 text-violet-300 border-violet-500/30`;
+      return `${base} bg-white/[0.15] text-white border-white/25`;
     default:
       return `${base} bg-slate-500/20 text-slate-300 border-slate-500/25`;
   }

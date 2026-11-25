@@ -70,7 +70,7 @@ export function BillingSuccessPage() {
                     ? `Your ${user.plan} subscription is active with ${user.credits} credits for this billing period.`
                     : 'Your subscription is now active.'}
                 </p>
-                <Link to="/billing" className="text-indigo-300 hover:text-indigo-200">
+                <Link to="/billing" className="text-white hover:text-slate-200">
                   View billing & credits
                 </Link>
               </>

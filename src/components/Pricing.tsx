@@ -87,7 +87,7 @@ export function Pricing() {
         <div className={sectionHead}>
           <h2 className={sectionTitle}>Simple, predictable plans</h2>
           <p className={sectionLead}>
-            Get started with 15 credits for just $1, then scale up as your interview schedule accelerates.
+            Get started with 15 credits for just $1, then scale up as your meeting and summarisation needs grow.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export function Pricing() {
                 type="button"
                 className={`text-xs font-medium px-4 py-2 rounded-md transition-all duration-150 cursor-pointer ${
                   billingPeriod === months
-                    ? 'bg-indigo-600 text-white shadow-sm font-semibold'
+                    ? 'bg-white text-slate-950 shadow-sm font-semibold'
                     : 'text-slate-400 hover:text-white'
                 }`}
                 aria-pressed={billingPeriod === months}
@@ -127,12 +127,12 @@ export function Pricing() {
                 key={plan.id}
                 className={`p-6 rounded-xl relative min-w-0 flex flex-col justify-between transition-all duration-200 ${
                   plan.featured
-                    ? 'bg-slate-900/90 border-2 border-indigo-500/80 shadow-[0_12px_40px_rgba(99,102,241,0.15)] ring-1 ring-indigo-500/20'
+                    ? 'bg-slate-900/90 border-2 border-white/60 shadow-[0_12px_40px_rgba(255,255,255,0.08)] ring-1 ring-white/20'
                     : 'bg-slate-900/40 border border-white/[0.08] hover:border-white/20'
                 }`}
               >
                 {plan.badge ? (
-                  <p className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500 text-white shadow-sm">
+                  <p className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white text-slate-950 shadow-sm">
                     {plan.badge}
                   </p>
                 ) : null}
@@ -175,7 +175,7 @@ export function Pricing() {
                   </ul>
 
                   {plan.upgradeAddOnMonthly ? (
-                    <p className="text-[11px] text-indigo-300 -mt-2 mb-4 px-2.5 py-2 rounded bg-indigo-500/10 border border-indigo-500/20 break-words leading-snug">
+                    <p className="text-[11px] text-slate-200 -mt-2 mb-4 px-2.5 py-2 rounded bg-white/[0.06] border border-white/20 break-words leading-snug">
                       Upgrade add-on: +{formatInr(plan.upgradeAddOnMonthly)}/mo
                     </p>
                   ) : null}
@@ -203,7 +203,7 @@ export function Pricing() {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-5 max-w-md mx-auto">
           <article className={`${glassCard} p-7 max-sm:p-5 relative min-w-0`}>
-            <p className="text-sm font-semibold text-indigo-300 mb-1.5">Full Source Code</p>
+            <p className="text-sm font-semibold text-white mb-1.5">Full Source Code</p>
             <p className="text-[clamp(1.5rem,5vw,2.25rem)] font-bold mb-2 leading-snug break-words">
               $499 <span className="text-[0.925rem] font-medium text-slate-400">one-time</span>
             </p>

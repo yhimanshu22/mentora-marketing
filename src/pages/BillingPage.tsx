@@ -81,7 +81,7 @@ export function BillingPage() {
       <main className="w-full overflow-x-hidden py-20 max-sm:py-14">
         <div className={`${container} max-w-lg`}>
           <div className="mb-6">
-            <Link to="/" className="text-sm text-slate-500 hover:text-indigo-300">
+            <Link to="/" className="text-sm text-slate-500 hover:text-white">
               ← Back to home
             </Link>
           </div>
@@ -91,7 +91,7 @@ export function BillingPage() {
               <img
                 src={user.picture}
                 alt=""
-                className="w-12 h-12 rounded-full border-2 border-indigo-500/40 shrink-0"
+                className="w-12 h-12 rounded-full border-2 border-white/20 shrink-0"
                 width={48}
                 height={48}
                 referrerPolicy="no-referrer"
@@ -127,7 +127,7 @@ export function BillingPage() {
                   <p className="text-[0.65rem] font-semibold uppercase tracking-wider text-slate-500">
                     Credits remaining
                   </p>
-                  <p className="text-lg font-bold text-indigo-300">
+                  <p className="text-lg font-bold text-white">
                     {credits}
                     <span className="text-sm font-medium text-slate-500"> / {creditLimit}</span>
                   </p>
@@ -146,7 +146,7 @@ export function BillingPage() {
                         ? 'bg-gradient-to-r from-red-500 to-rose-400'
                         : isLowCredits
                           ? 'bg-gradient-to-r from-amber-500 to-yellow-400'
-                          : 'bg-gradient-to-r from-indigo-500 to-violet-400'
+                          : 'bg-gradient-to-r from-slate-200 to-white'
                     }`}
                     style={{ width: `${creditPercent}%` }}
                   />

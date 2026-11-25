@@ -31,7 +31,7 @@ export function InfoPage({ pageId }: InfoPageProps) {
         <div className={`${container} max-w-2xl`}>
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-sm text-slate-400 mb-5 hover:text-indigo-300"
+            className="inline-flex items-center gap-1.5 text-sm text-slate-400 mb-5 hover:text-white"
           >
             <i className="fas fa-arrow-left" aria-hidden="true" /> Back to home
           </Link>
@@ -41,29 +41,29 @@ export function InfoPage({ pageId }: InfoPageProps) {
           {pageId === 'contact' ? (
             <div className={`${glassCard} p-7 mb-6 grid gap-4 sm:grid-cols-3`}>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300 mb-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
                   Email
                 </p>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="text-sm text-slate-300 hover:text-indigo-300 break-all"
+                  className="text-sm text-slate-300 hover:text-white break-all"
                 >
                   {CONTACT_EMAIL}
                 </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300 mb-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
                   Phone
                 </p>
                 <a
                   href={`tel:+91${CONTACT_PHONE}`}
-                  className="text-sm text-slate-300 hover:text-indigo-300"
+                  className="text-sm text-slate-300 hover:text-white"
                 >
                   {CONTACT_PHONE_DISPLAY}
                 </a>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300 mb-1.5">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
                   Location
                 </p>
                 <p className="text-sm text-slate-300">{CONTACT_LOCATION}</p>

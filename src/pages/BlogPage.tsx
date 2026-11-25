@@ -16,10 +16,9 @@ export function BlogPage() {
         <div className={container}>
           <div className="max-w-3xl mb-12">
             <p className={eyebrow}>Blog</p>
-            <h1 className={sectionTitle}>Interview &amp; meeting AI guides</h1>
+            <h1 className={sectionTitle}>AI Meeting Assistant &amp; Summarisation Guides</h1>
             <p className="text-slate-400 text-[1.05rem]">
-              Practical guides on AI interview coaching, meeting transcription, and technical
-              screen preparation.
+              Practical guides on real-time meeting transcription, instant AI summaries, action item tracking, and productive call workflows.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl">
@@ -34,14 +33,14 @@ export function BlogPage() {
                   · {post.readMinutes} min read
                 </time>
                 <h2 className="text-lg font-semibold mb-2 leading-snug">
-                  <Link to={`/blog/${post.slug}`} className="hover:text-indigo-300">
+                  <Link to={`/blog/${post.slug}`} className="hover:text-white">
                     {post.title}
                   </Link>
                 </h2>
                 <p className="text-sm text-slate-400 mb-4 flex-1">{post.excerpt}</p>
                 <Link
                   to={`/blog/${post.slug}`}
-                  className="text-sm font-semibold text-indigo-300 hover:text-indigo-200 w-fit"
+                  className="text-sm font-semibold text-white hover:text-slate-200 w-fit"
                 >
                   Read article →
                 </Link>

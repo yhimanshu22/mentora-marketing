@@ -288,23 +288,23 @@ export const INFO_PAGES = {
   },
   about: {
     title: 'About Us',
-    lead: 'Mentora is an AI meeting assistant built for interviews and live online meetings.',
+    lead: 'Mentora is an AI meeting assistant and real-time summarisation tool for modern teams and professionals.',
     sections: [
       {
         paragraphs: [
-          'We help professionals prepare and perform with real-time transcription, profile-aware answers, and discreet on-screen coaching — without leaving the call.',
+          'We help professionals stay fully focused during calls with real-time transcription, instant meeting summarisation, contextual talking points, and automated action item tracking — without intrusive bots.',
         ],
       },
       {
         heading: 'What we build',
         paragraphs: [
-          'Mentora is available as a desktop app and browser edition. AI features are powered by Mentora credits, keeping setups simple without requiring complex API key configurations.',
+          'Mentora is available as a desktop app and browser edition. Real-time audio processing and instant AI summaries are powered by Mentora credits, keeping setups effortless with zero complex API configuration needed.',
         ],
       },
       {
         heading: 'Our focus',
         paragraphs: [
-          'Speed, privacy, and answers that sound like you. Whether you are interviewing, presenting, or joining a client call, Mentora stays out of the way until you need it.',
+          'Speed, privacy, and precision summaries. Whether you are leading a team sync, client review, sprint planning, or interview, Mentora delivers clear insights and summaries while staying out of your way until you need it.',
         ],
       },
     ],
@@ -390,7 +390,7 @@ export const INFO_PAGES = {
       {
         heading: 'Service',
         paragraphs: [
-          'Mentora provides AI-assisted coaching for meetings and interviews. Features and availability may change over time. You are responsible for complying with the rules of any platform or employer where you use Mentora.',
+          'Mentora provides an AI meeting assistant and real-time summarisation tool for calls, presentations, and interviews. Features and availability may change over time. You are responsible for complying with the rules of any platform or organization where you use Mentora.',
         ],
       },
       {
@@ -430,61 +430,61 @@ export const SOURCE_CODE_FEATURES = [
 export const FEATURES = [
   {
     icon: 'fa-microphone-lines',
-    title: 'Live meeting audio',
+    title: 'Live meeting transcription',
     description:
-      'Captures system audio and transcribes interviewer questions in real time with Groq Whisper or your chosen STT provider.',
+      'Captures system audio and transcribes spoken dialogue in real time with Groq Whisper or your chosen STT engine.',
   },
   {
-    icon: 'fa-user-tie',
-    title: 'Profile-aware answers',
+    icon: 'fa-file-lines',
+    title: 'Instant meeting summaries',
     description:
-      'Upload your resume and documents. Every answer reflects your experience, skills, and talking points.',
+      'Generates structured executive summaries, key decisions, and prioritized action items the moment your discussion concludes.',
+  },
+  {
+    icon: 'fa-brain',
+    title: 'Context-aware guidance',
+    description:
+      'Upload project briefs, documents, and notes. Mentora delivers talking points and clarifications tailored to your background.',
   },
   {
     icon: 'fa-eye-slash',
     title: 'Private display overlay',
     description:
-      'Window content protection keeps your coaching notes separated on your private screen while presenting.',
+      'Window content protection keeps live summaries and talking points private on your screen during screen shares.',
   },
   {
     icon: 'fa-camera',
-    title: 'Screenshot assist',
+    title: 'Screenshot assist & OCR',
     description:
-      'Capture coding problems, slides, or whiteboard content and get step-by-step solutions grounded in your profile.',
+      'Capture slides, architecture diagrams, or code to instantly extract context, summarize visual data, and answer questions.',
   },
   {
     icon: 'fa-layer-group',
-    title: 'Always on top',
+    title: 'Always-on-top desktop HUD',
     description:
-      'Floating desktop window stays above Zoom, Meet, Teams, and your editor — coaching without switching tabs.',
-  },
-  {
-    icon: 'fa-bolt',
-    title: 'Streaming answers',
-    description:
-      'OpenAI or Google Gemini streams responses in real time with follow-up suggestions and adjustable answer length.',
+      'A compact, floating overlay sits seamlessly over Zoom, Meet, Teams, and Slack without disrupting your active workflow.',
   },
 ] as const;
 
 export const STEPS = [
   {
     step: '01',
-    title: 'Set up your profile',
-    description: 'Paste your resume, add skills, and import PDFs so answers sound like you.',
+    title: 'Connect your workspace',
+    description: 'Add your documents, agenda, and project notes so meeting assistance is tuned to your domain.',
   },
   {
     step: '02',
-    title: 'Join your meeting',
-    description: 'Mentora transcribes conversation audio in real time and highlights key discussion points.',
+    title: 'Join any meeting',
+    description: 'Mentora captures system audio in real time across Zoom, Teams, Meet, or browser calls without bot invites.',
   },
   {
     step: '03',
-    title: 'Get real-time answers',
-    description: 'Profile-aware talking points stream automatically to support your preparation.',
+    title: 'Real-time guidance',
+    description: 'Follow live transcription, instant talking points, and smart answers streamed directly to your overlay.',
   },
   {
     step: '04',
-    title: 'Private display overlay',
-    description: 'Use native OS content protection so your notes remain on your personal display during presentations.',
+    title: 'One-click summarisation',
+    description: 'Instantly generate executive recaps, decision logs, and action items ready to share with your team.',
   },
 ] as const;

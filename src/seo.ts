@@ -37,35 +37,34 @@ export type PageSeo = {
 
 const HOME_KEYWORDS = [
   'AI meeting assistant',
-  'AI interview assistant',
-  'private AI meeting coach',
-  'no-bot meeting AI',
-  'real-time AI conversation guidance',
-  'interview coaching software',
+  'meeting summarisation tool',
   'real-time meeting transcription',
-  'interview answer assistant',
-  'screen share privacy mode',
-  'desktop AI for interviews',
-  'Zoom interview help',
+  'automated meeting summaries',
+  'meeting action items AI',
+  'bot-free meeting recorder',
+  'private AI meeting assistant',
+  'desktop meeting notes tool',
+  'Zoom meeting summariser',
   'Teams meeting AI',
-  'resume-aware AI answers',
+  'Google Meet summaries',
+  'screen share privacy mode',
 ].join(', ');
 
 export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
-    title: 'Mentora — AI Meeting & Interview Assistant',
+    title: 'Mentora — AI Meeting Assistant & Real-Time Summarisation Tool',
     description:
-      'Mentora is a private AI meeting assistant for job interviews and online calls. It transcribes system audio in real time, delivering profile-aware coaching notes in a floating overlay with window content protection.',
+      'Mentora is a private AI meeting assistant and real-time summarisation tool for modern teams. Live audio transcription, instant executive summaries, and action item tracking without bot invites.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },
   blog: {
-    title: 'Blog — AI Interview & Meeting Guides | Mentora',
+    title: 'Blog — AI Meeting Assistant & Summarisation Guides | Mentora',
     description:
-      'Guides on AI interview coaching, window content protection, real-time meeting transcription, and technical interview preparation with Mentora.',
+      'Guides on AI meeting assistants, automated meeting summarisation, real-time transcription, and productive remote collaboration with Mentora.',
     path: '/blog',
     keywords:
-      'AI interview blog, meeting assistant guides, interview preparation articles, Mentora blog',
+      'AI meeting blog, meeting summarisation guides, meeting notes articles, Mentora blog',
   },
   login: {
     title: 'Sign in — Mentora AI',
@@ -89,16 +88,16 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   contact: {
     title: 'Contact Mentora — Support & Billing',
     description:
-      'Contact Mentora AI for product questions, billing, upgrades, and support. Email, phone, and WhatsApp help for Free, Pro, Ultimate, and Magic plans.',
+      'Contact Mentora AI for product questions, billing, upgrades, and support. Email, phone, and WhatsApp help for Starter, Pro, Ultimate, and Magic plans.',
     path: '/contact',
     keywords: 'Mentora contact, Mentora support, Mentora billing help',
   },
   about: {
-    title: 'About Mentora — AI Coaching for Meetings',
+    title: 'About Mentora — AI Meeting Assistant & Summarisation',
     description:
-      'Learn about Mentora AI, the desktop and browser assistant for interviews and live meetings with real-time transcription and private, profile-aware coaching.',
+      'Learn about Mentora AI, the desktop meeting assistant and real-time summarisation tool with live transcription and private window content protection.',
     path: '/about',
-    keywords: 'about Mentora, AI interview coaching, meeting assistant company',
+    keywords: 'about Mentora, AI meeting assistant, meeting summarisation tool company',
   },
   'privacy-policy': {
     title: 'Privacy Policy — Mentora AI',

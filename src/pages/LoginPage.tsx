@@ -25,7 +25,7 @@ export function LoginPage() {
       <main className="w-full overflow-x-hidden py-20 max-sm:py-14">
         <div className={`${container} max-w-md`}>
           <div className={`${glassCard} p-8 text-center`}>
-            <p className="text-xs font-semibold uppercase tracking-wider text-indigo-300 mb-3">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">
               Sign in
             </p>
             <h1 className="font-display text-2xl font-bold mb-2">Sign in to Mentora</h1>
@@ -55,11 +55,11 @@ export function LoginPage() {
 
             <p className="text-xs text-slate-500 mt-8">
               By continuing, you agree to our{' '}
-              <Link to="/terms-of-service" className="text-indigo-300 hover:text-indigo-200">
+              <Link to="/terms-of-service" className="text-white hover:text-slate-200">
                 Terms of Service
               </Link>{' '}
               and{' '}
-              <Link to="/privacy-policy" className="text-indigo-300 hover:text-indigo-200">
+              <Link to="/privacy-policy" className="text-white hover:text-slate-200">
                 Privacy Policy
               </Link>
               .
