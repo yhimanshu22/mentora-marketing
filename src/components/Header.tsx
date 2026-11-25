@@ -17,8 +17,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-[100] border-b border-[#262626] bg-[#0a0a0a]/85 backdrop-blur-md">
-      <div className={`${container} flex items-center justify-between gap-4 py-3.5 min-w-0`}>
-        <div className="flex items-center gap-6">
+      <div className={`${container} relative flex items-center justify-between gap-4 py-3.5 min-w-0`}>
+        <div className="flex items-center shrink-0">
           <Link
             className="flex items-center gap-2.5 font-bold text-[0.95rem] tracking-tight min-w-0 shrink text-[#fafafa] hover:opacity-90 transition-opacity"
             to="/"
@@ -32,32 +32,33 @@ export function Header() {
             />
             <span className="text-[#fafafa] font-bold text-base">Mentora</span>
           </Link>
-
-          <nav
-            className="hidden md:flex items-center gap-1 shrink-0 bg-[#141414] border border-[#262626] px-2.5 py-1 rounded-full text-[13px] font-medium"
-            aria-label="Primary"
-          >
-            {NAV_LINKS.map((link) =>
-              'to' in link ? (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="px-3 py-1 rounded-full text-[#a1a1aa] transition-colors hover:text-[#fafafa] hover:bg-[#1f1f1f]"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-1 rounded-full text-[#a1a1aa] transition-colors hover:text-[#fafafa] hover:bg-[#1f1f1f]"
-                >
-                  {link.label}
-                </a>
-              ),
-            )}
-          </nav>
         </div>
+
+        {/* Centered Navigation */}
+        <nav
+          className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 shrink-0 bg-[#141414] border border-[#262626] px-2.5 py-1 rounded-full text-[13px] font-medium"
+          aria-label="Primary"
+        >
+          {NAV_LINKS.map((link) =>
+            'to' in link ? (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="px-3 py-1 rounded-full text-[#a1a1aa] transition-colors hover:text-[#fafafa] hover:bg-[#1f1f1f]"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="px-3 py-1 rounded-full text-[#a1a1aa] transition-colors hover:text-[#fafafa] hover:bg-[#1f1f1f]"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
+        </nav>
 
         <div className="flex items-center gap-3 shrink-0">
           <AuthMenu />

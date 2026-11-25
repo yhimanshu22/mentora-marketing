@@ -53,93 +53,92 @@ export function Hero() {
         </p>
 
         {/* Live UI Mockup Preview Frame */}
-        <div className="w-full max-w-4xl mx-auto rounded-2xl border border-[#262626] bg-[#121212] shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden">
+        <div className="w-full max-w-4xl mx-auto rounded-2xl border border-[#344b69]/60 bg-[#0d1016] shadow-[0_20px_50px_rgba(0,0,0,0.7)] overflow-hidden text-left">
           {/* Mockup Titlebar */}
-          <div className="flex items-center justify-between px-4 py-3 bg-[#171717] border-b border-[#262626]">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-[#333333]" />
-              <span className="w-3 h-3 rounded-full bg-[#333333]" />
-              <span className="w-3 h-3 rounded-full bg-[#333333]" />
-              <span className="ml-2 text-xs font-mono text-[#a1a1aa]">Mentora Live Meeting Assistant</span>
+          <div className="flex items-center justify-between px-4 py-2.5 bg-[#101622] border-b border-[#1f2b3e]">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/80" />
+              <span className="ml-2.5 text-[11px] font-medium text-[#8ca0ba] tracking-wide">Mentora Chat Demo</span>
             </div>
-            <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#1f1f1f] border border-[#2e2e2e] text-xs font-medium text-emerald-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Real-Time Capturing</span>
+            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#162235] border border-[#2b4160] text-[11px] font-medium text-[#00b9e8]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00b9e8] animate-pulse" />
+              <span>AI Co-Pilot</span>
             </div>
           </div>
 
-          {/* Mockup Interior Grid */}
-          <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-5 text-left">
-            {/* Live Audio & Transcript stream */}
-            <div className="md:col-span-6 flex flex-col justify-between bg-[#171717] border border-[#262626] rounded-xl p-5">
-              <div>
-                <div className="flex items-center justify-between text-xs text-[#a1a1aa] mb-3">
-                  <span className="flex items-center gap-1.5 font-medium text-white">
-                    <i className="fas fa-users text-[#71717a] text-[10px]" /> Product &amp; Eng Weekly Sync
-                  </span>
-                  <span className="font-mono text-[10px] text-[#71717a]">Zoom · 24m 12s</span>
-                </div>
-                <div className="space-y-3 text-xs leading-relaxed">
-                  <div className="bg-[#1f1f1f] border border-[#2a2a2a] rounded-lg p-3">
-                    <p className="text-[#71717a] text-[10px] uppercase font-mono mb-1">Speaker: Sarah (Engineering Lead)</p>
-                    <p className="text-[#fafafa]">
-                      "We concluded benchmark testing on the read-replica failover. Zero packet drops observed during the simulated outage."
-                    </p>
-                  </div>
-                  <div className="bg-[#1f1f1f] border border-[#2a2a2a] rounded-lg p-3">
-                    <p className="text-[#71717a] text-[10px] uppercase font-mono mb-1">Speaker: Michael (Product Manager)</p>
-                    <p className="text-[#fafafa]">
-                      "Great! Can we schedule the database migration window for Saturday midnight and notify customer support?"
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Audio meter */}
-              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#262626] text-xs text-[#71717a]">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-[11px] font-mono text-[#a1a1aa]">Sub-second Whisper STT</span>
-                </div>
-                <span className="text-[11px] font-mono text-[#71717a]">48.0 kHz · Clean Audio</span>
+          {/* Chat Container */}
+          <div className="p-3.5 sm:p-4 flex flex-col gap-2.5 text-xs sm:text-[12.5px] leading-relaxed">
+            {/* Q1: User question 1 */}
+            <div className="flex justify-end w-full">
+              <div className="bg-gradient-to-r from-[#08b6d9] to-[#3184f6] rounded-[16px_16px_5px_16px] px-3 py-1.5 text-white font-medium shadow-[0_4px_15px_rgba(0,174,230,0.18)]">
+                Write my introduction
               </div>
             </div>
 
-            {/* Live Generated Summary & Action Items */}
-            <div className="md:col-span-6 bg-[#171717] border border-[#262626] rounded-xl p-5 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-3 text-xs">
-                  <span className="font-semibold text-white flex items-center gap-2">
-                    <i className="fas fa-bolt text-[#a1a1aa] text-xs" /> Instant Action Items &amp; Recap
-                  </span>
-                  <span className="text-[10px] font-mono bg-white/10 text-white px-2 py-0.5 rounded">Live Updated</span>
-                </div>
-                <ul className="space-y-2.5 text-xs text-[#d4d4d8]">
-                  <li className="flex items-start gap-2 bg-[#1f1f1f] p-2.5 rounded-lg border border-[#2a2a2a]">
-                    <span className="text-emerald-400 font-bold mt-0.5">✓</span>
-                    <div>
-                      <strong className="text-white">Decision:</strong> Production migration approved for Saturday 12:00 AM UTC.
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-2 bg-[#1f1f1f] p-2.5 rounded-lg border border-[#2a2a2a]">
-                    <span className="text-white font-bold mt-0.5">•</span>
-                    <div>
-                      <strong className="text-white">Action (Sarah):</strong> Prepare the automated database backup snapshot scripts.
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-2 bg-[#1f1f1f] p-2.5 rounded-lg border border-[#2a2a2a]">
-                    <span className="text-white font-bold mt-0.5">•</span>
-                    <div>
-                      <strong className="text-white">Action (Michael):</strong> Share migration schedule with Customer Success team by Friday.
-                    </div>
-                  </li>
-                </ul>
+            {/* A1: Assistant answer 1 */}
+            <div className="flex justify-start w-full">
+              <div className="bg-gradient-to-br from-[#1a273a] to-[#1c2a40] border border-[#344b69] rounded-[16px_16px_16px_5px] max-w-[90%] p-2.5 sm:p-3 text-[#e5ebf5] shadow-sm">
+                <p className="text-white font-medium mb-1">
+                  &ldquo;I am a Full-Stack &amp; AI Engineer with experience building scalable distributed web apps and intelligent automation systems. Passionate about solving complex problems through clean architecture, real-time data processing, and user-centric design.&rdquo;
+                </p>
+                <span className="block text-right text-[#8ca0ba] text-[10px]">1.4s response</span>
               </div>
+            </div>
 
-              <div className="pt-4 mt-4 border-t border-[#262626] flex items-center justify-between text-xs text-[#71717a]">
-                <span>1-click export to Slack / Notion</span>
-                <span className="font-mono text-[#a1a1aa]">99.4% Accuracy</span>
+            {/* Q2: User question 2 */}
+            <div className="flex justify-end w-full">
+              <div className="bg-gradient-to-r from-[#08b6d9] to-[#3184f6] rounded-[16px_16px_5px_16px] px-3 py-1.5 text-white font-medium shadow-[0_4px_15px_rgba(0,174,230,0.18)]">
+                Explain internship project
               </div>
+            </div>
+
+            {/* A2: Assistant answer 2 */}
+            <div className="flex justify-start w-full">
+              <div className="bg-gradient-to-br from-[#1a273a] to-[#1c2a40] border border-[#344b69] rounded-[16px_16px_16px_5px] max-w-[92%] p-2.5 sm:p-3 text-[#e5ebf5] shadow-sm">
+                <div className="text-[12px] font-semibold text-white mb-1.5 flex items-center justify-between">
+                  <span className="text-[#38bdf8]">Internship Project Overview:</span>
+                  <span className="text-[#8ca0ba] text-[10px] font-mono">STAR Framework</span>
+                </div>
+                <div className="space-y-1 text-[11px] sm:text-xs">
+                  <div>
+                    <strong className="text-white min-w-[70px] inline-block">Situation:</strong>
+                    <span>Internal microservices faced bottlenecks during peak concurrent user requests.</span>
+                  </div>
+                  <div>
+                    <strong className="text-white min-w-[70px] inline-block">Task:</strong>
+                    <span>Designed an asynchronous queuing architecture with Redis &amp; worker pools.</span>
+                  </div>
+                  <div>
+                    <strong className="text-white min-w-[70px] inline-block">Impact:</strong>
+                    <span>Reduced API latency by 42% and achieved zero packet drops under stress testing.</span>
+                  </div>
+                </div>
+                <span className="block text-right text-[#8ca0ba] text-[10px] mt-1.5">2.1s response</span>
+              </div>
+            </div>
+
+            {/* Suggestion buttons */}
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
+              <button
+                type="button"
+                className="border border-[#00b9e8]/70 bg-[#101c2a] hover:bg-[#073b51] text-[#dcecff] rounded-full px-2.5 py-0.5 text-[10.5px] font-medium transition-all shadow-sm hover:shadow-[0_0_12px_rgba(0,190,240,0.2)] hover:-translate-y-0.5"
+              >
+                ✨ Tailor for FAANG interview
+              </button>
+              <button
+                type="button"
+                className="border border-[#00b9e8]/70 bg-[#101c2a] hover:bg-[#073b51] text-[#dcecff] rounded-full px-2.5 py-0.5 text-[10.5px] font-medium transition-all shadow-sm hover:shadow-[0_0_12px_rgba(0,190,240,0.2)] hover:-translate-y-0.5"
+              >
+                ✨ Add metrics &amp; tech stack
+              </button>
+              <button
+                type="button"
+                className="border border-[#00b9e8]/70 bg-[#101c2a] hover:bg-[#073b51] text-[#dcecff] rounded-full px-2.5 py-0.5 text-[10.5px] font-medium transition-all shadow-sm hover:shadow-[0_0_12px_rgba(0,190,240,0.2)] hover:-translate-y-0.5"
+              >
+                ✨ Practice follow-up Q&amp;A
+              </button>
             </div>
           </div>
         </div>

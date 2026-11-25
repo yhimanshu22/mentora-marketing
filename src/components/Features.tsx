@@ -127,44 +127,74 @@ export function Features() {
             </div>
           </div>
 
-          {/* Visual Showcase Panel */}
-          <div className="lg:col-span-6 bg-[#0a0a0a] border border-[#262626] rounded-xl p-6 shadow-inner font-sans">
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#262626] text-xs">
-              <span className="font-mono text-[11px] text-[#71717a]">Live Session · Active</span>
-              <span className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium">
-                Protected HUD Active
-              </span>
+          {/* Visual Showcase Panel - Actual App Chat UI */}
+          <div className="lg:col-span-6 rounded-2xl border border-[#344b69]/60 bg-[#0d1016] shadow-xl overflow-hidden font-sans text-left">
+            {/* Titlebar */}
+            <div className="flex items-center justify-between px-4 py-2 bg-[#101622] border-b border-[#1f2b3e]">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/80" />
+                <span className="ml-2 text-[11px] font-medium text-[#8ca0ba] tracking-wide">Mentora Live Co-Pilot</span>
+              </div>
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#162235] border border-[#2b4160] text-[10.5px] font-medium text-[#00b9e8]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00b9e8] animate-pulse" />
+                <span>{activeRole.badge}</span>
+              </div>
             </div>
 
-            <div className="space-y-3">
-              <div className="p-3 bg-[#141414] border border-[#262626] rounded-lg text-xs">
-                <span className="text-[10px] text-[#71717a] block mb-1">Whisper Speech-To-Text</span>
-                <p className="text-[#fafafa] font-medium leading-relaxed">
-                  "Let's confirm the milestone schedule and assign ownership for deliverables before our Thursday executive briefing."
-                </p>
-              </div>
-
-              <div className="p-3.5 bg-[#171717] border border-[#333333] rounded-lg text-xs">
-                <div className="flex items-center justify-between text-[10px] text-white font-semibold mb-2">
-                  <span>Structured Decision &amp; Summary</span>
-                  <span className="font-mono text-[#71717a]">Updated 0.8s ago</span>
+            {/* Chat Body */}
+            <div className="p-4 flex flex-col gap-2.5 text-xs leading-relaxed max-h-[350px] overflow-y-auto">
+              {/* User question / Context */}
+              <div className="flex justify-end w-full">
+                <div className="bg-gradient-to-r from-[#08b6d9] to-[#3184f6] rounded-[16px_16px_5px_16px] px-3.5 py-1.5 text-white font-medium shadow-[0_4px_15px_rgba(0,174,230,0.18)] text-[11px]">
+                  Extract decisions and immediate action items from this {activeRole.title.toLowerCase()}
                 </div>
-                <ul className="space-y-2 text-[11px] text-[#a1a1aa]">
-                  <li className="flex items-start gap-2">
-                    <span className="text-white font-bold">•</span>
-                    <span><strong>Key Goal:</strong> Finalize migration dry-runs by end of week.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-white font-bold">•</span>
-                    <span><strong>Action:</strong> Automated notifications routed directly to Slack and calendar.</span>
-                  </li>
-                </ul>
               </div>
-            </div>
 
-            <div className="mt-4 pt-3 border-t border-[#1f1f1f] flex items-center justify-between text-[11px] text-[#71717a]">
-              <span>Works across Zoom, Teams, Meet</span>
-              <span className="text-white font-mono">No bot invites</span>
+              {/* Assistant Response with App Theme */}
+              <div className="flex justify-start w-full">
+                <div className="bg-gradient-to-br from-[#1a273a] to-[#1c2a40] border border-[#344b69] rounded-[16px_16px_16px_5px] p-3 text-[#e5ebf5] shadow-sm w-full">
+                  <div className="text-[12px] font-semibold text-white mb-1.5 flex items-center justify-between">
+                    <span className="text-[#38bdf8]">Live Session Insights</span>
+                    <span className="text-[10px] text-[#8ca0ba] font-mono">1.2s response</span>
+                  </div>
+
+                  <p className="text-[11px] text-[#cbd5e1] italic mb-2 border-l-2 border-[#00b9e8] pl-2">
+                    {activeRole.sampleQuote}
+                  </p>
+
+                  <div className="space-y-1 text-[11px]">
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[#38bdf8] font-bold">✓</span>
+                      <div>
+                        <strong className="text-white">Deliverable:</strong> {activeRole.deliverable}
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[#38bdf8] font-bold">•</span>
+                      <div>
+                        <strong className="text-white">Status:</strong> {activeRole.stat} ({activeRole.statLabel})
+                      </div>
+                    </div>
+                  </div>
+
+                  <span className="block text-right text-[#8ca0ba] text-[10px] mt-1.5">Ready to sync</span>
+                </div>
+              </div>
+
+              {/* Quick Action Chips */}
+              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                <span className="border border-[#00b9e8]/70 bg-[#101c2a] text-[#dcecff] rounded-full px-2.5 py-0.5 text-[10.5px] font-medium">
+                  ⚡ Copy to Clipboard
+                </span>
+                <span className="border border-[#00b9e8]/70 bg-[#101c2a] text-[#dcecff] rounded-full px-2.5 py-0.5 text-[10.5px] font-medium">
+                  📁 Push to Notion
+                </span>
+                <span className="border border-[#00b9e8]/70 bg-[#101c2a] text-[#dcecff] rounded-full px-2.5 py-0.5 text-[10.5px] font-medium">
+                  💬 Send to Slack
+                </span>
+              </div>
             </div>
           </div>
         </div>
