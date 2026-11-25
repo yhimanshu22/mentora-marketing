@@ -16,7 +16,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-[100] border-b border-[#262626] bg-[#0a0a0a]/85 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-transparent backdrop-blur-md">
       <div className={`${container} relative flex items-center justify-between gap-4 py-3.5 min-w-0`}>
         <div className="flex items-center shrink-0">
           <Link

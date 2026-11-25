@@ -17,7 +17,7 @@ export function Hero() {
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#171717] border border-[#2e2e2e] text-[#fafafa] mb-6 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-[#a1a1aa]">v1.0 is live:</span>
-          <span>Zero-bot meeting transcription &amp; summaries</span>
+          <span>AI Meeting Assistant</span>
           <i className="fas fa-arrow-right text-[10px] text-[#71717a]" />
         </div>
 
