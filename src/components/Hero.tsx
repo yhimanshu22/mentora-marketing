@@ -1,150 +1,144 @@
-import { useState, useEffect } from 'react';
-import { getStats, recordDownload, Stats } from '../lib/stats';
+import { recordDownload } from '../lib/stats';
 import {
-  btnLg,
   btnPrimary,
+  btnSecondary,
   container,
 } from '../lib/classes';
 
 export function Hero() {
-  const [stats, setStats] = useState<Stats | null>(null);
-
-  useEffect(() => {
-    getStats().then(setStats).catch(console.error);
-  }, []);
-
   const handleDownload = () => {
     recordDownload().catch(console.error);
   };
 
   return (
-    <section className="pt-20 pb-24 max-sm:pt-12 max-sm:pb-16 relative">
-      <div className={`${container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-w-0`}>
-        <div className="min-w-0 lg:col-span-7">
-          <h1 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.6rem)] tracking-tight leading-[1.12] mb-5 text-white">
-            #1 AI Meeting Assistant &amp; Real-Time Summarisation Tool
-          </h1>
-          <p className="text-[1.1rem] text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
-            Mentora transcribes live meetings, generates instant structured summaries and action items, and surfaces real-time talking points in a private desktop overlay.
-          </p>
-          <div className="flex flex-wrap items-center gap-3.5 mb-6">
-            <a
-              href="#download"
-              onClick={handleDownload}
-              className={`${btnPrimary} ${btnLg} max-sm:w-full max-sm:text-center`}
-            >
-              <i className="fas fa-download text-xs" aria-hidden="true" /> Download for Desktop
-            </a>
-            {/* <a
-              href={SOURCE_CODE_URL}
-              className={`${btnSecondary} ${btnLg} max-sm:w-full max-sm:text-center`}
-            >
-              Full Source Code — $499
-            </a> */}
-          </div>
-          {stats && (
-            <div className="flex items-center gap-4 mb-6 text-xs text-slate-400 bg-white/[0.03] border border-white/[0.08] w-fit px-3.5 py-1.5 rounded-md">
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
-                <span>{stats.visits.toLocaleString()} visitors</span>
-              </div>
-              <div className="w-1 h-1 rounded-full bg-slate-700" />
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>{stats.downloads.toLocaleString()} active downloads</span>
-              </div>
-            </div>
-          )}
-          <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap">
-            <span className="flex items-center gap-1.5">
-              <i className="fab fa-windows text-slate-400" aria-hidden="true" /> Windows 10/11
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <i className="fab fa-apple text-slate-400" aria-hidden="true" /> macOS (Apple Silicon & Intel)
-            </span>
-            <span>•</span>
-            <a href="#download" className="text-slate-300 hover:text-white underline underline-offset-4 decoration-white/30">
-              Install guide
-            </a>
-          </div>
+    <section className="pt-24 pb-28 max-sm:pt-14 max-sm:pb-20 relative overflow-hidden">
+      <div className={`${container} flex flex-col items-center text-center min-w-0`}>
+        {/* Top Announcement Pill */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#171717] border border-[#2e2e2e] text-[#fafafa] mb-6 shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-[#a1a1aa]">v1.0 is live:</span>
+          <span>Zero-bot meeting transcription &amp; summaries</span>
+          <i className="fas fa-arrow-right text-[10px] text-[#71717a]" />
         </div>
-        <div className="relative min-w-0 lg:col-span-5" aria-hidden="true">
-          <div className="relative rounded-xl border border-white/[0.12] bg-[#0c1220]/90 shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-md overflow-hidden">
-            {/* Window title bar */}
-            <div className="flex items-center justify-between px-3.5 py-2.5 bg-slate-950/70 border-b border-white/[0.08]">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+
+        {/* Hero Title */}
+        <h1 className="font-display font-extrabold text-[clamp(2.4rem,6vw,4.5rem)] tracking-tight leading-[1.08] mb-6 text-[#fafafa] max-w-4xl">
+          #1 AI Meeting <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-500 bg-clip-text text-transparent">Assistant</span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-[1.15rem] text-[#a1a1aa] max-w-2xl mb-10 leading-relaxed font-normal">
+          Real-time transcription, instant executive summaries, and smart action item tracking. All in a private desktop HUD across Zoom, Teams, and Google Meet without annoying bot invites.
+        </p>
+
+        {/* Primary and Secondary CTA group */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-4 w-full sm:w-auto">
+          <a
+            href="#download"
+            onClick={handleDownload}
+            className={`${btnPrimary} text-sm px-6 py-3 rounded-xl max-sm:w-full flex items-center justify-center gap-2`}
+          >
+            <i className="fas fa-download text-xs" aria-hidden="true" /> Download for Desktop
+          </a>
+          <a
+            href="#features"
+            className={`${btnSecondary} text-sm px-6 py-3 rounded-xl max-sm:w-full flex items-center justify-center gap-2`}
+          >
+            Explore Capabilities
+          </a>
+        </div>
+
+        <p className="text-xs text-[#71717a] mb-14">
+          Ready in 30 seconds · No calendar bot invite required · Windows &amp; macOS
+        </p>
+
+        {/* Live UI Mockup Preview Frame */}
+        <div className="w-full max-w-4xl mx-auto rounded-2xl border border-[#262626] bg-[#121212] shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden">
+          {/* Mockup Titlebar */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[#171717] border-b border-[#262626]">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#333333]" />
+              <span className="w-3 h-3 rounded-full bg-[#333333]" />
+              <span className="w-3 h-3 rounded-full bg-[#333333]" />
+              <span className="ml-2 text-xs font-mono text-[#a1a1aa]">Mentora Live Meeting Assistant</span>
+            </div>
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#1f1f1f] border border-[#2e2e2e] text-xs font-medium text-emerald-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Real-Time Capturing</span>
+            </div>
+          </div>
+
+          {/* Mockup Interior Grid */}
+          <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-5 text-left">
+            {/* Live Audio & Transcript stream */}
+            <div className="md:col-span-6 flex flex-col justify-between bg-[#171717] border border-[#262626] rounded-xl p-5">
+              <div>
+                <div className="flex items-center justify-between text-xs text-[#a1a1aa] mb-3">
+                  <span className="flex items-center gap-1.5 font-medium text-white">
+                    <i className="fas fa-users text-[#71717a] text-[10px]" /> Product &amp; Eng Weekly Sync
+                  </span>
+                  <span className="font-mono text-[10px] text-[#71717a]">Zoom · 24m 12s</span>
                 </div>
-                <span className="ml-2 text-[11px] font-mono text-slate-400">Mentora Meeting Assistant</span>
+                <div className="space-y-3 text-xs leading-relaxed">
+                  <div className="bg-[#1f1f1f] border border-[#2a2a2a] rounded-lg p-3">
+                    <p className="text-[#71717a] text-[10px] uppercase font-mono mb-1">Speaker: Sarah (Engineering Lead)</p>
+                    <p className="text-[#fafafa]">
+                      "We concluded benchmark testing on the read-replica failover. Zero packet drops observed during the simulated outage."
+                    </p>
+                  </div>
+                  <div className="bg-[#1f1f1f] border border-[#2a2a2a] rounded-lg p-3">
+                    <p className="text-[#71717a] text-[10px] uppercase font-mono mb-1">Speaker: Michael (Product Manager)</p>
+                    <p className="text-[#fafafa]">
+                      "Great! Can we schedule the database migration window for Saturday midnight and notify customer support?"
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Live Recap: Active
+
+              {/* Audio meter */}
+              <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#262626] text-xs text-[#71717a]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-[11px] font-mono text-[#a1a1aa]">Sub-second Whisper STT</span>
+                </div>
+                <span className="text-[11px] font-mono text-[#71717a]">48.0 kHz · Clean Audio</span>
               </div>
             </div>
 
-            {/* Simulated Live UI Content */}
-            <div className="p-4 space-y-3.5 font-sans">
-              {/* Question bubble */}
-              <div className="p-3 rounded-lg bg-white/[0.04] border border-white/[0.06] text-xs">
-                <div className="flex items-center justify-between text-[10px] font-medium text-slate-400 mb-1.5">
-                  <span className="flex items-center gap-1">
-                    <i className="fas fa-users text-slate-500 text-[9px]" /> Team Sync · Product &amp; Eng
+            {/* Live Generated Summary & Action Items */}
+            <div className="md:col-span-6 bg-[#171717] border border-[#262626] rounded-xl p-5 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3 text-xs">
+                  <span className="font-semibold text-white flex items-center gap-2">
+                    <i className="fas fa-bolt text-[#a1a1aa] text-xs" /> Instant Action Items &amp; Recap
                   </span>
-                  <span className="font-mono text-[9px] text-slate-500">Live Transcription</span>
+                  <span className="text-[10px] font-mono bg-white/10 text-white px-2 py-0.5 rounded">Live Updated</span>
                 </div>
-                <p className="text-slate-200 leading-snug font-medium">
-                  "Let's finalize Q3 migration milestones. Can we confirm the rollout plan and assign owners for database cutover?"
-                </p>
-              </div>
-
-              {/* AI Suggestion Box */}
-              <div className="p-3.5 rounded-lg bg-white/[0.04] border border-white/20 text-xs shadow-inner">
-                <div className="flex items-center justify-between text-[10px] text-white font-semibold mb-2">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                    Instant Meeting Summary &amp; Action Items
-                  </span>
-                  <span className="font-mono text-[9px] px-1.5 py-0.5 rounded bg-white/10 text-slate-200">Live Recap</span>
-                </div>
-                <ul className="space-y-1.5 text-slate-300 text-[11px] leading-relaxed">
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-white font-bold">•</span>
-                    <span><strong>Key Decision:</strong> Migrate staging workloads first on Oct 12, followed by zero-downtime production cutover on Oct 19.</span>
+                <ul className="space-y-2.5 text-xs text-[#d4d4d8]">
+                  <li className="flex items-start gap-2 bg-[#1f1f1f] p-2.5 rounded-lg border border-[#2a2a2a]">
+                    <span className="text-emerald-400 font-bold mt-0.5">✓</span>
+                    <div>
+                      <strong className="text-white">Decision:</strong> Production migration approved for Saturday 12:00 AM UTC.
+                    </div>
                   </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-white font-bold">•</span>
-                    <span><strong>Action Item (Alex):</strong> Set up read-replica failover scripts and verify dry-run benchmarks by Friday.</span>
+                  <li className="flex items-start gap-2 bg-[#1f1f1f] p-2.5 rounded-lg border border-[#2a2a2a]">
+                    <span className="text-white font-bold mt-0.5">•</span>
+                    <div>
+                      <strong className="text-white">Action (Sarah):</strong> Prepare the automated database backup snapshot scripts.
+                    </div>
                   </li>
-                  <li className="flex items-start gap-1.5">
-                    <span className="text-white font-bold">•</span>
-                    <span><strong>Action Item (Sara):</strong> Share updated customer communication draft with leadership before end of day.</span>
+                  <li className="flex items-start gap-2 bg-[#1f1f1f] p-2.5 rounded-lg border border-[#2a2a2a]">
+                    <span className="text-white font-bold mt-0.5">•</span>
+                    <div>
+                      <strong className="text-white">Action (Michael):</strong> Share migration schedule with Customer Success team by Friday.
+                    </div>
                   </li>
                 </ul>
               </div>
 
-              {/* Audio Monitor strip */}
-              <div className="flex items-center justify-between pt-2 border-t border-white/[0.06] text-[11px] text-slate-400">
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px]">
-                    <i className="fas fa-waveform-lines text-[9px]" />
-                  </span>
-                  <span className="text-[10px] text-slate-400">Listening to system audio</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="flex items-end gap-[2px] h-3 shrink-0">
-                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-1" />
-                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-2" />
-                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-3" />
-                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-4" />
-                    <span className="w-[2px] bg-emerald-400 rounded-full animate-audio-bar-5" />
-                  </div>
-                  <span className="text-[10px] font-mono text-slate-500 ml-1">44.1 kHz</span>
-                </div>
+              <div className="pt-4 mt-4 border-t border-[#262626] flex items-center justify-between text-xs text-[#71717a]">
+                <span>1-click export to Slack / Notion</span>
+                <span className="font-mono text-[#a1a1aa]">99.4% Accuracy</span>
               </div>
             </div>
           </div>

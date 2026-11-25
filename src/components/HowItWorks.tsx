@@ -7,23 +7,32 @@ import {
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 max-sm:py-16 border-t border-white/[0.06] bg-white/[0.01]">
+    <section id="how-it-works" className="py-28 max-sm:py-20 border-t border-[#262626] bg-[#0a0a0a]">
       <div className={container}>
         <div className={sectionHead}>
-          <h2 className={sectionTitle}>Up and running in minutes</h2>
-          <p className="text-slate-400 text-[1.05rem]">Zero bot invites. Works automatically with your meeting apps and local audio.</p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#171717] border border-[#2e2e2e] text-[#fafafa] mb-4">
+            Effortless Setup
+          </div>
+          <h2 className={sectionTitle}>Up and running in 30 seconds</h2>
+          <p className="text-[#a1a1aa] text-[1.05rem]">Zero bot invites. Works automatically with your meeting apps and local audio.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {STEPS.map((item) => (
             <div
               key={item.step}
-              className="p-6 rounded-xl bg-slate-900/40 border border-white/[0.08] relative group hover:border-white/20 transition-colors"
+              className="p-6 rounded-2xl bg-[#141414] border border-[#262626] relative group hover:border-[#404040] transition-colors flex flex-col justify-between"
             >
-              <div className="text-xs font-mono text-slate-200 font-semibold mb-4 bg-white/[0.06] w-fit px-2 py-0.5 rounded border border-white/20">
-                STEP {item.step}
+              <div>
+                <div className="text-xs font-mono text-[#fafafa] font-semibold mb-4 bg-[#1f1f1f] w-fit px-2.5 py-1 rounded-md border border-[#2e2e2e]">
+                  STEP {item.step}
+                </div>
+                <h3 className="text-base font-bold text-[#fafafa] mb-2 tracking-tight">{item.title}</h3>
+                <p className="text-sm text-[#a1a1aa] leading-relaxed font-normal">{item.description}</p>
               </div>
-              <h3 className="text-base font-semibold text-white mb-2 tracking-tight">{item.title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
+              <div className="pt-4 mt-6 border-t border-[#222222] flex items-center justify-between text-xs text-[#71717a]">
+                <span>Automated</span>
+                <i className="fas fa-check text-emerald-400 text-xs" />
+              </div>
             </div>
           ))}
         </div>

@@ -26,18 +26,18 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full overflow-x-hidden border-t border-white/[0.06] py-10">
+    <footer className="w-full overflow-x-clip border-t border-[#262626] bg-[#050505] py-16">
       <div className={container}>
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between min-w-0">
+        <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between min-w-0">
           <div className="min-w-0 text-left">
-            <div className="flex items-center gap-2 font-semibold mb-3">
-              <img src="/logo.png" alt="Mentora AI logo" className="shrink-0" width={28} height={28} />
-              <span>Mentora AI</span>
+            <div className="flex items-center gap-2.5 font-bold mb-3 text-white">
+              <img src="/logo.png" alt="Mentora AI logo" className="shrink-0 rounded-lg border border-[#2e2e2e]" width={28} height={28} />
+              <span className="text-base tracking-tight">Mentora AI</span>
             </div>
-            <p className="text-sm text-slate-500 mb-4 max-w-sm">
-              Real-time meeting assistant, live transcription, and automatic summarisation tool.
+            <p className="text-sm text-[#71717a] mb-5 max-w-sm leading-relaxed">
+              #1 AI meeting assistant. Real-time audio transcription, instant executive summaries, and action item tracking without bots.
             </p>
-            <div className="mb-5">
+            <div className="mb-6">
               <a
                 href="https://www.producthunt.com/products/mentora-ai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-mentora-ai"
                 target="_blank"
@@ -53,31 +53,31 @@ export function Footer() {
                 />
               </a>
             </div>
-            <div className="flex flex-col gap-1.5 text-sm text-slate-400">
+            <div className="flex flex-col gap-2 text-xs text-[#a1a1aa]">
               <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white break-all">
                 {CONTACT_EMAIL}
               </a>
               <a href={`tel:+91${CONTACT_PHONE}`} className="hover:text-white w-fit">
                 {CONTACT_PHONE_DISPLAY}
               </a>
-              <p className="text-slate-500 max-w-sm">
+              <p className="text-[#71717a] max-w-sm">
                 {CONTACT_LOCATION}
-                <span className="block text-xs mt-1 text-slate-600">{CONTACT_ONLINE_NOTE}</span>
+                <span className="block text-[11px] mt-1 text-[#52525b]">{CONTACT_ONLINE_NOTE}</span>
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 md:gap-16 text-left shrink-0">
+          <div className="flex flex-col sm:flex-row gap-10 sm:gap-14 md:gap-20 text-left shrink-0">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">
+              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-[#fafafa] mb-4">
                 Product
               </p>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-3">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-slate-400 hover:text-white"
+                      className="text-xs text-[#a1a1aa] hover:text-white transition-colors"
                     >
                       {link.label}
                     </a>
@@ -86,15 +86,15 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-3">
+              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-[#fafafa] mb-4">
                 Company
               </p>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-3">
                 {COMPANY_LINKS.map((link) => (
                   <li key={link.to}>
                     <Link
                       to={link.to}
-                      className="text-sm text-slate-400 hover:text-white"
+                      className="text-xs text-[#a1a1aa] hover:text-white transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -105,10 +105,13 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="text-xs text-slate-500 mt-10 pt-6 border-t border-white/[0.06] text-center">
-          © {year} Mentora AI · Made with{' '}
-          <i className="fas fa-heart text-[#ff4d6d]" aria-hidden="true" />
-        </p>
+        <div className="mt-14 pt-8 border-t border-[#1f1f1f] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#71717a]">
+          <p>© {year} Mentora AI. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span>Systems operational</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
