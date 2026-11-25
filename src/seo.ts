@@ -54,7 +54,7 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
     title: 'Mentora — #1 AI Meeting Assistant & Real-Time Summarisation Tool',
     description:
-      'Mentora is a private AI meeting assistant and real-time summarisation tool for modern teams. Live audio transcription, instant executive summaries, and action item tracking without bot invites.',
+      'Mentora is a private AI meeting assistant and real-time summarisation tool for modern teams. Live audio transcription, instant executive summaries, and action item tracking across Zoom, Teams, and Google Meet.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },
