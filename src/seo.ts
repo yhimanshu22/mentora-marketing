@@ -46,9 +46,19 @@ const HOME_KEYWORDS = [
   'bot-free audio transcription',
   'LeetCode AI assistant',
   'technical interview helper',
+  'coding interview copilot',
+  'system design interview assistant',
+  'stealth interview assistant',
   'Zoom interview copilot',
   'Teams meeting copilot',
   'Google Meet AI assistant',
+  'live speech to text for interviews',
+  'invisible AI meeting assistant',
+  'best Final Round AI alternative',
+  'AI copilot for sales calls',
+  'desktop AI overlay for interviews',
+  'real-time algorithm solver',
+  'audio loopback transcription AI',
 ].join(', ');
 
 export const PAGE_SEO: Record<SeoPageId, PageSeo> = {

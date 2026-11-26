@@ -17,7 +17,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     publishedAt: '2026-06-25',
     readMinutes: 7,
     keywords:
-      'Mentora vs Cluely, Cluely AI alternatives, Cluely pricing, undetectable interview assistant, Cluely vs Mentora, live call copilot comparison',
+      'Mentora vs Cluely, Cluely AI alternatives, Cluely pricing, undetectable interview assistant, Cluely vs Mentora, live call copilot comparison, stealth AI copilot, screen share invisible HUD, LeetCode AI assistant, technical interview copilot',
     sections: [
       {
         paragraphs: [
@@ -76,7 +76,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     publishedAt: '2026-06-24',
     readMinutes: 6,
     keywords:
-      'Cluely alternatives, Cluely AI competitors, interview copilot alternatives, best live call AI, Mentora vs Final Round AI',
+      'Cluely alternatives, Cluely AI competitors, interview copilot alternatives, best live call AI, Mentora vs Final Round AI, live interview assistant, undetectable AI overlay, bot-free audio transcription, LeetCode assistant, coding interview copilot',
     sections: [
       {
         paragraphs: [
