@@ -5,19 +5,24 @@ export type FaqItem = {
 
 export const FAQ_ITEMS: readonly FaqItem[] = [
   {
-    question: 'What is Mentora and how does it assist in meetings?',
+    question: 'What is Mentora and what does it do?',
     answer:
-      'Mentora is an AI meeting assistant and real-time summarisation tool. It transcribes audio live, surfaces context-aware talking points, and generates structured executive summaries and action items without requiring a bot to join your call.',
+      'Mentora is a real-time AI copilot for live calls, technical interviews, and meetings. It listens to conversation audio, captures on-screen context, and streams instant talking points, answers, and code solutions directly onto a discreet desktop overlay.',
   },
   {
-    question: 'How does Mentora summarize meetings in real time?',
+    question: 'How does Mentora compare to Cluely and other alternatives?',
     answer:
-      'Mentora captures live system audio, generates sub-second speech-to-text transcripts, and extracts key discussions, decisions, and action items in real time. When your call finishes, you get a clean, comprehensive summary with a single click.',
+      'While Cluely charges $149.99/mo for its "Undetectability" tier and locks users into recurring plans, Mentora includes full native OS window content protection across all plans starting at just $1 (15 credits). You get sub-second transcription, resume grounding, and screen capture without predatory lock-ins.',
+  },
+  {
+    question: 'Does Mentora stay invisible during screen sharing?',
+    answer:
+      'Yes. Mentora includes built-in OS window content protection. When you share your desktop, IDE, or browser on Zoom, Google Meet, or Microsoft Teams, the Mentora window remains visible only on your physical screen and does not appear on the broadcast.',
   },
   {
     question: 'Does Mentora work with Zoom, Google Meet, and Microsoft Teams?',
     answer:
-      'Yes. Mentora runs as a native desktop app on Windows and macOS, capturing audio from Zoom, Google Meet, Microsoft Teams, Webex, Slack Huddles, and browser-based calls.',
+      'Yes. Mentora runs as a native desktop app on Windows and macOS, capturing audio from Zoom, Google Meet, Microsoft Teams, Webex, Slack Huddles, and browser-based calls without sending any bots into the call.',
   },
   {
     question: 'Does Mentora require a bot to join the call room?',
@@ -25,14 +30,9 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
       'No. Mentora works completely bot-free by capturing system audio on your device, ensuring a private, seamless experience with zero awkward bot notifications or waiting room delays.',
   },
   {
-    question: 'How does window protection work during screen shares?',
+    question: 'Is my call audio sent to Mentora servers?',
     answer:
-      'Mentora includes native OS window content protection designed to keep the assistant HUD and summary notes visible only on your local display, keeping your live notes private while presenting.',
-  },
-  {
-    question: 'Is my meeting audio sent to Mentora servers?',
-    answer:
-      'Mentora is built privacy-first. System audio is captured locally, and data requests are processed via encrypted, high-speed API channels solely to generate your live transcription and meeting summaries.',
+      'Mentora is built privacy-first. System audio is captured locally, and data requests are processed via encrypted, high-speed API channels solely to generate your live transcription and contextual AI answers.',
   },
   {
     question: 'Do I need my own OpenAI or Gemini API key?',
@@ -42,17 +42,12 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
   {
     question: 'What is the difference between Starter, Pro, Ultimate, and Magic plans?',
     answer:
-      'Starter ($1) includes 15 credits with desktop and browser access. Pro adds 600 credits for regular team syncs and client calls. Ultimate includes 1,500 credits, Magic Keys, and fully automatic mode. Magic adds 4,000 credits and dedicated onboarding for heavy meeting schedules.',
+      'Starter ($1) includes 15 credits with desktop and browser access. Pro ($20/mo) adds 600 credits for regular calls and interviews. Ultimate ($50/mo) includes 1,500 credits, Magic Keys, and fully automatic mode. Magic ($95/mo) adds 4,000 credits for heavy call schedules.',
   },
   {
-    question: 'How does Screenshot Assist help during presentations and technical reviews?',
+    question: 'How does Screenshot Assist help during technical screens and interviews?',
     answer:
-      'Screenshot assist lets you capture any screen area—like slides, architecture diagrams, spreadsheets, or code—and instantly summarize the visual content or formulate precise talking points.',
-  },
-  {
-    question: 'How fast are AI summaries and live responses?',
-    answer:
-      'Mentora streams transcription and contextual talking points in sub-second latency. Automated summaries generate instantly at any point during or immediately following your meeting.',
+      'Screenshot assist lets you capture any screen area—like code problems, architecture diagrams, or technical questions—and instantly receive structured hints, optimal algorithms, and talking points in real time.',
   },
   {
     question: 'How do I contact Mentora support?',

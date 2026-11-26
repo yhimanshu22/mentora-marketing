@@ -17,18 +17,18 @@ export function Hero() {
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#171717] border border-[#2e2e2e] text-[#fafafa] mb-6 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-[#a1a1aa]">v1.0 is live:</span>
-          <span>AI Meeting Assistant</span>
+          <span>Real-Time AI Copilot &amp; Assistant</span>
           <i className="fas fa-arrow-right text-[10px] text-[#71717a]" />
         </div>
 
         {/* Hero Title */}
         <h1 className="font-display font-extrabold text-[clamp(2.4rem,6vw,4.5rem)] tracking-tight leading-[1.08] mb-6 text-[#fafafa] max-w-4xl">
-          #1 AI Meeting <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-500 bg-clip-text text-transparent">Assistant</span>
+          Real-Time AI Copilot for <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-500 bg-clip-text text-transparent">Live Calls &amp; Interviews</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-[1.15rem] text-[#a1a1aa] max-w-2xl mb-10 leading-relaxed font-normal">
-          Real-time transcription, instant executive summaries, and smart action item tracking. All in a private desktop HUD across Zoom, Teams, and Google Meet.
+          Mentora listens to live system audio, understands your screen, and streams instant talking points, answers, and code guidance in a private desktop overlay that never shows on screen shares.
         </p>
 
         {/* Primary and Secondary CTA group */}

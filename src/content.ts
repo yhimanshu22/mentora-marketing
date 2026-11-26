@@ -288,23 +288,23 @@ export const INFO_PAGES = {
   },
   about: {
     title: 'About Us',
-    lead: 'Mentora is an AI meeting assistant and real-time summarisation tool for modern teams and professionals.',
+    lead: 'Mentora is a real-time AI copilot for live calls, technical interviews, and client meetings.',
     sections: [
       {
         paragraphs: [
-          'We help professionals stay fully focused during calls with real-time transcription, instant meeting summarisation, contextual talking points, and automated action item tracking — without intrusive bots.',
+          'We help professionals excel during live calls with real-time audio transcription, instant contextual answers, code solutions, and private on-screen guidance — completely bot-free.',
         ],
       },
       {
         heading: 'What we build',
         paragraphs: [
-          'Mentora is available as a desktop app and browser edition. Real-time audio processing and instant AI summaries are powered by Mentora credits, keeping setups effortless with zero complex API configuration needed.',
+          'Mentora is available as a native desktop app for Windows and macOS. It listens to system audio and captures screen context in real time, delivering sub-second AI guidance without sending awkward bots into your call rooms.',
         ],
       },
       {
         heading: 'Our focus',
         paragraphs: [
-          'Speed, privacy, and precision summaries. Whether you are leading a team sync, client review, sprint planning, or interview, Mentora delivers clear insights and summaries while staying out of your way until you need it.',
+          'Speed, privacy, and precision guidance. Whether tackling a demanding technical interview, client sales pitch, or complex engineering sync, Mentora delivers relevant talking points and answers right when you need them.',
         ],
       },
     ],
@@ -390,7 +390,7 @@ export const INFO_PAGES = {
       {
         heading: 'Service',
         paragraphs: [
-          'Mentora provides an AI meeting assistant and real-time summarisation tool for calls, presentations, and interviews. Features and availability may change over time. You are responsible for complying with the rules of any platform or organization where you use Mentora.',
+          'Mentora provides a real-time AI copilot and assistant for live calls, interviews, presentations, and team discussions. Features and availability may change over time. You are responsible for complying with the rules of any platform or organization where you use Mentora.',
         ],
       },
       {
@@ -430,61 +430,61 @@ export const SOURCE_CODE_FEATURES = [
 export const FEATURES = [
   {
     icon: 'fa-microphone-lines',
-    title: 'Live meeting transcription',
+    title: 'Live call transcription',
     description:
-      'Captures system audio and transcribes spoken dialogue in real time with Groq Whisper or your chosen STT engine.',
-  },
-  {
-    icon: 'fa-file-lines',
-    title: 'Instant meeting summaries',
-    description:
-      'Generates structured executive summaries, key decisions, and prioritized action items the moment your discussion concludes.',
+      'Captures system audio and transcribes spoken dialogue in real time with sub-second latency powered by Groq Whisper.',
   },
   {
     icon: 'fa-brain',
-    title: 'Context-aware guidance',
+    title: 'Context-aware AI answers',
     description:
-      'Upload project briefs, documents, and notes. Mentora delivers talking points and clarifications tailored to your background.',
+      'Upload your resume, portfolio, or project notes. Mentora streams tailored talking points, code snippets, and answers aligned with your background.',
   },
   {
     icon: 'fa-eye-slash',
-    title: 'Private display overlay',
+    title: 'Screen share invisible overlay',
     description:
-      'Window content protection keeps live summaries and talking points private on your screen during screen shares.',
+      'Native OS window content protection keeps live guidance visible only on your display while staying completely invisible to attendees on screen shares.',
   },
   {
     icon: 'fa-camera',
     title: 'Screenshot assist & OCR',
     description:
-      'Capture slides, architecture diagrams, or code to instantly extract context, summarize visual data, and answer questions.',
+      'Capture code snippets, system architecture diagrams, or technical problems on your screen to get immediate analysis and solutions.',
   },
   {
     icon: 'fa-layer-group',
     title: 'Always-on-top desktop HUD',
     description:
-      'A compact, floating overlay sits seamlessly over Zoom, Meet, Teams, and Slack without disrupting your active workflow.',
+      'A compact, floating overlay sits seamlessly over Zoom, Meet, Teams, and coding IDEs without disrupting your active workflow.',
+  },
+  {
+    icon: 'fa-file-lines',
+    title: 'Instant meeting notes & recaps',
+    description:
+      'Generates structured key takeaways, decisions, and follow-up action items the moment your conversation concludes.',
   },
 ] as const;
 
 export const STEPS = [
   {
     step: '01',
-    title: 'Connect your workspace',
-    description: 'Add your documents, agenda, and project notes so meeting assistance is tuned to your domain.',
+    title: 'Connect your background',
+    description: 'Add your resume, project notes, or documentation so AI answers match your authentic voice and experience.',
   },
   {
     step: '02',
-    title: 'Join any meeting',
+    title: 'Join your live call or interview',
     description: 'Mentora captures system audio in real time across Zoom, Teams, Meet, or browser calls without bot invites.',
   },
   {
     step: '03',
-    title: 'Real-time guidance',
-    description: 'Follow live transcription, instant talking points, and smart answers streamed directly to your overlay.',
+    title: 'Get real-time answers & hints',
+    description: 'Follow live transcription and receive streamed answers, talking points, and technical guidance on your private screen.',
   },
   {
     step: '04',
-    title: 'One-click summarisation',
-    description: 'Instantly generate executive recaps, decision logs, and action items ready to share with your team.',
+    title: 'Share screen with confidence',
+    description: 'Window protection ensures your notes and answers remain strictly on your monitor, never leaking to shared screens.',
   },
 ] as const;

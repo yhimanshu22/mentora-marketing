@@ -11,7 +11,7 @@ export function Faq() {
           </div>
           <h2 className={sectionTitle}>A few things you might be wondering</h2>
           <p className="text-[#a1a1aa] text-[1.05rem]">
-            Answers about real-time summarisation, screen-share protection, local audio processing, and billing.
+            Answers about live call assistance, screen-share protection, local audio processing, and billing.
           </p>
         </div>
         <div className="max-w-3xl mx-auto flex flex-col gap-3">

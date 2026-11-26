@@ -36,35 +36,36 @@ export type PageSeo = {
 };
 
 const HOME_KEYWORDS = [
-  'AI meeting assistant',
-  'meeting summarisation tool',
-  'real-time meeting transcription',
-  'automated meeting summaries',
-  'meeting action items AI',
-  'bot-free meeting recorder',
-  'private AI meeting assistant',
-  'desktop meeting notes tool',
-  'Zoom meeting summariser',
-  'Teams meeting AI',
-  'Google Meet summaries',
-  'screen share privacy mode',
+  'real-time AI copilot',
+  'live interview assistant',
+  'interview copilot',
+  'Cluely alternative',
+  'undetectable AI overlay',
+  'screen share invisible HUD',
+  'real-time call guidance',
+  'bot-free audio transcription',
+  'LeetCode AI assistant',
+  'technical interview helper',
+  'Zoom interview copilot',
+  'Teams meeting copilot',
+  'Google Meet AI assistant',
 ].join(', ');
 
 export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
-    title: 'Mentora — #1 AI Meeting Assistant & Real-Time Summarisation Tool',
+    title: 'Mentora — Real-Time AI Copilot for Live Calls & Interviews',
     description:
-      'Mentora is a private AI meeting assistant and real-time summarisation tool for modern teams. Live audio transcription, instant executive summaries, and action item tracking across Zoom, Teams, and Google Meet.',
+      'Mentora is a real-time AI copilot for live calls, technical interviews, and client meetings. Live audio transcription, resume-grounded answers, and screen share invisible overlay across Zoom, Teams, and Google Meet.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },
   blog: {
-    title: 'Blog — AI Meeting Assistant & Summarisation Guides | Mentora',
+    title: 'Blog — Real-Time AI Copilot & Live Interview Guides | Mentora',
     description:
-      'Guides on AI meeting assistants, automated meeting summarisation, real-time transcription, and productive remote collaboration with Mentora.',
+      'Guides on real-time AI copilots, undetectable screen share overlays, live interview preparation, and comparison against alternatives like Cluely and Final Round AI.',
     path: '/blog',
     keywords:
-      'AI meeting blog, meeting summarisation guides, meeting notes articles, Mentora blog',
+      'AI copilot blog, live interview guides, Cluely alternative, interview assistant articles, Mentora blog',
   },
   login: {
     title: 'Sign in — Mentora AI',
@@ -93,11 +94,11 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
     keywords: 'Mentora contact, Mentora support, Mentora billing help',
   },
   about: {
-    title: 'About Mentora — AI Meeting Assistant & Summarisation',
+    title: 'About Mentora — Real-Time AI Copilot & Live Call Assistant',
     description:
-      'Learn about Mentora AI, the desktop meeting assistant and real-time summarisation tool with live transcription and private window content protection.',
+      'Learn about Mentora AI, the desktop copilot for live calls, technical screens, and interviews with real-time transcription and screen share invisible overlay.',
     path: '/about',
-    keywords: 'about Mentora, AI meeting assistant, meeting summarisation tool company',
+    keywords: 'about Mentora, real-time AI copilot, live interview assistant, call copilot company',
   },
   'privacy-policy': {
     title: 'Privacy Policy — Mentora AI',

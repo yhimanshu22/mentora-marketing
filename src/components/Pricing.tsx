@@ -90,7 +90,7 @@ export function Pricing() {
           </div>
           <h2 className={sectionTitle}>Simple, predictable plans</h2>
           <p className={sectionLead}>
-            Get started with 15 credits for just $1, then scale up as your meeting and summarisation needs grow.
+            Get started with 15 credits for just $1, then scale up as your call and interview needs grow.
           </p>
         </div>
 

@@ -16,9 +16,9 @@ export function BlogPage() {
         <div className={container}>
           <div className="max-w-3xl mb-12">
             <p className={eyebrow}>Blog</p>
-            <h1 className={sectionTitle}>AI Meeting Assistant &amp; Summarisation Guides</h1>
+            <h1 className={sectionTitle}>AI Copilot &amp; Live Interview Guides</h1>
             <p className="text-slate-400 text-[1.05rem]">
-              Practical guides on real-time meeting transcription, instant AI summaries, action item tracking, and productive call workflows.
+              Practical guides on real-time AI copilots, undetectable screen share overlays, live interview coaching, and alternative comparisons with Cluely.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl">

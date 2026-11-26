@@ -35,7 +35,7 @@ export function Footer() {
               <span className="text-base tracking-tight">Mentora AI</span>
             </div>
             <p className="text-sm text-[#71717a] mb-5 max-w-sm leading-relaxed">
-              #1 AI meeting assistant. Real-time audio transcription, instant executive summaries, and action item tracking without bots.
+              Real-time AI copilot for live calls and technical interviews. Sub-second audio transcription, contextual answers, and screen share invisible overlay.
             </p>
             <div className="mb-6">
               <a
