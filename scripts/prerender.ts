@@ -102,19 +102,19 @@ function injectHead(html: string, page: PageSeo, jsonLd: Record<string, unknown>
   output = upsertTag(output, /<title>.*?<\/title>/, `<title>${title}</title>`);
   output = upsertTag(
     output,
-    /<meta name="description" content="[^"]*"\s*\/?>/,
+    /<meta\s+name="description"[\s\S]*?\/?>/i,
     `<meta name="description" content="${description}" />`,
   );
   output = upsertTag(
     output,
-    /<meta name="robots" content="[^"]*"\s*\/?>/,
+    /<meta\s+name="robots"[\s\S]*?\/?>/i,
     `<meta name="robots" content="${robots}" />`,
   );
 
   if (page.keywords) {
     output = upsertTag(
       output,
-      /<meta name="keywords" content="[^"]*"\s*\/?>/,
+      /<meta\s+name="keywords"[\s\S]*?\/?>/i,
       `<meta name="keywords" content="${escapeHtml(page.keywords)}" />`,
     );
   }

@@ -49,6 +49,28 @@
       "has": [
         {
           "type": "host",
+          "value": "www.mentora.cv"
+        }
+      ],
+      "destination": "https://mentora.cv/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.mentora.cv"
+        }
+      ],
+      "destination": "https://mentora.cv/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
           "value": "mentora-marketing-eta.vercel.app"
         }
       ],
