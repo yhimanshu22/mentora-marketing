@@ -65,7 +65,7 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
     title: 'Mentora — Real-Time AI Copilot for Live Calls & Interviews',
     description:
-      'Mentora is a real-time AI copilot for live calls and technical interviews. Sub-second audio transcription, resume-grounded answers, and screen share invisible HUD.',
+      'Mentora is a real-time AI copilot for live calls and interviews. Sub-second audio transcription, resume-grounded answers, and screen share invisible HUD.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },
