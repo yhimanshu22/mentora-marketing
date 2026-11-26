@@ -11,9 +11,9 @@ export type BlogPost = {
 export const BLOG_POSTS: readonly BlogPost[] = [
   {
     slug: 'mentora-vs-cluely-ai-pricing-comparison',
-    title: 'Mentora vs Cluely AI: Feature, Privacy & Pricing Comparison (2026)',
+    title: 'Mentora vs Cluely AI: Features, Privacy & Pricing',
     excerpt:
-      'Compare Mentora and Cluely AI for live call copilots. Breakdown of real-time audio transcription, screen share undetectability, and why Mentora offers full privacy at $1 instead of Cluely’s $149.99/mo.',
+      'Compare Mentora vs Cluely AI for live calls. Discover why Mentora offers full screen-share undetectability at $1 instead of Cluely’s $149.99/mo subscription.',
     publishedAt: '2026-06-25',
     readMinutes: 7,
     keywords:
@@ -70,9 +70,9 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'top-cluely-alternatives-live-ai-copilots',
-    title: 'Top Cluely AI Alternatives for Live Calls & Interviews in 2026',
+    title: 'Top Cluely AI Alternatives for Live Calls & Interviews',
     excerpt:
-      'Looking for alternatives to Cluely AI? Explore the best live call copilots, interview assistants, and bot-free desktop overlays with transparent pricing and screen share protection.',
+      'Explore the top Cluely AI alternatives for live calls and technical interviews. Compare screen share privacy, real-time audio latency, and transparent pricing.',
     publishedAt: '2026-06-24',
     readMinutes: 6,
     keywords:
@@ -123,9 +123,9 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'ai-meeting-assistant-summarisation-guide',
-    title: 'The Modern Guide to Real-Time AI Copilots & Live Call Guidance',
+    title: 'Real-Time AI Copilots: Live Call & Interview Guide',
     excerpt:
-      'Discover how real-time AI copilots capture live conversation audio, transcribe questions with sub-second latency, and deliver contextual answers and talking points on your private screen.',
+      'Learn how a real-time AI copilot captures system audio, transcribes live conversations with sub-second speed, and delivers context-aware talking points.',
     publishedAt: '2026-06-10',
     readMinutes: 6,
     keywords:
@@ -161,7 +161,7 @@ export const BLOG_POSTS: readonly BlogPost[] = [
     slug: 'hide-mode-screen-share-meetings',
     title: 'Screen Share Privacy: Invisible AI Overlays for Zoom & Teams',
     excerpt:
-      'Learn how native window content protection lets you reference live AI answers, code hints, and talking points without exposing the assistant on shared screens.',
+      'Learn how native OS window content protection lets you reference live AI answers, code hints, and talking points without leaking to shared screens or attendees.',
     publishedAt: '2026-06-12',
     readMinutes: 5,
     keywords:
@@ -189,9 +189,9 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'screenshot-assist-meeting-summarisation',
-    title: 'Visual Screenshot Assist: Solving Code & Architecture Problems Live',
+    title: 'Visual Screenshot Assist: Solving Code & Architecture Live',
     excerpt:
-      'How visual screenshot assist captures LeetCode problems, system architecture diagrams, and SQL schemas to provide immediate technical analysis and algorithms.',
+      'Capture LeetCode problems, system architecture diagrams, and SQL schemas with OCR to instantly receive optimal algorithms, hints, and technical trade-offs.',
     publishedAt: '2026-06-16',
     readMinutes: 5,
     keywords:
@@ -219,9 +219,9 @@ export const BLOG_POSTS: readonly BlogPost[] = [
   },
   {
     slug: 'automated-meeting-notes-action-items-guide',
-    title: 'Real-Time Audio Capture vs Cloud Meeting Bots',
+    title: 'Native Audio Capture vs Cloud Meeting Bots Compared',
     excerpt:
-      'Why native desktop audio capture is superior to cloud meeting bots for latency, privacy, and real-time conversation assistance.',
+      'Compare native desktop audio loopback capture vs cloud bots for live calls. Understand latency bottlenecks, security risks, and why bot-free capture wins.',
     publishedAt: '2026-06-22',
     readMinutes: 5,
     keywords:

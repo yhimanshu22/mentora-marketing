@@ -55,69 +55,71 @@ export const PAGE_SEO: Record<SeoPageId, PageSeo> = {
   home: {
     title: 'Mentora — Real-Time AI Copilot for Live Calls & Interviews',
     description:
-      'Mentora is a real-time AI copilot for live calls, technical interviews, and client meetings. Live audio transcription, resume-grounded answers, and screen share invisible overlay across Zoom, Teams, and Google Meet.',
+      'Mentora is a real-time AI copilot for live calls and technical interviews. Sub-second audio transcription, resume-grounded answers, and screen share invisible HUD.',
     path: '/',
     keywords: HOME_KEYWORDS,
   },
   blog: {
-    title: 'Blog — Real-Time AI Copilot & Live Interview Guides | Mentora',
+    title: 'Mentora Blog — AI Copilot Guides & Alternative Reviews',
     description:
-      'Guides on real-time AI copilots, undetectable screen share overlays, live interview preparation, and comparison against alternatives like Cluely and Final Round AI.',
+      'Practical guides on real-time AI copilots, undetectable screen share overlays, live interview preparation, and comparison against alternatives like Cluely.',
     path: '/blog',
     keywords:
       'AI copilot blog, live interview guides, Cluely alternative, interview assistant articles, Mentora blog',
   },
   login: {
-    title: 'Sign in — Mentora AI',
-    description: 'Sign in to Mentora with your Google account.',
+    title: 'Sign in to Mentora — Real-Time AI Copilot Account',
+    description:
+      'Sign in to your Mentora account to sync custom profiles, manage your credit balance, and access the desktop AI copilot on Windows and macOS.',
     path: '/login',
     noindex: true,
   },
   billingSuccess: {
-    title: 'Payment successful — Mentora AI',
-    description: 'Your Mentora subscription payment was successful.',
+    title: 'Payment Successful — Mentora AI Credits Activated',
+    description:
+      'Your Mentora subscription payment was successful. Credits have been applied to your account for live call transcription and AI guidance.',
     path: '/billing/success',
     noindex: true,
   },
   billing: {
-    title: 'Billing & Credits — Mentora AI',
+    title: 'Billing & Plan Credits Management — Mentora AI',
     description:
-      'View your Mentora plan, remaining credits, renewal date, and manage your subscription billing.',
+      'View your active Mentora plan, check remaining AI call credits, track upcoming renewal dates, and manage payment options.',
     path: '/billing',
     noindex: true,
   },
   contact: {
-    title: 'Contact Mentora — Support & Billing',
+    title: 'Contact Mentora Support — Billing & Product Help',
     description:
-      'Contact Mentora AI for product questions, billing, upgrades, and support. Email, phone, and WhatsApp help for Starter, Pro, Ultimate, and Magic plans.',
+      'Contact Mentora AI for live call copilot assistance, billing questions, and technical support. Direct email, WhatsApp, and phone channels available.',
     path: '/contact',
     keywords: 'Mentora contact, Mentora support, Mentora billing help',
   },
   about: {
-    title: 'About Mentora — Real-Time AI Copilot & Live Call Assistant',
+    title: 'About Mentora — Real-Time AI Copilot & Call Assistant',
     description:
-      'Learn about Mentora AI, the desktop copilot for live calls, technical screens, and interviews with real-time transcription and screen share invisible overlay.',
+      'Learn about Mentora, the native desktop AI copilot for live calls and interviews with sub-second transcription and screen-share invisible overlay.',
     path: '/about',
     keywords: 'about Mentora, real-time AI copilot, live interview assistant, call copilot company',
   },
   'privacy-policy': {
-    title: 'Privacy Policy — Mentora AI',
+    title: 'Privacy Policy — Data Protection at Mentora AI',
     description:
-      'Read how Mentora AI collects, uses, and protects your data. Secure audio processing, credit-based AI execution, and privacy-first meeting assistance.',
+      'Read how Mentora AI protects your privacy. Learn about local audio loopback capture, encrypted API transmission, and our strict zero-data-sale policy.',
     path: '/privacy-policy',
     keywords: 'Mentora privacy policy, data protection, meeting assistant privacy',
   },
   'refund-policy': {
-    title: 'Refund Policy — Mentora AI',
+    title: 'Refund Policy & Guarantees — Mentora AI',
     description:
-      'Mentora refund policy for Pro, Ultimate, Magic subscriptions and the one-time full source code purchase. How to request a refund within 7 days.',
+      'Mentora 7-day refund policy for Starter, Pro, Ultimate, and Magic plans, as well as terms regarding the one-time full source code purchase.',
     path: '/refund-policy',
     keywords: 'Mentora refund policy, subscription refund, source code refund',
   },
   'terms-of-service': {
-    title: 'Terms of Service — Mentora AI',
+    title: 'Terms of Service — User Agreement & Rules | Mentora',
     description:
-      'Terms of Service for using Mentora AI meeting assistant, including accounts, billing, acceptable use, and service limitations.',
+      'Terms of Service for using the Mentora desktop AI copilot, covering account registration, credit consumption, billing cycles, and acceptable use.',
     path: '/terms-of-service',
     keywords: 'Mentora terms of service, user agreement, acceptable use',
   },
